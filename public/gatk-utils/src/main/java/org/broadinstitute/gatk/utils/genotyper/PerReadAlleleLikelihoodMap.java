@@ -310,12 +310,12 @@ public class PerReadAlleleLikelihoodMap {
 
         sb.append("Alelles in map:");
         for (final Allele a:alleles) {
-            sb.append(a.getDisplayString()+",");
+            sb.append(a.getDisplayString()).append(",");
         }
         sb.append("\n");
         for (final Map.Entry <GATKSAMRecord, Map<Allele, Double>> el : getLikelihoodReadMap().entrySet() ) {
             for (final Map.Entry<Allele,Double> eli : el.getValue().entrySet()) {
-                sb.append("Read "+el.getKey().getReadName()+". Allele:"+eli.getKey().getDisplayString()+" has likelihood="+Double.toString(eli.getValue())+"\n");
+                sb.append("Read ").append(el.getKey().getReadName()).append(". Allele:").append(eli.getKey().getDisplayString()).append(" has likelihood=").append(Double.toString(eli.getValue())).append("\n");
             }
 
         }

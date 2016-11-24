@@ -751,7 +751,7 @@ public class ReadBackedPhasing extends RodWalker<PhasingStatsAndOutput, PhasingS
             public String toString() {
                 StringBuilder sb = new StringBuilder();
                 for (int i : this) {
-                    sb.append(i + ", ");
+                    sb.append(i).append(", ");
                 }
                 return sb.toString();
             }
@@ -1581,7 +1581,7 @@ public class ReadBackedPhasing extends RodWalker<PhasingStatsAndOutput, PhasingS
             StringBuilder sb = new StringBuilder();
             sb.append("-------------------\n");
             for (PhasingTableEntry pte : this) {
-                sb.append("Haplotypes:\t" + pte.getHaplotypeClass() + "\tScore:\t" + pte.getScore() + "\n");
+                sb.append("Haplotypes:\t").append(pte.getHaplotypeClass()).append("\tScore:\t").append(pte.getScore()).append("\n");
             }
             sb.append("-------------------\n");
             return sb.toString();
@@ -1936,7 +1936,7 @@ class MultipleBaseCounts {
         for (Map.Entry<Integer, Integer> baseCountEntry : baseCounts.entrySet()) {
             byte base = BaseUtils.baseIndexToSimpleBase(baseCountEntry.getKey());
             int cnt = baseCountEntry.getValue();
-            sb.append("\t" + (char) base + ": " + cnt);
+            sb.append("\t").append((char) base).append(": ").append(cnt);
         }
 
         return sb.toString();

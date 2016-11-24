@@ -112,9 +112,9 @@ class PhasingGraph implements Iterable<PhasingGraphEdge> {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < adj.length; i++) {
-            sb.append(i + ":");
+            sb.append(i).append(":");
             for (PhasingGraphEdge e : adj[i]) {
-                sb.append(" " + (e.v1 == i ? e.v2 : e.v1));
+                sb.append(" ").append(e.v1 == i ? e.v2 : e.v1);
             }
             sb.append("\n");
         }

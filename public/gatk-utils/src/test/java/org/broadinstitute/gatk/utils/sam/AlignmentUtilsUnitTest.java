@@ -350,9 +350,9 @@ public class AlignmentUtilsUnitTest {
         read.setBaseQualities(quals);
 
         final StringBuilder cigar = new StringBuilder();
-        if (qualsOfSoftClipsOnLeft.length > 0 ) cigar.append(qualsOfSoftClipsOnLeft.length + "S");
-        if (middleSize > 0 ) cigar.append(middleSize + middleOp);
-        if (qualOfSoftClipsOnRight.length > 0 ) cigar.append(qualOfSoftClipsOnRight.length + "S");
+        if (qualsOfSoftClipsOnLeft.length > 0 ) cigar.append(qualsOfSoftClipsOnLeft.length).append("S");
+        if (middleSize > 0 ) cigar.append(middleSize).append(middleOp);
+        if (qualOfSoftClipsOnRight.length > 0 ) cigar.append(qualOfSoftClipsOnRight.length).append("S");
 
         read.setCigarString(cigar.toString());
 

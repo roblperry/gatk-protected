@@ -93,8 +93,8 @@ public class AllelePair {
 
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Top:\t" + top.getBaseString() + "\n");
-        sb.append("Bot:\t" + bottom.getBaseString() + "\n");
+        sb.append("Top:\t").append(top.getBaseString()).append("\n");
+        sb.append("Bot:\t").append(bottom.getBaseString()).append("\n");
         return sb.toString();
     }
 }

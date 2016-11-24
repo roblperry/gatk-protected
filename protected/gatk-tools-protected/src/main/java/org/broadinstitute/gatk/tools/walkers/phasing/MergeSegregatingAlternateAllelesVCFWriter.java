@@ -305,26 +305,26 @@ class MergeSegregatingAlternateAllelesVCFWriter implements VariantContextWriter 
         public String toString() {
             StringBuilder sb = new StringBuilder();
 
-            sb.append("Sample missing:\t" + oneSampleMissing + "\n");
-            sb.append("Not called or filtered:\t" + atLeastOneSampleNotCalledOrFiltered + "\n");
+            sb.append("Sample missing:\t").append(oneSampleMissing).append("\n");
+            sb.append("Not called or filtered:\t").append(atLeastOneSampleNotCalledOrFiltered).append("\n");
 
-            sb.append("* Number of successive pairs of genotypes:\t" + numSuccessiveGenotypes + "\n");
-            sb.append("Number of successive pairs of genotypes with " + vcMergeRule + ":\t" + numSuccessiveGenotypesAttemptedToBeMerged + "\n");
+            sb.append("* Number of successive pairs of genotypes:\t").append(numSuccessiveGenotypes).append("\n");
+            sb.append("Number of successive pairs of genotypes with ").append(vcMergeRule).append(":\t").append(numSuccessiveGenotypesAttemptedToBeMerged).append("\n");
 
-            sb.append("Unknown segregation, " + vcMergeRule + ":\t" + segregationUnknown + "\n");
-            sb.append("Not variant at least one of pair, segregation known, " + vcMergeRule + ":\t" + eitherNotVariant + "\n");
-            sb.append("* Variant at both, segregation known, " + vcMergeRule + ":\t" + percentageString(bothInPairHaveVariant, numSuccessiveGenotypes) + "\n");
+            sb.append("Unknown segregation, ").append(vcMergeRule).append(":\t").append(segregationUnknown).append("\n");
+            sb.append("Not variant at least one of pair, segregation known, ").append(vcMergeRule).append(":\t").append(eitherNotVariant).append("\n");
+            sb.append("* Variant at both, segregation known, ").append(vcMergeRule).append(":\t").append(percentageString(bothInPairHaveVariant, numSuccessiveGenotypes)).append("\n");
 
-            sb.append("[Total haplotypes at pairs:\t" + (ref_ref_pair + ref_alt_pair + alt_ref_pair + alt_alt_pair) + "\n");
-            sb.append("REF-REF:\t" + ref_ref_pair + "\n");
-            sb.append("REF-ALT:\t" + ref_alt_pair + "\n");
-            sb.append("ALT-REF:\t" + alt_ref_pair + "\n");
-            sb.append("ALT-ALT:\t" + alt_alt_pair + "]\n");
+            sb.append("[Total haplotypes at pairs:\t").append(ref_ref_pair + ref_alt_pair + alt_ref_pair + alt_alt_pair).append("\n");
+            sb.append("REF-REF:\t").append(ref_ref_pair).append("\n");
+            sb.append("REF-ALT:\t").append(ref_alt_pair).append("\n");
+            sb.append("ALT-REF:\t").append(alt_ref_pair).append("\n");
+            sb.append("ALT-ALT:\t").append(alt_alt_pair).append("]\n");
 
             int hetAfterHetSites = MNPsites + CHetSites;
-            sb.append("* Het-Het sites (with REF allele present at each):\t" + percentageString(hetAfterHetSites, bothInPairHaveVariant) + "\n");
-            sb.append("* MNPs:\t" + percentageString(MNPsites, hetAfterHetSites) + "\n");
-            sb.append("Compound Hets:\t" + CHetSites + "\n");
+            sb.append("* Het-Het sites (with REF allele present at each):\t").append(percentageString(hetAfterHetSites, bothInPairHaveVariant)).append("\n");
+            sb.append("* MNPs:\t").append(percentageString(MNPsites, hetAfterHetSites)).append("\n");
+            sb.append("Compound Hets:\t").append(CHetSites).append("\n");
 
             return sb.toString();
         }
@@ -445,13 +445,13 @@ class MergeSegregatingAlternateAllelesVCFWriter implements VariantContextWriter 
         public String toString() {
             StringBuilder sb = new StringBuilder();
             sb.append("-------------------------------------------------------------------------\n");
-            sb.append("Per-sample alternate allele statistics [" + vcMergeRule + "]\n");
+            sb.append("Per-sample alternate allele statistics [").append(vcMergeRule).append("]\n");
             sb.append("-------------------------------------------------------------------------");
 
             for (Map.Entry<String, AltAlleleStats> sampAltAllStatsEntry : sampleStats.entrySet()) {
                 String samp = sampAltAllStatsEntry.getKey();
                 AltAlleleStats stats = sampAltAllStatsEntry.getValue();
-                sb.append("\n* Sample:\t" + samp + "\n" + stats);
+                sb.append("\n* Sample:\t").append(samp).append("\n").append(stats);
             }
 
             return sb.toString();

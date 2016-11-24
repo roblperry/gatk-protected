@@ -562,7 +562,7 @@ public class ClipReads extends ReadWalker<ClipReads.ReadClipperWithData, ClipRea
         public String toString() {
             StringBuilder s = new StringBuilder();
 
-            s.append(Utils.dupString('-', 80) + "\n");
+            s.append(Utils.dupString('-', 80)).append("\n");
             s.append(String.format("Number of examined reads              %d%n", nTotalReads));
             s.append(String.format("Number of clipped reads               %d%n", nClippedReads));
             s.append(String.format("Percent of clipped reads              %.2f%n", (100.0 * nClippedReads) / nTotalReads));
@@ -577,7 +577,7 @@ public class ClipReads extends ReadWalker<ClipReads.ReadClipperWithData, ClipRea
                 s.append(String.format("  %8d clip sites matching %s%n", elt.getValue(), elt.getKey()));
             }
 
-            s.append(Utils.dupString('-', 80) + "\n");
+            s.append(Utils.dupString('-', 80)).append("\n");
             return s.toString();
         }
     }

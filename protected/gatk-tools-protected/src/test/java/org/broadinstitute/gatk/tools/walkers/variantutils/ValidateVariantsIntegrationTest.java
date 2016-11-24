@@ -87,7 +87,7 @@ public class ValidateVariantsIntegrationTest extends WalkerTest {
         final StringBuilder sbuilder = new StringBuilder();
         for (final ValidateVariants.ValidationType t : ValidateVariants.ValidationType.CONCRETE_TYPES)
             if (t != vtype)
-                sbuilder.append(" --validationTypeToExclude " + t.toString());
+                sbuilder.append(" --validationTypeToExclude ").append(t.toString());
         return sbuilder.toString();
     }
 
