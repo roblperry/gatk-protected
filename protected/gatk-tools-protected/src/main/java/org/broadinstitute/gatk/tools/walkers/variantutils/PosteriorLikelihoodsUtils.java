@@ -347,8 +347,8 @@ public class PosteriorLikelihoodsUtils {
             mleList = Collections.singletonList(Integer.parseInt((String) integerListContainingVCField));
         }
         if ( mleList == null )
-            throw new IllegalArgumentException(String.format("VCF does not have properly formatted "+
-                    GATKVCFConstants.MLE_ALLELE_COUNT_KEY+" or "+VCFConstants.ALLELE_COUNT_KEY));
+            throw new IllegalArgumentException("VCF does not have properly formatted "+
+                    GATKVCFConstants.MLE_ALLELE_COUNT_KEY+" or "+VCFConstants.ALLELE_COUNT_KEY);
 
         final int[] mle = new int[mleList.size()];
 

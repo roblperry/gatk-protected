@@ -79,7 +79,7 @@ public class UnifiedGenotyperIndelCallingIntegrationTest extends WalkerTest {
                         " -L 1:10,000,000-10,500,000",
                 1,
                 Collections.singletonList("32bece91e170d623092817738faddb4e"));
-        executeTest(String.format("test indel caller in SLX"), spec);
+        executeTest("test indel caller in SLX", spec);
     }
 
     // Basic indel testing with SLX data
@@ -94,7 +94,7 @@ public class UnifiedGenotyperIndelCallingIntegrationTest extends WalkerTest {
                 1,
                 Collections.singletonList("897c6063236fcd7242c2ff5982585648"));
 
-        executeTest(String.format("test indel caller in SLX with low min allele count"), spec);
+        executeTest("test indel caller in SLX with low min allele count", spec);
     }
 
     @Test
@@ -107,7 +107,7 @@ public class UnifiedGenotyperIndelCallingIntegrationTest extends WalkerTest {
                 1,
                 Collections.singletonList("dd66e5f8a6e43be0e473251185a4f38a"));
 
-        executeTest(String.format("test indel calling, multiple technologies"), spec);
+        executeTest("test indel calling, multiple technologies", spec);
     }
 
     @Test
@@ -164,7 +164,7 @@ public class UnifiedGenotyperIndelCallingIntegrationTest extends WalkerTest {
                 1,
                 Collections.singletonList("e883a8863bdd44c559c4440183c87078"));
 
-        executeTest(String.format("test UG with base indel quality scores"), spec);
+        executeTest("test UG with base indel quality scores", spec);
     }
 
     // --------------------------------------------------------------------------------------------------------------

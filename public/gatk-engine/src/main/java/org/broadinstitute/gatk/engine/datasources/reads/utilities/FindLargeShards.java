@@ -102,7 +102,7 @@ public class FindLargeShards extends CommandLineProgram {
         else
             intervalSortedSet = GenomeLocSortedSet.createSetFromSequenceDictionary(refReader.getSequenceDictionary());
 
-        logger.info(String.format("PROGRESS: Calculating mean and variance: Contig\tRegion.Start\tRegion.Stop\tSize"));        
+        logger.info("PROGRESS: Calculating mean and variance: Contig\tRegion.Start\tRegion.Stop\tSize");
 
         IntervalSharder sharder = IntervalSharder.shardOverIntervals(dataSource,intervalSortedSet,IntervalMergingRule.ALL);
         while(sharder.hasNext()) {
@@ -130,7 +130,7 @@ public class FindLargeShards extends CommandLineProgram {
 
         // Crank through the shards again, this time reporting on the shards significantly larger than the mean.
         long threshold = mean + stddev*5;
-        logger.warn(String.format("PROGRESS: Searching for large shards: Contig\tRegion.Start\tRegion.Stop\tSize"));
+        logger.warn("PROGRESS: Searching for large shards: Contig\tRegion.Start\tRegion.Stop\tSize");
         out.printf("Contig\tRegion.Start\tRegion.Stop\tSize%n");
 
         sharder =  IntervalSharder.shardOverIntervals(dataSource,intervalSortedSet,IntervalMergingRule.ALL);

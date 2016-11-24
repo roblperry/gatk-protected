@@ -276,7 +276,7 @@ public class UnifiedGenotyperIntegrationTest extends WalkerTest {
                 1,
                 Collections.singletonList("7ed55f70feeacf8ecc6b36f0d741dfc7"));
 
-        executeTest(String.format("test multiple technologies"), spec);
+        executeTest("test multiple technologies", spec);
     }
 
     // --------------------------------------------------------------------------------------------------------------
@@ -295,7 +295,7 @@ public class UnifiedGenotyperIntegrationTest extends WalkerTest {
                 1,
                 Collections.singletonList("90224ac1c9e2ce9b77fee8dd6e044efe"));
 
-        executeTest(String.format("test calling with BAQ"), spec);
+        executeTest("test calling with BAQ", spec);
     }
 
     // --------------------------------------------------------------------------------------------------------------

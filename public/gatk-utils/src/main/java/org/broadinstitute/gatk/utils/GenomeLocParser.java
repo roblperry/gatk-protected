@@ -125,7 +125,7 @@ public final class GenomeLocParser {
         this.validationLevel = validationLevel;
         this.SINGLE_MASTER_SEQUENCE_DICTIONARY = seqDict;
         if ( logger.isDebugEnabled() ) {
-            logger.debug(String.format("Prepared reference sequence contig dictionary"));
+            logger.debug("Prepared reference sequence contig dictionary");
             for (SAMSequenceRecord contig : seqDict.getSequences()) {
                 logger.debug(String.format(" %s (%d bp)", contig.getSequenceName(), contig.getSequenceLength()));
             }

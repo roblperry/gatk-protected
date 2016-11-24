@@ -131,11 +131,11 @@ public class Utils {
 
     public static List<String> warnUserLines(final String msg) {
         List<String> results = new ArrayList<>();
-        results.add(String.format(TEXT_WARNING_BORDER));
-        results.add(String.format(TEXT_WARNING_PREFIX + "WARNING:"));
-        results.add(String.format(TEXT_WARNING_PREFIX));
+        results.add(TEXT_WARNING_BORDER);
+        results.add(TEXT_WARNING_PREFIX + "WARNING:");
+        results.add(TEXT_WARNING_PREFIX);
         prettyPrintWarningMessage(results, msg);
-        results.add(String.format(TEXT_WARNING_BORDER));
+        results.add(TEXT_WARNING_BORDER);
         return results;
     }
 

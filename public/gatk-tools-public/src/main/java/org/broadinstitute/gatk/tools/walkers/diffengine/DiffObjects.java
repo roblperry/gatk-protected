@@ -273,7 +273,7 @@ public class DiffObjects extends RodWalker<Integer, Integer> {
                     maxRawDiffsToSummary, doPairwise);
             params.setDescending(false);
             diffEngine.reportSummarizedDifferences(diffs, params);
-            logger.info(String.format("Done summarizing differences"));
+            logger.info("Done summarizing differences");
         }
     }
 }

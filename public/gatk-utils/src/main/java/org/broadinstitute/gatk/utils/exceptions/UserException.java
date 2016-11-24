@@ -142,7 +142,7 @@ public class UserException extends ReviewedGATKException {
 
     public static class TooManyOpenFiles extends UserException {
         public TooManyOpenFiles() {
-            super(String.format("An error occurred because there were too many files open concurrently; your system's open file handle limit is probably too small.  See the unix ulimit command to adjust this limit or ask your system administrator for help."));
+            super("An error occurred because there were too many files open concurrently; your system's open file handle limit is probably too small.  See the unix ulimit command to adjust this limit or ask your system administrator for help.");
         }
     }
 
@@ -154,7 +154,7 @@ public class UserException extends ReviewedGATKException {
 
     public static class NotEnoughMemory extends UserException {
         public NotEnoughMemory() {
-            super(String.format("An error occurred because you did not provide enough memory to run this program. You can use the -Xmx argument (before the -jar argument) to adjust the maximum heap size provided to Java. Note that this is a JVM argument, not a GATK argument."));
+            super("An error occurred because you did not provide enough memory to run this program. You can use the -Xmx argument (before the -jar argument) to adjust the maximum heap size provided to Java. Note that this is a JVM argument, not a GATK argument.");
         }
     }
 
@@ -350,10 +350,10 @@ public class UserException extends ReviewedGATKException {
 
     public static class CannotExecuteRScript extends UserException {
         public CannotExecuteRScript(String message) {
-            super(String.format("Unable to execute RScript command: " + message));
+            super("Unable to execute RScript command: " + message);
         }
         public CannotExecuteRScript(String message, Exception e) {
-            super(String.format("Unable to execute RScript command: " + message), e);
+            super("Unable to execute RScript command: " + message, e);
         }
     }
 
@@ -392,10 +392,10 @@ public class UserException extends ReviewedGATKException {
 
     public static class CannotExecuteQScript extends UserException {
         public CannotExecuteQScript(String message) {
-            super(String.format("Unable to execute QScript: " + message));
+            super("Unable to execute QScript: " + message);
         }
         public CannotExecuteQScript(String message, Exception e) {
-            super(String.format("Unable to execute QScript: " + message), e);
+            super("Unable to execute QScript: " + message, e);
         }
     }
 
