@@ -232,7 +232,7 @@ public class BAQUnitTest extends BaseTest {
             result = baqHMM.calcBAQFromHMM(read, test.refBases.getBytes(), test.refOffset);
 
         System.out.println(Utils.dupString('-', 40));
-        System.out.println("reads   : " + new String(test.readBases));
+        System.out.println("reads   : " + test.readBases);
         printQuals(System.out, "in-quals:", test.quals, false);
         printQuals(System.out, "bq-quals:", result.bq, false);
         for (int i = 0; i < test.quals.length; i++) {

@@ -208,7 +208,7 @@ public class VCFIntegrationTest extends WalkerTest {
     @Test(dataProvider = "IndexDataProvider")
     public void testVCFIndexCreation(VCFIndexCreatorTest testSpec) throws NoSuchFieldException, IllegalAccessException, IOException {
 
-        final String logFileName = new String("testVCFIndexCreation.log");
+        final String logFileName = "testVCFIndexCreation.log";
         final String chromosome = "20";
         final String commandLine = " -T SelectVariants" +
                 " -R " + b37KGReference +

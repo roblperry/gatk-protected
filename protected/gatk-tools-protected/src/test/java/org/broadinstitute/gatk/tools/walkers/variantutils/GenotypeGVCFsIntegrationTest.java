@@ -90,7 +90,7 @@ public class GenotypeGVCFsIntegrationTest extends WalkerTest {
 
     @Test(enabled = true)
     public void testUpdatePGTStrandAlleleCountsBySample() throws IOException{
-        final String logFileName = new String("testUpdatePGTStrandAlleleCountsBySample.log");
+        final String logFileName = "testUpdatePGTStrandAlleleCountsBySample.log";
         WalkerTestSpec spec = new WalkerTestSpec(
                 baseTestString(" -V " + privateTestDir + "testUpdatePGT.vcf -A StrandAlleleCountsBySample -log " + logFileName, b37KGReference),
                 1,

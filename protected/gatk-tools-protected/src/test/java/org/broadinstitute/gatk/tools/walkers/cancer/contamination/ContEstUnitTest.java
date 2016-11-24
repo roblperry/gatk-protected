@@ -81,7 +81,7 @@ public class ContEstUnitTest extends BaseTest {
     SAMFileHeader header = ArtificialSAMUtils.createArtificialSamHeader(1,1,2000);
     GenomeLocParser parser = new GenomeLocParser(header.getSequenceDictionary());
     private static final Map<Integer,Allele> alleles = new HashMap<Integer,Allele>();
-    String primaryRG = new String("genotype");
+    String primaryRG = "genotype";
     static {
         alleles.put(0,Allele.create((byte) 'A'));
         alleles.put(1,Allele.create((byte) 'C'));

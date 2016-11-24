@@ -42,8 +42,8 @@ public class GATKSAMRecordUnitTest extends BaseTest {
         SAMFileHeader header = ArtificialSAMUtils.createArtificialSamHeader(1, 1, 1000);
         read = ArtificialSAMUtils.createArtificialRead(header, "read1", 0, 1, BASES.length());
         read.setReadUnmappedFlag(true);
-        read.setReadBases(new String(BASES).getBytes());
-        read.setBaseQualityString(new String(QUALS));
+        read.setReadBases(BASES.getBytes());
+        read.setBaseQualityString(QUALS);
     }
 
     @Test

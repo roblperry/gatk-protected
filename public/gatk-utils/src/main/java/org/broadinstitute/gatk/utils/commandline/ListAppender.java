@@ -123,7 +123,7 @@ public class ListAppender extends AppenderSkeleton {
     public synchronized String toString() {
         final String msgType = logLevelToKeep.toString() + " messages";
         if ( loggingEvents.isEmpty() ) {
-            return "There were no " + new String(msgType).toLowerCase() + ".\n";
+            return "There were no " + msgType.toLowerCase() + ".\n";
         } else {
             String out = "There were " + Integer.toString(numLoggingEvents) + " " + msgType;
             if ( layout == null )

@@ -91,7 +91,7 @@ public class PhasingUtilsUnitTest extends BaseTest {
         alleleList2 = Arrays.asList(Allele.create("G", true), Allele.create("A", false));
         genotype1 = new GenotypeBuilder().name("sample").attribute("HP", new String[]{"10-1", "10-2"}).attribute("PQ", 100.0).alleles(alleleList1).make();
         genotype2 = new GenotypeBuilder().name("sample").attribute("HP", new String[]{"10-2", "10-1"}).attribute("PQ", 200.0).alleles(alleleList2).make();
-        contig = new String("1");
+        contig = "1";
         vc1 = new VariantContextBuilder().chr(contig).id("id1").source("TC").start(start).stop(start).alleles(alleleList1).genotypes(genotype1).make();
         vc2 = new VariantContextBuilder().chr(contig).id("id2").source("GA").start(start+1).stop(start+1).alleles(alleleList2).genotypes(genotype2).make();
     }
@@ -162,7 +162,7 @@ public class PhasingUtilsUnitTest extends BaseTest {
 
     @Test
     public void TestMergeIntoMNPvalidationDiffContigs() {
-        final String contig = new String("2");
+        final String contig = "2";
         final VariantContext vc = new VariantContextBuilder().chr(contig).id("id1").source("TC").start(start+1).stop(start+1).alleles(alleleList2).genotypes(genotype2).make();
         Assert.assertFalse(PhasingUtils.mergeIntoMNPvalidationCheck(genomeLocParser, vc1, vc));
     }
@@ -203,7 +203,7 @@ public class PhasingUtilsUnitTest extends BaseTest {
 
     @Test
     public void TestMergeVariantContextNames() {
-        final String result = new String("A_B");
+        final String result = "A_B";
         Assert.assertEquals(result, PhasingUtils.mergeVariantContextNames("A", "B"));
     }
 

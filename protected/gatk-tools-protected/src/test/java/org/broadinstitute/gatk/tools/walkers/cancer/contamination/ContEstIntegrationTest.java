@@ -65,10 +65,10 @@ import java.util.List;
  * @author gauthier
  */
 public class ContEstIntegrationTest extends WalkerTest {
-    public static final String DREAMBamsDirectory = new String("/dsde/working/mutect/dream_smc/bams/");
-    public static final String ContaminatedBamsDirectory = new String("/dsde/working/mutect/contamination/bams/");
-    public static final String NormalBamsDirectory = new String("/humgen/gsa-hpprojects/NA12878Collection/bams/crsp_ice_validation/");
-    public static final String ICEexomeIntervals = new String("/seq/references/HybSelOligos/HybSelOligos/whole_exome_illumina_coding_v1/whole_exome_illumina_coding_v1.Homo_sapiens_assembly19.targets.interval_list");
+    public static final String DREAMBamsDirectory = "/dsde/working/mutect/dream_smc/bams/";
+    public static final String ContaminatedBamsDirectory = "/dsde/working/mutect/contamination/bams/";
+    public static final String NormalBamsDirectory = "/humgen/gsa-hpprojects/NA12878Collection/bams/crsp_ice_validation/";
+    public static final String ICEexomeIntervals = "/seq/references/HybSelOligos/HybSelOligos/whole_exome_illumina_coding_v1/whole_exome_illumina_coding_v1.Homo_sapiens_assembly19.targets.interval_list";
 
     @Test(enabled = true)
     public void testWithArray() {

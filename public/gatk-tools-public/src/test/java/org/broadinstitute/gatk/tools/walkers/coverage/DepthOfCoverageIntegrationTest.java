@@ -191,7 +191,7 @@ public class DepthOfCoverageIntegrationTest extends WalkerTest {
         final String[] bams = {"/humgen/gsa-hpprojects/GATK/data/Validation_Data/FHS_indexed_subset.bam"};
         final String refSeqGeneListFile = privateTestDir + "geneTrackHg18Chr1Interval.refSeq";
 
-        final String logFileName = new String("testIncompatibleArgs.log");
+        final String logFileName = "testIncompatibleArgs.log";
         final String cmd = buildRootCmd(hg18Reference,new ArrayList<>(Arrays.asList(bams)),new ArrayList<>(Arrays.asList(intervals))) + " --omitIntervalStatistics --calculateCoverageOverGenes " + refSeqGeneListFile + " -log " + logFileName;
         final WalkerTestSpec spec = new WalkerTestSpec(cmd,0, new ArrayList<String>());
 

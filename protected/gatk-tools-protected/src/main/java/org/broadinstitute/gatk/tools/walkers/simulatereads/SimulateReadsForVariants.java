@@ -289,7 +289,7 @@ public class SimulateReadsForVariants extends RodWalker<Integer, Integer> {
         }
         else
         {
-            String msg = new String("Can not copy reference bases to haplotype: ");
+            String msg = "Can not copy reference bases to haplotype: ";
             if ( offset < 0 )
                 msg += "Read length(" + readLength + ") < Allele length(" +  alleleLength + ")";
             else
@@ -306,7 +306,7 @@ public class SimulateReadsForVariants extends RodWalker<Integer, Integer> {
         }
         else
         {
-            String msg = new String("Can not copy allele bases to haplotype: ");
+            String msg = "Can not copy allele bases to haplotype: ";
             msg += "Read length(" + readLength + ") < Allele length(" +  alleleLength + ") +  copied count(" + copiedCount + ")";
             logger.info(msg);
             return null;
@@ -323,7 +323,7 @@ public class SimulateReadsForVariants extends RodWalker<Integer, Integer> {
         }
         else
         {
-            String msg = new String("Can not copy remaining reference bases to haplotype: ");
+            String msg = "Can not copy remaining reference bases to haplotype: ";
             msg += "Read length(" + readLength + ") <= Copied count(" +  copiedCount + ")";
             logger.info(msg);
             return null;
