@@ -228,7 +228,7 @@ public class KBestHaplotypeFinderUnitTest extends BaseTest {
         for ( final int refBubbleLength : Arrays.asList(1, 5, 10) ) {
             for ( final int altBubbleLength : Arrays.asList(1, 5, 10) ) {
                 for ( final boolean offRefEnding : Arrays.asList(true, false) ) {
-                    for ( final boolean offRefBeginning : Arrays.asList(false) ) {
+                    for ( final boolean offRefBeginning : Collections.singletonList(false)) {
                         tests.add(new Object[]{refBubbleLength, altBubbleLength, offRefBeginning, offRefEnding});
                     }
                 }

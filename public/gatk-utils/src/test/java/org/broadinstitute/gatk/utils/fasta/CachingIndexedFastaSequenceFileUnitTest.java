@@ -42,10 +42,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -65,7 +62,7 @@ public class CachingIndexedFastaSequenceFileUnitTest extends BaseTest {
     @DataProvider(name = "fastas")
     public Object[][] createData1() {
         List<Object[]> params = new ArrayList<Object[]>();
-        for ( File fasta : Arrays.asList(simpleFasta) ) {
+        for ( File fasta : Collections.singletonList(simpleFasta)) {
             for ( int cacheSize : CACHE_SIZES ) {
                 for ( int querySize : QUERY_SIZES ) {
                     params.add(new Object[]{fasta, cacheSize, querySize});
@@ -153,7 +150,7 @@ public class CachingIndexedFastaSequenceFileUnitTest extends BaseTest {
     public Object[][] createParallelFastaTest() {
         List<Object[]> params = new ArrayList<Object[]>();
 
-        for ( File fasta : Arrays.asList(simpleFasta) ) {
+        for ( File fasta : Collections.singletonList(simpleFasta)) {
             for ( int cacheSize : CACHE_SIZES ) {
                 for ( int querySize : QUERY_SIZES ) {
                     for ( int nt : Arrays.asList(1, 2, 3, 4) ) {

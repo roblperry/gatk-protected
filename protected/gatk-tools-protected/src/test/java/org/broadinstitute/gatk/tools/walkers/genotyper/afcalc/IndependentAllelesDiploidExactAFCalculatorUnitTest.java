@@ -136,7 +136,7 @@ public class IndependentAllelesDiploidExactAFCalculatorUnitTest extends BaseTest
     public Object[][] makeTestMakeAlleleConditionalContexts() {
         List<Object[]> tests = new ArrayList<Object[]>();
 
-        final VariantContextBuilder root = new VariantContextBuilder("x", "1", 1, 1, Arrays.asList(A));
+        final VariantContextBuilder root = new VariantContextBuilder("x", "1", 1, 1, Collections.singletonList(A));
         final VariantContextBuilder vcAC = new VariantContextBuilder(root).alleles(Arrays.asList(A, C));
         final VariantContextBuilder vcAG = new VariantContextBuilder(root).alleles(Arrays.asList(A, G));
         final VariantContextBuilder vcACG = new VariantContextBuilder(root).alleles(Arrays.asList(A, C, G));
@@ -149,7 +149,7 @@ public class IndependentAllelesDiploidExactAFCalculatorUnitTest extends BaseTest
         final Genotype gAGcombined = makePL(0, 4, 9);
 
         // biallelic
-        tests.add(new Object[]{vcAC.genotypes(gACcombined).make(), Arrays.asList(vcAC.genotypes(gACcombined).make())});
+        tests.add(new Object[]{vcAC.genotypes(gACcombined).make(), Collections.singletonList(vcAC.genotypes(gACcombined).make())});
 
         // tri-allelic
         tests.add(new Object[]{vcACG.genotypes(gACG).make(), Arrays.asList(vcAC.genotypes(gACcombined).make(), vcAG.genotypes(gAGcombined).make())});

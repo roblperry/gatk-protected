@@ -236,7 +236,7 @@ public class VariantFiltration extends RodWalker<Integer, Integer> {
 
     private void initializeVcfWriter() {
 
-        final List<String> inputNames = Arrays.asList(variantCollection.variants.getName());
+        final List<String> inputNames = Collections.singletonList(variantCollection.variants.getName());
 
         // setup the header fields
         Set<VCFHeaderLine> hInfo = new HashSet<VCFHeaderLine>();

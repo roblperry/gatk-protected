@@ -155,14 +155,14 @@ public class GenomeAnalysisEngineUnitTest extends BaseTest {
         tests.add(new Object[]{"testLoadSampleRenameMapFileNonExistentFile",
                                new File("/foo/bar/nonexistent")});
         tests.add(new Object[]{"testLoadSampleRenameMapFileMalformedLine",
-                               createTestSampleRenameMapFile(Arrays.asList("/path/to/foo.bam"))});
+                               createTestSampleRenameMapFile(Collections.singletonList("/path/to/foo.bam"))});
         tests.add(new Object[]{"testLoadSampleRenameMapFileNonAbsoluteBamPath",
-                               createTestSampleRenameMapFile(Arrays.asList("relative/path/to/foo.bam newSample"))});
+                               createTestSampleRenameMapFile(Collections.singletonList("relative/path/to/foo.bam newSample"))});
         tests.add(new Object[]{"testLoadSampleRenameMapFileDuplicateBamPath",
                                createTestSampleRenameMapFile(Arrays.asList("/path/to/dupe.bam newSample1",
                                                                            "/path/to/dupe.bam newSample2"))});
         tests.add(new Object[]{"testLoadSampleRenameMapFileTabInSampleName",
-                               createTestSampleRenameMapFile(Arrays.asList("/path/to/stuff.bam some wonky\tsample   "))});
+                               createTestSampleRenameMapFile(Collections.singletonList("/path/to/stuff.bam some wonky\tsample   "))});
         return tests.toArray(new Object[][]{});
     }
 

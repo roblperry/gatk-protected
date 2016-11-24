@@ -152,10 +152,10 @@ public class MVLikelihoodRatio extends InfoFieldAnnotation implements RodRequiri
 
     // return the descriptions used for the VCF INFO meta field
     @Override
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.MENDEL_VIOLATION_LR_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.MENDEL_VIOLATION_LR_KEY); }
 
     @Override
-    public List<VCFInfoHeaderLine> getDescriptions() { return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0))); }
+    public List<VCFInfoHeaderLine> getDescriptions() { return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0))); }
 
     private boolean contextHasTrioLikelihoods(VariantContext context, Trio trio) {
         for ( String sample : Arrays.asList(trio.getMaternalID(),trio.getPaternalID(),trio.getChildID()) ) {

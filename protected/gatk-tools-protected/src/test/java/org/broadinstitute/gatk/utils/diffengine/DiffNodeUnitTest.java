@@ -214,7 +214,7 @@ public class DiffNodeUnitTest extends BaseTest {
     @DataProvider(name = "nodedata")
     public Object[][] createData1() {
         new NodeTest(MY_ROOT, Arrays.asList("A", "B"), Arrays.asList("C", "D"));
-        new NodeTest(NODE_C, Arrays.asList("E"), Collections.<String>emptyList());
+        new NodeTest(NODE_C, Collections.singletonList("E"), Collections.<String>emptyList());
         new NodeTest(NODE_D, Arrays.asList("F", "G"), Collections.<String>emptyList());
         return TestDataProvider.getTests(NodeTest.class);
     }

@@ -673,7 +673,7 @@ public class GenotypeConcordance extends RodWalker<List<Pair<VariantContext,Vari
         }
 
         VariantContextBuilder builder = new VariantContextBuilder();
-        builder.alleles(Arrays.asList(context.getReference()));
+        builder.alleles(Collections.singletonList(context.getReference()));
         builder.loc(context.getChr(),context.getStart(),context.getEnd());
         List<Genotype> newGeno = new ArrayList<Genotype>(context.getNSamples());
         for ( Genotype g : context.getGenotypes().iterateInSampleNameOrder() ) {

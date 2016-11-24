@@ -91,11 +91,11 @@ import java.util.*;
 public class ReadPosRankSumTest extends RankSumTest implements StandardAnnotation {
 
     @Override
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.READ_POS_RANK_SUM_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.READ_POS_RANK_SUM_KEY); }
 
     @Override
     public List<VCFInfoHeaderLine> getDescriptions() {
-        return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
+        return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
     }
 
     @Override

@@ -271,7 +271,7 @@ public class ReadBackedPhasing extends RodWalker<PhasingStatsAndOutput, PhasingS
 
         // todo -- fix samplesToPhase
         String trackName = variantCollection.variants.getName();
-        Map<String, VCFHeader> rodNameToHeader = getVCFHeadersFromRods(getToolkit(), Arrays.asList(trackName));
+        Map<String, VCFHeader> rodNameToHeader = getVCFHeadersFromRods(getToolkit(), Collections.singletonList(trackName));
         Set<String> vcfSamples = new TreeSet<String>(samplesToPhase == null ? rodNameToHeader.get(trackName).getGenotypeSamples() : samplesToPhase);
         writer.writeHeader(new VCFHeader(hInfo, vcfSamples));
 
@@ -337,7 +337,7 @@ public class ReadBackedPhasing extends RodWalker<PhasingStatsAndOutput, PhasingS
         return new PhasingStatsAndOutput(phaseStats, completedList);
     }
 
-    private static final Set<String> KEYS_TO_KEEP_IN_REDUCED_VCF = new HashSet<>(Arrays.asList(VCFConstants.PHASE_QUALITY_KEY));
+    private static final Set<String> KEYS_TO_KEEP_IN_REDUCED_VCF = new HashSet<>(Collections.singletonList(VCFConstants.PHASE_QUALITY_KEY));
 
     private VariantContext reduceVCToSamples(VariantContext vc, Set<String> samplesToPhase) {
 //        for ( String sample : samplesToPhase )

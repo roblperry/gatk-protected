@@ -60,6 +60,7 @@ import org.broadinstitute.gatk.utils.sam.ReadUtils;
 import org.broadinstitute.gatk.utils.variant.GATKVCFConstants;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -91,7 +92,7 @@ import java.util.List;
 public class AS_ReadPosRankSumTest extends AS_RankSumTest implements AS_StandardAnnotation {
 
     @Override
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.AS_READ_POS_RANK_SUM_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.AS_READ_POS_RANK_SUM_KEY); }
 
     @Override
     public String getRawKeyName() { return GATKVCFConstants.AS_RAW_READ_POS_RANK_SUM_KEY;}

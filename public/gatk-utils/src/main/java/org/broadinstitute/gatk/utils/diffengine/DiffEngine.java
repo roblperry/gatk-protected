@@ -70,7 +70,7 @@ public class DiffEngine {
             return diff(masterValue, testValue);
         } else {
             // structural difference in types.  one is node, other is leaf
-            return Arrays.asList(new Difference(master, test));
+            return Collections.singletonList(new Difference(master, test));
         }
     }
 
@@ -99,7 +99,7 @@ public class DiffEngine {
         if ( master.getValue().equals(test.getValue()) ) {
             return Collections.emptyList();
         } else {
-            return Arrays.asList(new Difference(master.getBinding(), test.getBinding()));
+            return Collections.singletonList(new Difference(master.getBinding(), test.getBinding()));
         }
     }
 

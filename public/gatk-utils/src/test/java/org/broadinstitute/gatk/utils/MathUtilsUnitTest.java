@@ -511,8 +511,8 @@ public class MathUtilsUnitTest extends BaseTest {
         List<Object[]> tests = new ArrayList<>();
 
         // this functionality can be adapted to provide input data for whatever you might want in your data
-        tests.add(new Object[]{Arrays.asList(10), 10});
-        tests.add(new Object[]{Arrays.asList(-10), -10});
+        tests.add(new Object[]{Collections.singletonList(10), 10});
+        tests.add(new Object[]{Collections.singletonList(-10), -10});
 
         for ( final List<Integer> values : Utils.makePermutations(Arrays.asList(1,2,3), 3, false) ) {
             tests.add(new Object[]{values, 1});
@@ -560,7 +560,7 @@ public class MathUtilsUnitTest extends BaseTest {
         final List<Object[]> tests = new ArrayList<>();
 
         // this functionality can be adapted to provide input data for whatever you might want in your data
-        tests.add(new Object[]{Arrays.asList(10), 10});
+        tests.add(new Object[]{Collections.singletonList(10), 10});
         tests.add(new Object[]{Arrays.asList(1, 10), 10});
 
         for ( final List<Integer> values : Utils.makePermutations(Arrays.asList(1,2,-3), 3, false) ) {

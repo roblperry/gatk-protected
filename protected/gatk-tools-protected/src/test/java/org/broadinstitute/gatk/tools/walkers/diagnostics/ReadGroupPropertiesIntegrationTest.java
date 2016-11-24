@@ -55,6 +55,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Tests ReadGroupProperties
@@ -65,7 +66,7 @@ public class ReadGroupPropertiesIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-T ReadGroupProperties -R " + b37KGReference + " -I " + b37GoodBAM + " -L 20:10,000,000-11,000,000 -o %s",
                 1,
-                Arrays.asList("618a671c61014deb3b284061a87b61d6"));
+                Collections.singletonList("618a671c61014deb3b284061a87b61d6"));
         executeTest("ReadGroupProperties:", spec);
     }
 }

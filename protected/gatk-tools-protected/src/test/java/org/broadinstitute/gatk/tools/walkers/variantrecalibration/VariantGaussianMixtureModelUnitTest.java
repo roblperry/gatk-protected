@@ -153,6 +153,6 @@ public final class VariantGaussianMixtureModelUnitTest extends BaseTest {
     @Test(expectedExceptions = {UserException.class})
     public final void testBadFDR() {
         ArrayList<VariantDatum> vd = readData();
-        List<Tranche> tranches = findMyTranches(vd, new ArrayList<Double>(Arrays.asList(-1.0)));
+        List<Tranche> tranches = findMyTranches(vd, new ArrayList<Double>(Collections.singletonList(-1.0)));
     }
 }

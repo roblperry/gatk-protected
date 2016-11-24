@@ -334,7 +334,7 @@ public abstract class DanglingChainMergingGraph extends BaseGraph<MultiDeBruijnV
             return null;
 
         // now get the reference path from the LCA
-        final List<MultiDeBruijnVertex> refPath = getReferencePath(altPath.get(0), TraversalDirection.downwards, Arrays.asList(incomingEdgeOf(altPath.get(1))));
+        final List<MultiDeBruijnVertex> refPath = getReferencePath(altPath.get(0), TraversalDirection.downwards, Collections.singletonList(incomingEdgeOf(altPath.get(1))));
 
         // create the Smith-Waterman strings to use
         final byte[] refBases = getBasesForPath(refPath, false);

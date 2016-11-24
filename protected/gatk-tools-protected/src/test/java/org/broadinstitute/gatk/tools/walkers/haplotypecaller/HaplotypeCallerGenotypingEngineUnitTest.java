@@ -284,13 +284,13 @@ public class HaplotypeCallerGenotypingEngineUnitTest extends BaseTest {
 
         final Haplotype AtoC1 = new Haplotype("AACAA".getBytes());
         final VariantContext vc1 = new VariantContextBuilder().chr("20").start(3).stop(3).alleles(Arrays.asList(ref, altC)).make();
-        AtoC1.setEventMap(new EventMap(Arrays.asList(vc1)));
+        AtoC1.setEventMap(new EventMap(Collections.singletonList(vc1)));
         AtoC1.getEventMap().put(3, vc1);
         haplotypes.add(AtoC1);
 
         final Haplotype AtoC2 = new Haplotype("AAACA".getBytes());
         final VariantContext vc2 = new VariantContextBuilder().chr("20").start(4).stop(4).alleles(Arrays.asList(ref, altT)).make();
-        AtoC2.setEventMap(new EventMap(Arrays.asList(vc2)));
+        AtoC2.setEventMap(new EventMap(Collections.singletonList(vc2)));
         AtoC2.getEventMap().put(4, vc2);
         haplotypes.add(AtoC2);
 
@@ -303,7 +303,7 @@ public class HaplotypeCallerGenotypingEngineUnitTest extends BaseTest {
 
     @Test(dataProvider="CreateHaplotypeMappingProvider")
     public void testCreateHaplotypeMapping(final VariantContext vc, final Set<Haplotype> haplotypes, final Haplotype expected) {
-        final Map<VariantContext, Set<Haplotype>> mapping = HaplotypeCallerGenotypingEngine.constructHaplotypeMapping(Arrays.asList(vc), haplotypes);
+        final Map<VariantContext, Set<Haplotype>> mapping = HaplotypeCallerGenotypingEngine.constructHaplotypeMapping(Collections.singletonList(vc), haplotypes);
         final Set<Haplotype> actual = mapping.get(vc);
         if ( expected == null )
             Assert.assertTrue(actual.isEmpty(), actual.toString());
@@ -328,16 +328,16 @@ public class HaplotypeCallerGenotypingEngineUnitTest extends BaseTest {
         final List<VariantContext> calls = Arrays.asList(vc2, vc3, vc4);
 
         final Haplotype pos1 = new Haplotype("CAAAA".getBytes());
-        pos1.setEventMap(new EventMap(Arrays.asList(vc1)));
+        pos1.setEventMap(new EventMap(Collections.singletonList(vc1)));
         pos1.getEventMap().put(1, vc1);
         final Haplotype pos2 = new Haplotype("ACAAA".getBytes());
-        pos2.setEventMap(new EventMap(Arrays.asList(vc2)));
+        pos2.setEventMap(new EventMap(Collections.singletonList(vc2)));
         pos2.getEventMap().put(2, vc2);
         final Haplotype pos3 = new Haplotype("AACAA".getBytes());
-        pos3.setEventMap(new EventMap(Arrays.asList(vc3)));
+        pos3.setEventMap(new EventMap(Collections.singletonList(vc3)));
         pos3.getEventMap().put(3, vc3);
         final Haplotype pos4 = new Haplotype("AAACA".getBytes());
-        pos4.setEventMap(new EventMap(Arrays.asList(vc4)));
+        pos4.setEventMap(new EventMap(Collections.singletonList(vc4)));
         pos4.getEventMap().put(4, vc4);
         final Haplotype pos24 = new Haplotype("ACACA".getBytes());
         pos24.setEventMap(new EventMap(Arrays.asList(vc2, vc4)));
@@ -359,7 +359,7 @@ public class HaplotypeCallerGenotypingEngineUnitTest extends BaseTest {
         final Set<Haplotype> haplotypes2 = new HashSet<>();
         haplotypes2.add(pos2);
         haplotypeMap.put(vc2, haplotypes2);
-        tests.add(new Object[]{Arrays.asList(vc2), new HashMap<>(haplotypeMap), 2, 0, 0, 0, 0});
+        tests.add(new Object[]{Collections.singletonList(vc2), new HashMap<>(haplotypeMap), 2, 0, 0, 0, 0});
 
         // test no phased variants #2
         final Set<Haplotype> haplotypes3 = new HashSet<>();

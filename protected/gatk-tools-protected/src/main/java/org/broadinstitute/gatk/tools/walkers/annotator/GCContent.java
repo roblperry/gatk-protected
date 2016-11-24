@@ -63,10 +63,7 @@ import htsjdk.variant.variantcontext.VariantContext;
 import org.broadinstitute.gatk.utils.variant.GATKVCFConstants;
 import org.broadinstitute.gatk.utils.variant.GATKVCFHeaderLines;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -91,9 +88,9 @@ public class GCContent extends InfoFieldAnnotation {
         return map;
     }
 
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.GC_CONTENT_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.GC_CONTENT_KEY); }
 
-    public List<VCFInfoHeaderLine> getDescriptions() { return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));}
+    public List<VCFInfoHeaderLine> getDescriptions() { return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));}
 
     public boolean useZeroQualityReads() { return false; }
 

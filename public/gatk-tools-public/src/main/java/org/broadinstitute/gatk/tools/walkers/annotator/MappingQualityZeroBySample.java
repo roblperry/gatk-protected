@@ -42,6 +42,7 @@ import org.broadinstitute.gatk.utils.variant.GATKVCFConstants;
 import org.broadinstitute.gatk.utils.variant.GATKVCFHeaderLines;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -80,9 +81,9 @@ public class MappingQualityZeroBySample extends GenotypeAnnotation {
         gb.attribute(getKeyNames().get(0), mq0);
     }
 
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.MAPPING_QUALITY_ZERO_BY_SAMPLE_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.MAPPING_QUALITY_ZERO_BY_SAMPLE_KEY); }
 
-    public List<VCFFormatHeaderLine> getDescriptions() { return Arrays.asList(GATKVCFHeaderLines.getFormatLine(getKeyNames().get(0))); }
+    public List<VCFFormatHeaderLine> getDescriptions() { return Collections.singletonList(GATKVCFHeaderLines.getFormatLine(getKeyNames().get(0))); }
 
 
 }

@@ -62,6 +62,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class PhaseByTransmissionIntegrationTest extends WalkerTest {
     private static String phaseByTransmissionTestDataRoot = privateTestDir + "PhaseByTransmission/";
@@ -187,7 +188,7 @@ public class PhaseByTransmissionIntegrationTest extends WalkerTest {
                         "-o %s"
                 ),
                 1,
-                Arrays.asList("14158702ed830ae022db69cbce83b3ed")
+                Collections.singletonList("14158702ed830ae022db69cbce83b3ed")
         );
         executeTest("testMVFileOption", spec);
     }
@@ -226,7 +227,7 @@ public class PhaseByTransmissionIntegrationTest extends WalkerTest {
                         "-o %s"
                 ),
                 1,
-                Arrays.asList("") // don't care about the md5, just testing that records aren't being dropped
+                Collections.singletonList("") // don't care about the md5, just testing that records aren't being dropped
         );
 
         final File outputVCF = executeTest("testMultiAllelics", spec).getFirst().get(0);

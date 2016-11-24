@@ -30,6 +30,7 @@ import org.broadinstitute.gatk.utils.exceptions.UserException;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,13 +50,13 @@ public class IndelRealignerIntegrationTest extends WalkerTest {
         WalkerTestSpec spec1 = new WalkerTestSpec(
                 baseCommand,
                 1,
-                Arrays.asList(base_md5));
+                Collections.singletonList(base_md5));
         executeTest("test realigner defaults", spec1);
 
         WalkerTestSpec spec2 = new WalkerTestSpec(
                 baseCommand + "-known " + knownIndels,
                 1,
-                Arrays.asList(base_md5_with_SW_or_VCF));
+                Collections.singletonList(base_md5_with_SW_or_VCF));
         executeTest("test realigner defaults with VCF", spec2);
     }
 
@@ -64,7 +65,7 @@ public class IndelRealignerIntegrationTest extends WalkerTest {
         WalkerTestSpec spec1 = new WalkerTestSpec(
                 baseCommand + "--consensusDeterminationModel KNOWNS_ONLY -known " + knownIndels,
                 1,
-                Arrays.asList("c42b6f3e1270e43cce2b6f75b6a38f30"));
+                Collections.singletonList("c42b6f3e1270e43cce2b6f75b6a38f30"));
         executeTest("realigner known indels only from VCF", spec1);
     }
 
@@ -73,7 +74,7 @@ public class IndelRealignerIntegrationTest extends WalkerTest {
         WalkerTestSpec spec1 = new WalkerTestSpec(
                 baseCommand + "--consensusDeterminationModel USE_SW -known " + knownIndels,
                 1,
-                Arrays.asList(base_md5_with_SW_or_VCF));
+                Collections.singletonList(base_md5_with_SW_or_VCF));
         executeTest("realigner use SW from VCF", spec1);
     }
 
@@ -87,7 +88,7 @@ public class IndelRealignerIntegrationTest extends WalkerTest {
             WalkerTest.WalkerTestSpec spec = new WalkerTest.WalkerTestSpec(
                     baseCommand + entry.getKey(),
                     1,
-                    Arrays.asList(entry.getValue()));
+                    Collections.singletonList(entry.getValue()));
             executeTest(String.format("realigner [%s]", entry.getKey()), spec);
         }
     }
@@ -97,7 +98,7 @@ public class IndelRealignerIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-T IndelRealigner -noPG -R " + b36KGReference + " -I " + validationDataLocation + "NA12878.chrom1.SLX.SRP000032.2009_06.bam -L 1:10,000,000-11,000,000 -targetIntervals " + validationDataLocation + "indelRealignerTest.NA12878.chrom1.intervals -compress 0 -o %s",
                 1,
-                Arrays.asList("19e6859b9ef09c7e0a79a19626908b17"));
+                Collections.singletonList("19e6859b9ef09c7e0a79a19626908b17"));
         executeTest("realigner long run", spec);
     }
 
@@ -106,7 +107,7 @@ public class IndelRealignerIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 baseCommand + "--noOriginalAlignmentTags --consensusDeterminationModel USE_SW",
                 1,
-                Arrays.asList("8f5684359d7b26acaacfa657ef395a0c"));
+                Collections.singletonList("8f5684359d7b26acaacfa657ef395a0c"));
         executeTest("realigner no output tags", spec);
     }
 
@@ -115,13 +116,13 @@ public class IndelRealignerIntegrationTest extends WalkerTest {
         WalkerTestSpec spec1 = new WalkerTestSpec(
                 baseCommandPrefix + "-stats %s -o /dev/null",
                 1,
-                Arrays.asList("7ed8d4eed635613fd031598a5c9ef5a3"));
+                Collections.singletonList("7ed8d4eed635613fd031598a5c9ef5a3"));
         executeTest("realigner stats", spec1);
 
         WalkerTestSpec spec2 = new WalkerTestSpec(
                 baseCommandPrefix + "-LOD 60 -stats %s -o /dev/null",
                 1,
-                Arrays.asList("e8b02bfc5debec55fe936a38c59463cc"));
+                Collections.singletonList("e8b02bfc5debec55fe936a38c59463cc"));
         executeTest("realigner stats", spec2);
     }
 
@@ -135,7 +136,7 @@ public class IndelRealignerIntegrationTest extends WalkerTest {
             WalkerTest.WalkerTestSpec spec = new WalkerTest.WalkerTestSpec(
                     baseCommand + entry.getKey(),
                     1,
-                    Arrays.asList(entry.getValue()));
+                    Collections.singletonList(entry.getValue()));
             executeTest(String.format("realigner [%s]", entry.getKey()), spec);
         }
     }
@@ -145,7 +146,7 @@ public class IndelRealignerIntegrationTest extends WalkerTest {
         WalkerTestSpec spec1 = new WalkerTestSpec(
                 baseCommandPrefix + " -nWayOut .clean.bam ",
                 1,
-                Arrays.asList("d41d8cd98f00b204e9800998ecf8427e"));
+                Collections.singletonList("d41d8cd98f00b204e9800998ecf8427e"));
         executeTest("test realigner nWayOut", spec1);
     }
 
@@ -155,7 +156,7 @@ public class IndelRealignerIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-T IndelRealigner -R " + b37KGReference + " -I " + privateTestDir + "Realigner.error.bam -L 19:5787200-5787300 -targetIntervals 19:5787205-5787300 -o %s",
                 1,
-                Arrays.asList(""));
+                Collections.singletonList(""));
         executeTest("test bad cigar string does not fail", spec);
     }
 }

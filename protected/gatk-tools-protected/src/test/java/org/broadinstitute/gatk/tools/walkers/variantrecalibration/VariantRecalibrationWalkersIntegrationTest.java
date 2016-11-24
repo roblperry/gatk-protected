@@ -61,6 +61,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class VariantRecalibrationWalkersIntegrationTest extends WalkerTest {
@@ -147,7 +148,7 @@ public class VariantRecalibrationWalkersIntegrationTest extends WalkerTest {
                         " -mode SNP" +
                         " -tranchesFile " + getMd5DB().getMD5FilePath(params.tranchesMD5, null) +
                         " -recalFile " + getMd5DB().getMD5FilePath(params.recalMD5, null),
-                Arrays.asList(params.cutVCFMD5));
+                Collections.singletonList(params.cutVCFMD5));
         spec.disableShadowBCF(); // TODO -- enable when we support symbolic alleles
         final List<File> outputFiles = executeTest("testApplyRecalibration-"+params.inVCF, spec).getFirst();
         setPDFsForDeletion(outputFiles);
@@ -188,7 +189,7 @@ public class VariantRecalibrationWalkersIntegrationTest extends WalkerTest {
                         " -mode SNP" +
                         " -tranchesFile " + getMd5DB().getMD5FilePath(params.tranchesMD5, null) +
                         " -recalFile " + getMd5DB().getMD5FilePath(params.recalMD5, null),
-                Arrays.asList(params.cutVCFMD5));
+                Collections.singletonList(params.cutVCFMD5));
         spec.disableShadowBCF(); // TODO -- enable when we support symbolic alleles
         final List<File> outputFiles = executeTest("testApplyRecalibrationAggregate-"+params.inVCF, spec).getFirst();
         setPDFsForDeletion(outputFiles);
@@ -241,7 +242,7 @@ public class VariantRecalibrationWalkersIntegrationTest extends WalkerTest {
                         " -mode SNP" +
                         " -tranchesFile " + getMd5DB().getMD5FilePath(params.tranchesMD5, null) +
                         " -recalFile " + getMd5DB().getMD5FilePath(params.recalMD5, null),
-                Arrays.asList(params.cutVCFMD5));
+                Collections.singletonList(params.cutVCFMD5));
         spec.disableShadowBCF();
         final List<File> outputFiles = executeTest("testApplyRecalibration-"+params.inVCF, spec).getFirst();
         setPDFsForDeletion(outputFiles);
@@ -298,7 +299,7 @@ public class VariantRecalibrationWalkersIntegrationTest extends WalkerTest {
                         " -o %s" +
                         " -tranchesFile " + getMd5DB().getMD5FilePath(params.tranchesMD5, null) +
                         " -recalFile " + getMd5DB().getMD5FilePath(params.recalMD5, null),
-                Arrays.asList(params.cutVCFMD5));
+                Collections.singletonList(params.cutVCFMD5));
         spec.disableShadowBCF(); // has to be disabled because the input VCF is missing LowQual annotation
         final List<File> outputFiles = executeTest("testApplyRecalibrationIndel-" + params.inVCF, spec).getFirst();
         setPDFsForDeletion(outputFiles);
@@ -316,7 +317,7 @@ public class VariantRecalibrationWalkersIntegrationTest extends WalkerTest {
                         " -o %s" +
                         " -tranchesFile " + privateTestDir + "VQSR.mixedTest.tranches" +
                         " -recalFile " + privateTestDir + "VQSR.mixedTest.recal",
-                Arrays.asList("41d5c363bd311677ae1fcf98f4a18487"));
+                Collections.singletonList("41d5c363bd311677ae1fcf98f4a18487"));
         final List<File> outputFiles = executeTest("testApplyRecalibrationSnpAndIndelTogether", spec).getFirst();
         setPDFsForDeletion(outputFiles);
     }
@@ -334,7 +335,7 @@ public class VariantRecalibrationWalkersIntegrationTest extends WalkerTest {
                 " -tranchesFile " + privateTestDir + "VQSR.mixedTest.tranches" +
                 " -recalFile " + privateTestDir + "VQSR.mixedTest.recal";
 
-        final WalkerTestSpec spec = new WalkerTestSpec(base, 1, Arrays.asList(""));
+        final WalkerTestSpec spec = new WalkerTestSpec(base, 1, Collections.singletonList(""));
         spec.disableShadowBCF();
         final List<File> outputFiles = executeTest("testApplyRecalibrationSnpAndIndelTogether", spec).getFirst();
         setPDFsForDeletion(outputFiles);
@@ -359,7 +360,7 @@ public class VariantRecalibrationWalkersIntegrationTest extends WalkerTest {
                 " -tranchesFile " + privateTestDir + "VQSR.AStest.snps.tranches" +
                 " -recalFile " + privateTestDir + "VQSR.AStest.snps.recal";
 
-        final WalkerTestSpec spec = new WalkerTestSpec(base, 1, Arrays.asList("dbcf0cb5c2a0eb2312e6ca7d4e3aeeda"));
+        final WalkerTestSpec spec = new WalkerTestSpec(base, 1, Collections.singletonList("dbcf0cb5c2a0eb2312e6ca7d4e3aeeda"));
         final List<File> outputFiles = executeTest("testApplyRecalibrationAlleleSpecificSNPmode", spec).getFirst();
         setPDFsForDeletion(outputFiles);
     }
@@ -377,7 +378,7 @@ public class VariantRecalibrationWalkersIntegrationTest extends WalkerTest {
                 " -tranchesFile " + privateTestDir + "VQSR.AStest.indels.tranches" +
                 " -recalFile " + privateTestDir + "VQSR.AStest.indels.recal";
 
-        final WalkerTestSpec spec = new WalkerTestSpec(base, 1, Arrays.asList("38d4b8e89dbf8acb6a36dfa1bb55c54c"));
+        final WalkerTestSpec spec = new WalkerTestSpec(base, 1, Collections.singletonList("38d4b8e89dbf8acb6a36dfa1bb55c54c"));
         final List<File> outputFiles = executeTest("testApplyRecalibrationAlleleSpecificINDELmode", spec).getFirst();
         setPDFsForDeletion(outputFiles);
     }

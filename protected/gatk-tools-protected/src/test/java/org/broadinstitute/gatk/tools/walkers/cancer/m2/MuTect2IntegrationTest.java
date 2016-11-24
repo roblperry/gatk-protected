@@ -82,7 +82,7 @@ public class MuTect2IntegrationTest extends WalkerTest {
                         REF, DBSNP, COSMIC, PON, tumorBam, normalBam, intervals) +
                     " -o %s ";
 
-        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Arrays.asList(md5));
+        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Collections.singletonList(md5));
 
         // TODO: do we want to enable this and why?  It explodes with
         // java.lang.RuntimeException: java.lang.ClassCastException: java.lang.Double cannot be cast to java.lang.String
@@ -97,7 +97,7 @@ public class MuTect2IntegrationTest extends WalkerTest {
                 REF, DBSNP, COSMIC, PON, tumorBam, intervals) +
                 " -o %s ";
 
-        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Arrays.asList(md5));
+        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Collections.singletonList(md5));
 
         spec.disableShadowBCF();
         executeTest("testM2TumorOnly: args=" + args, spec);

@@ -39,6 +39,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class IntervalOverlapFilteringIteratorUnitTest {
@@ -105,8 +106,8 @@ public class IntervalOverlapFilteringIteratorUnitTest {
     @DataProvider(name = "filteringIteratorTestData")
     public Object[][] getFilteringIteratorTestData() {
         return new Object[][] {
-                new Object[] {Arrays.asList(firstContig), Arrays.asList(readMapped, readUnmappedFlag, readUnknownStart)},
-                new Object[] {Arrays.asList(GenomeLoc.UNMAPPED), Arrays.asList(readNoReference)},
+                new Object[] {Collections.singletonList(firstContig), Arrays.asList(readMapped, readUnmappedFlag, readUnknownStart)},
+                new Object[] {Collections.singletonList(GenomeLoc.UNMAPPED), Collections.singletonList(readNoReference)},
                 new Object[] {Arrays.asList(firstContig, secondContig), Arrays.asList(readMapped, readUnmappedFlag, readUnknownStart, readSecondContig)}
         };
     }

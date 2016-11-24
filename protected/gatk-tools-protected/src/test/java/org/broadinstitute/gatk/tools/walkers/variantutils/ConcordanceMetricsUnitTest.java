@@ -71,6 +71,7 @@ import java.io.FileNotFoundException;
 import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ConcordanceMetricsUnitTest extends BaseTest {
@@ -756,7 +757,7 @@ public class ConcordanceMetricsUnitTest extends BaseTest {
         final VariantContextBuilder site1Eval = new VariantContextBuilder();
         site1Comp.loc(loc.getContig(), loc.getStart(), loc.getStop());
         site1Eval.loc(loc.getContig(), loc.getStart(), loc.getStop());
-        site1Comp.alleles(Arrays.asList(ref));
+        site1Comp.alleles(Collections.singletonList(ref));
         site1Eval.alleles(Arrays.asList(ref, alt));
         site1Comp.genotypes(GenotypeBuilder.create("test2_sample1", Arrays.asList(ref, ref)),
                 GenotypeBuilder.create("test2_sample2", Arrays.asList(ref, ref)));

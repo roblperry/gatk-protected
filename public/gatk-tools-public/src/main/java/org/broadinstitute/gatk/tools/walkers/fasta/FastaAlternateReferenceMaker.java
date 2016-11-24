@@ -46,6 +46,7 @@ import htsjdk.variant.variantcontext.Genotype;
 import htsjdk.variant.variantcontext.VariantContext;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -126,7 +127,7 @@ public class FastaAlternateReferenceMaker extends FastaReferenceMaker {
     public void initialize() {
         super.initialize();
         if ( iupacSample != null ) {
-            final List<String> rodName = Arrays.asList(variantCollection.variants.getName());
+            final List<String> rodName = Collections.singletonList(variantCollection.variants.getName());
             final Set<String> samples = SampleUtils.getUniqueSamplesFromRods(getToolkit(), rodName);
             if ( !samples.contains(iupacSample) )
                 throw new UserException.BadInput("the IUPAC sample specified is not present in the provided VCF file");

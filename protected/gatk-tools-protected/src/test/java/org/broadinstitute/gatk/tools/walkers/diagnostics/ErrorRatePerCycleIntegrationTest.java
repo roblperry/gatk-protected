@@ -55,6 +55,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class ErrorRatePerCycleIntegrationTest extends WalkerTest {
     @Test
@@ -62,7 +63,7 @@ public class ErrorRatePerCycleIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-T ErrorRatePerCycle -R " + b37KGReference + " -I " + b37GoodBAM + " -L 20:10,000,000-10,100,000 -o %s",
                 1,
-                Arrays.asList("6191340f0b56ee81fb248c8f5c913a8e"));
+                Collections.singletonList("6191340f0b56ee81fb248c8f5c913a8e"));
         executeTest("ErrorRatePerCycle:", spec);
     }
 }

@@ -140,11 +140,11 @@ public class EventMapUnitTest extends BaseTest {
     public Object[][] makeAdjacentSNPIndelTest() {
         List<Object[]> tests = new ArrayList<Object[]>();
 
-        tests.add(new Object[]{"TT", "GCT", "1M1I1M", Arrays.asList(Arrays.asList("T", "GC"))});
-        tests.add(new Object[]{"GCT", "TT", "1M1D1M", Arrays.asList(Arrays.asList("GC", "T"))});
-        tests.add(new Object[]{"TT", "GCCT", "1M2I1M", Arrays.asList(Arrays.asList("T", "GCC"))});
-        tests.add(new Object[]{"GCCT", "TT", "1M2D1M", Arrays.asList(Arrays.asList("GCC", "T"))});
-        tests.add(new Object[]{"AAGCCT", "AATT", "3M2D1M", Arrays.asList(Arrays.asList("GCC", "T"))});
+        tests.add(new Object[]{"TT", "GCT", "1M1I1M", Collections.singletonList(Arrays.asList("T", "GC"))});
+        tests.add(new Object[]{"GCT", "TT", "1M1D1M", Collections.singletonList(Arrays.asList("GC", "T"))});
+        tests.add(new Object[]{"TT", "GCCT", "1M2I1M", Collections.singletonList(Arrays.asList("T", "GCC"))});
+        tests.add(new Object[]{"GCCT", "TT", "1M2D1M", Collections.singletonList(Arrays.asList("GCC", "T"))});
+        tests.add(new Object[]{"AAGCCT", "AATT", "3M2D1M", Collections.singletonList(Arrays.asList("GCC", "T"))});
         tests.add(new Object[]{"AAGCCT", "GATT", "3M2D1M", Arrays.asList(Arrays.asList("A", "G"), Arrays.asList("GCC", "T"))});
         tests.add(new Object[]{"AAAAA", "AGACA", "5M", Arrays.asList(Arrays.asList("A", "G"), Arrays.asList("A", "C"))});
 

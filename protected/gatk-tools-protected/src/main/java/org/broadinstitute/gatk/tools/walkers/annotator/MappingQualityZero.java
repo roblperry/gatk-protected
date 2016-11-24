@@ -67,10 +67,7 @@ import org.broadinstitute.gatk.utils.pileup.ReadBackedPileup;
 import org.broadinstitute.gatk.utils.sam.GATKSAMRecord;
 import htsjdk.variant.variantcontext.VariantContext;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -143,9 +140,9 @@ public class MappingQualityZero extends InfoFieldAnnotation implements StandardU
     }
 
 
-    public List<String> getKeyNames() { return Arrays.asList(VCFConstants.MAPPING_QUALITY_ZERO_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(VCFConstants.MAPPING_QUALITY_ZERO_KEY); }
 
     public List<VCFInfoHeaderLine> getDescriptions() {
-        return Arrays.asList(VCFStandardHeaderLines.getInfoLine(getKeyNames().get(0)));
+        return Collections.singletonList(VCFStandardHeaderLines.getInfoLine(getKeyNames().get(0)));
     }
 }

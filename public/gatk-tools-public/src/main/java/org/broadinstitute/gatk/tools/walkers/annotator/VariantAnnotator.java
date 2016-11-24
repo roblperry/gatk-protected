@@ -257,7 +257,7 @@ public class VariantAnnotator extends RodWalker<Integer, Integer> implements Ann
         }
 
         // get the list of all sample names from the variant VCF input rod, if applicable
-        final List<String> rodName = Arrays.asList(variantCollection.variants.getName());
+        final List<String> rodName = Collections.singletonList(variantCollection.variants.getName());
         final Set<String> samples = SampleUtils.getUniqueSamplesFromRods(getToolkit(), rodName);
 
         if ( USE_ALL_ANNOTATIONS )
@@ -283,7 +283,7 @@ public class VariantAnnotator extends RodWalker<Integer, Integer> implements Ann
                 continue;
             }
             VCFInfoHeaderLine targetHeaderLine = null;
-            for ( final VCFHeaderLine line : GATKVCFUtils.getHeaderFields(getToolkit(), Arrays.asList(expression.binding.getName())) ) {
+            for ( final VCFHeaderLine line : GATKVCFUtils.getHeaderFields(getToolkit(), Collections.singletonList(expression.binding.getName())) ) {
                 if ( line instanceof VCFInfoHeaderLine ) {
                     final VCFInfoHeaderLine infoline = (VCFInfoHeaderLine)line;
                     if ( infoline.getID().equals(expression.fieldName) ) {

@@ -342,9 +342,9 @@ public class PosteriorLikelihoodsUtils {
                 mleList = (List<Integer>) integerListContainingVCField;
             }
         } else if ( integerListContainingVCField instanceof Integer ) {
-            mleList = Arrays.asList((Integer) integerListContainingVCField);
+            mleList = Collections.singletonList((Integer) integerListContainingVCField);
         } else if ( integerListContainingVCField instanceof String ) {
-            mleList = Arrays.asList(Integer.parseInt((String)integerListContainingVCField));
+            mleList = Collections.singletonList(Integer.parseInt((String) integerListContainingVCField));
         }
         if ( mleList == null )
             throw new IllegalArgumentException(String.format("VCF does not have properly formatted "+

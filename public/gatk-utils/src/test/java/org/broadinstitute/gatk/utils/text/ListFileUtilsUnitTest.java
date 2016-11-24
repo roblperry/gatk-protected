@@ -72,10 +72,10 @@ public class ListFileUtilsUnitTest extends BaseTest {
 
     @Test
     public void testUnpackSet() throws Exception {
-        Set<String> expected = new HashSet<String>(Arrays.asList(publicTestDir + "exampleBAM.bam"));
+        Set<String> expected = new HashSet<String>(Collections.singletonList(publicTestDir + "exampleBAM.bam"));
         Set<String> actual;
 
-        actual = ListFileUtils.unpackSet(Arrays.asList(publicTestDir + "exampleBAM.bam"));
+        actual = ListFileUtils.unpackSet(Collections.singletonList(publicTestDir + "exampleBAM.bam"));
         Assert.assertEquals(actual, expected);
 
         File tempListFile = createTempListFile("testUnpackSet",
@@ -84,25 +84,25 @@ public class ListFileUtilsUnitTest extends BaseTest {
                 "#" + publicTestDir + "foo.bam",
                 "      # " + publicTestDir + "bar.bam"
         );
-        actual = ListFileUtils.unpackSet(Arrays.asList(tempListFile.getAbsolutePath()));
+        actual = ListFileUtils.unpackSet(Collections.singletonList(tempListFile.getAbsolutePath()));
         Assert.assertEquals(actual, expected);
     }
 
     @DataProvider(name="includeMatchingTests")
     public Object[][] getIncludeMatchingTests() {
         return new Object[][] {
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a"), true, asSet("a") },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a"), false, asSet("a", "ab", "abc") },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList("b"), true, Collections.EMPTY_SET },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList("b"), false, asSet("ab", "abc") },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList("a"), true, asSet("a") },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList("a"), false, asSet("a", "ab", "abc") },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList("b"), true, Collections.EMPTY_SET },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList("b"), false, asSet("ab", "abc") },
                 new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a", "b"), true, asSet("a") },
                 new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a", "b"), false, asSet("a", "ab", "abc") },
                 new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a", "ab"), true, asSet("a", "ab") },
                 new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a", "ab"), false, asSet("a", "ab", "abc") },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList(".*b.*"), true, Collections.EMPTY_SET },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList(".*b.*"), false, asSet("ab", "abc") },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList(".*"), true, Collections.EMPTY_SET },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList(".*"), false, asSet("a", "ab", "abc") }
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList(".*b.*"), true, Collections.EMPTY_SET },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList(".*b.*"), false, asSet("ab", "abc") },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList(".*"), true, Collections.EMPTY_SET },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList(".*"), false, asSet("a", "ab", "abc") }
         };
     }
 
@@ -115,18 +115,18 @@ public class ListFileUtilsUnitTest extends BaseTest {
     @DataProvider(name="excludeMatchingTests")
     public Object[][] getExcludeMatchingTests() {
         return new Object[][] {
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a"), true, asSet("ab", "abc") },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a"), false, Collections.EMPTY_SET },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList("b"), true, asSet("a", "ab", "abc") },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList("b"), false, asSet("a") },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList("a"), true, asSet("ab", "abc") },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList("a"), false, Collections.EMPTY_SET },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList("b"), true, asSet("a", "ab", "abc") },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList("b"), false, asSet("a") },
                 new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a", "b"), true, asSet("ab", "abc") },
                 new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a", "b"), false, Collections.EMPTY_SET },
                 new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a", "ab"), true, asSet("abc") },
                 new Object[] { asSet("a", "ab", "abc"), Arrays.asList("a", "ab"), false, Collections.EMPTY_SET },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList(".*b.*"), true, asSet("a", "ab", "abc") },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList(".*b.*"), false, asSet("a") },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList(".*"), true, asSet("a", "ab", "abc") },
-                new Object[] { asSet("a", "ab", "abc"), Arrays.asList(".*"), false, Collections.EMPTY_SET }
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList(".*b.*"), true, asSet("a", "ab", "abc") },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList(".*b.*"), false, asSet("a") },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList(".*"), true, asSet("a", "ab", "abc") },
+                new Object[] { asSet("a", "ab", "abc"), Collections.singletonList(".*"), false, Collections.EMPTY_SET }
         };
     }
 

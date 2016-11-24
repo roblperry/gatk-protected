@@ -72,32 +72,32 @@ public class PedReaderUnitTest extends BaseTest {
     @DataProvider(name = "readerTest")
     public Object[][] createPEDFiles() {
         new PedReaderTest("singleRecordMale",
-                Arrays.asList(new Sample("kid", "fam1", null, null, Gender.MALE, Affection.UNAFFECTED)),
+                Collections.singletonList(new Sample("kid", "fam1", null, null, Gender.MALE, Affection.UNAFFECTED)),
                 "fam1 kid 0 0 1 1");
 
         new PedReaderTest("singleRecordFemale",
-                Arrays.asList(new Sample("kid", "fam1", null, null, Gender.FEMALE, Affection.UNAFFECTED)),
+                Collections.singletonList(new Sample("kid", "fam1", null, null, Gender.FEMALE, Affection.UNAFFECTED)),
                 "fam1 kid 0 0 2 1");
 
         new PedReaderTest("singleRecordMissingGender",
-                Arrays.asList(new Sample("kid", "fam1", null, null, Gender.UNKNOWN, Affection.UNKNOWN)),
+                Collections.singletonList(new Sample("kid", "fam1", null, null, Gender.UNKNOWN, Affection.UNKNOWN)),
                 "fam1 kid 0 0 0 0");
 
         // Affection
         new PedReaderTest("singleRecordAffected",
-                Arrays.asList(new Sample("kid", "fam1", null, null, Gender.MALE, Affection.AFFECTED)),
+                Collections.singletonList(new Sample("kid", "fam1", null, null, Gender.MALE, Affection.AFFECTED)),
                 "fam1 kid 0 0 1 2");
 
         new PedReaderTest("singleRecordUnaffected",
-                Arrays.asList(new Sample("kid", "fam1", null, null, Gender.MALE, Affection.UNAFFECTED)),
+                Collections.singletonList(new Sample("kid", "fam1", null, null, Gender.MALE, Affection.UNAFFECTED)),
                 "fam1 kid 0 0 1 1");
 
         new PedReaderTest("singleRecordMissingAffection-9",
-                Arrays.asList(new Sample("kid", "fam1", null, null, Gender.MALE, Affection.UNKNOWN)),
+                Collections.singletonList(new Sample("kid", "fam1", null, null, Gender.MALE, Affection.UNKNOWN)),
                 "fam1 kid 0 0 1 -9");
 
         new PedReaderTest("singleRecordMissingAffection0",
-                Arrays.asList(new Sample("kid", "fam1", null, null, Gender.MALE, Affection.UNKNOWN)),
+                Collections.singletonList(new Sample("kid", "fam1", null, null, Gender.MALE, Affection.UNKNOWN)),
                 "fam1 kid 0 0 1 0");
 
         new PedReaderTest("multipleUnrelated",
@@ -310,19 +310,19 @@ public class PedReaderUnitTest extends BaseTest {
                 EnumSet.noneOf(PedReader.MissingPedField.class));
 
         new PedReaderTestTagParsing(
-                Arrays.asList("NO_FAMILY_ID"),
+                Collections.singletonList("NO_FAMILY_ID"),
                 EnumSet.of(PedReader.MissingPedField.NO_FAMILY_ID));
 
         new PedReaderTestTagParsing(
-                Arrays.asList("NO_PARENTS"),
+                Collections.singletonList("NO_PARENTS"),
                 EnumSet.of(PedReader.MissingPedField.NO_PARENTS));
 
         new PedReaderTestTagParsing(
-                Arrays.asList("NO_PHENOTYPE"),
+                Collections.singletonList("NO_PHENOTYPE"),
                 EnumSet.of(PedReader.MissingPedField.NO_PHENOTYPE));
 
         new PedReaderTestTagParsing(
-                Arrays.asList("NO_SEX"),
+                Collections.singletonList("NO_SEX"),
                 EnumSet.of(PedReader.MissingPedField.NO_SEX));
 
         new PedReaderTestTagParsing(
@@ -344,7 +344,7 @@ public class PedReaderUnitTest extends BaseTest {
 
     @Test(enabled = true, expectedExceptions = UserException.class)
     public void testPedReaderTagParsing1() {
-        EnumSet<PedReader.MissingPedField> parsed = PedReader.parseMissingFieldTags("test", Arrays.asList("XXX"));
+        EnumSet<PedReader.MissingPedField> parsed = PedReader.parseMissingFieldTags("test", Collections.singletonList("XXX"));
     }
 
     @Test(enabled = true, expectedExceptions = UserException.class)

@@ -93,7 +93,7 @@ public class TraverseDuplicates<M,T> extends TraversalEngine<M,T,DuplicateWalker
             List<GATKSAMRecord> readSet = findDuplicateReads(read, readSets);
 
             if ( readSet == null ) {
-                readSets.add(new ArrayList<GATKSAMRecord>(Arrays.asList(read)));    // copy so I can add to the list
+                readSets.add(new ArrayList<GATKSAMRecord>(Collections.singletonList(read)));    // copy so I can add to the list
             } else {
                 readSet.add(read);
             }

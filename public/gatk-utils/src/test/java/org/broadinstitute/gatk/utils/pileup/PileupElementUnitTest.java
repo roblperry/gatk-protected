@@ -38,6 +38,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -135,7 +136,7 @@ public class PileupElementUnitTest extends LocusIteratorByStateBaseTest {
 
         final List<CigarOperator> operators = Arrays.asList(CigarOperator.I, CigarOperator.P, CigarOperator.S);
 
-        for ( final CigarOperator firstOp : Arrays.asList(CigarOperator.M) ) {
+        for ( final CigarOperator firstOp : Collections.singletonList(CigarOperator.M)) {
             for ( final CigarOperator lastOp : Arrays.asList(CigarOperator.M, CigarOperator.D) ) {
                 for ( final int nIntermediate : Arrays.asList(1, 2, 3) ) {
                     for ( final List<CigarOperator> combination : Utils.makePermutations(operators, nIntermediate, false) ) {

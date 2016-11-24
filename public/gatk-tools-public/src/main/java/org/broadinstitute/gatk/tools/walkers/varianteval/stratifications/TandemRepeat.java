@@ -31,13 +31,14 @@ import org.broadinstitute.gatk.utils.variant.GATKVariantContextUtils;
 import htsjdk.variant.variantcontext.VariantContext;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Stratifies the eval RODs into sites that are tandem repeats
  */
 public class TandemRepeat extends VariantStratifier {
-    private final static List<Object> JUST_ALL = Arrays.asList((Object)"all");
+    private final static List<Object> JUST_ALL = Collections.singletonList((Object) "all");
     private final static List<Object> ALL = Arrays.asList((Object)"all", (Object)"is.repeat", (Object)"not.repeat");
     private final static List<Object> REPEAT = Arrays.asList((Object)"all", (Object)"is.repeat");
     private final static List<Object> NOT_REPEAT = Arrays.asList((Object)"all", (Object)"not.repeat");

@@ -118,7 +118,7 @@ public class GenomeLocUnitTest extends BaseTest {
         GenomeLoc chr2 = genomeLocParser.createGenomeLoc("chr2",1,10000000);
         GenomeLoc unmapped = GenomeLoc.UNMAPPED;
 
-        List<GenomeLoc> unmappedOnly = Arrays.asList(unmapped);
+        List<GenomeLoc> unmappedOnly = Collections.singletonList(unmapped);
         Collections.sort(unmappedOnly);
         Assert.assertEquals(unmappedOnly.size(),1,"Wrong number of elements in unmapped-only list.");
         Assert.assertEquals(unmappedOnly.get(0),unmapped,"List sorted in wrong order");
@@ -154,7 +154,7 @@ public class GenomeLocUnitTest extends BaseTest {
         GenomeLoc chr1 = genomeLocParser.createGenomeLoc("chr1",1,10000000);
         GenomeLoc unmapped = GenomeLoc.UNMAPPED;
 
-        List<GenomeLoc> oneUnmappedOnly = Arrays.asList(unmapped);
+        List<GenomeLoc> oneUnmappedOnly = Collections.singletonList(unmapped);
         oneUnmappedOnly = IntervalUtils.sortAndMergeIntervals(genomeLocParser,oneUnmappedOnly, IntervalMergingRule.OVERLAPPING_ONLY).toList();
         Assert.assertEquals(oneUnmappedOnly.size(),1,"Wrong number of elements in list.");
         Assert.assertEquals(oneUnmappedOnly.get(0),unmapped,"List sorted in wrong order");
@@ -312,7 +312,7 @@ public class GenomeLocUnitTest extends BaseTest {
     public Object[][] createFindVariantRegionsData() {
         List<Object[]> tests = new ArrayList<Object[]>();
 
-        tests.add(new Object[]{new MergeTest(Arrays.<GenomeLoc>asList(loc1))});
+        tests.add(new Object[]{new MergeTest(Collections.<GenomeLoc>singletonList(loc1))});
         tests.add(new Object[]{new MergeTest(Arrays.<GenomeLoc>asList(loc1, loc2))});
         tests.add(new Object[]{new MergeTest(Arrays.<GenomeLoc>asList(loc1, loc2, loc3))});
 

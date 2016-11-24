@@ -69,6 +69,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -210,7 +211,7 @@ public class PosteriorLikelihoodsUtilsUnitTest extends BaseTest {
         Assert.assertEquals(arraysEq(test1exp3.getPL(),_mleparse((List<Integer>) test1result.getGenotype(2).getAnyAttribute(GATKVCFConstants.PHRED_SCALED_POSTERIORS_KEY))), "");
 
         VariantContext testNonOverlapping = makeVC("1", Arrays.asList(Aref,T), makeG("s1",T,T,3,1,0));
-        List<VariantContext> other = Arrays.asList(makeVC("2",Arrays.asList(Aref,C),makeG("s2",C,C,10,2,0)));
+        List<VariantContext> other = Collections.singletonList(makeVC("2", Arrays.asList(Aref, C), makeG("s2", C, C, 10, 2, 0)));
         VariantContext test2result = PosteriorLikelihoodsUtils.calculatePosteriorGLs(testNonOverlapping,other,0,0.001,true,false,false);
         Genotype test2exp1 = makeGwithPLs("SGV",T,T,new double[]{-4.078345, -3.276502, -0.0002661066});
         Assert.assertEquals(arraysEq(test2exp1.getPL(),_mleparse((List<Integer>) test2result.getGenotype(0).getAnyAttribute(GATKVCFConstants.PHRED_SCALED_POSTERIORS_KEY))), "");

@@ -2064,7 +2064,7 @@ public class GATKVariantContextUtils {
 
         // currently only works for MNPs
         if ( !vc.isMNP() )
-            return Arrays.asList(vc);
+            return Collections.singletonList(vc);
 
         final byte[] ref = vc.getReference().getBases();
         final byte[] alt = vc.getAlternateAllele(0).getBases();
@@ -2247,7 +2247,7 @@ public class GATKVariantContextUtils {
         final Object[] splitOriginalField = getVAttributeValues(vc.getAttribute(infoFieldName));
 
         // subset the field
-        final boolean[] alleleIndexesToUse = getAlleleIndexBitset(vc, Arrays.asList(altAllele));
+        final boolean[] alleleIndexesToUse = getAlleleIndexBitset(vc, Collections.singletonList(altAllele));
 
         // skip the first allele, which is the reference
         for (int i = 1; i < alleleIndexesToUse.length; i++) {

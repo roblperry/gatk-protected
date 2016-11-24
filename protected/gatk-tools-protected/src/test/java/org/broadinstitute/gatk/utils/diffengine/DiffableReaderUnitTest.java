@@ -125,7 +125,7 @@ public class DiffableReaderUnitTest extends BaseTest {
         testLeaf(rec1, "POS", 2646);
         testLeaf(rec1, "ID", "rs62635284");
         testLeaf(rec1, "REF", Allele.create("G", true));
-        testLeaf(rec1, "ALT", Arrays.asList(Allele.create("A")));
+        testLeaf(rec1, "ALT", Collections.singletonList(Allele.create("A")));
         testLeaf(rec1, "QUAL", 0.15);
         testLeaf(rec1, "FILTER", VCFConstants.PASSES_FILTERS_v4);
         testLeaf(rec1, "AC", "2");

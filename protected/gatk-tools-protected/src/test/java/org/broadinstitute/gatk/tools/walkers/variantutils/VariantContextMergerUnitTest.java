@@ -176,9 +176,9 @@ public class VariantContextMergerUnitTest  extends BaseTest {
         final List<Object[]> tests = new ArrayList<>();
         final int start = 10;
         final GenomeLoc loc = new UnvalidatingGenomeLoc("20", 0, start, start);
-        final VariantContext VCbase = new VariantContextBuilder("test", "20", start, start, Arrays.asList(Aref)).make();
-        final VariantContext VCbase2 = new VariantContextBuilder("test2", "20", start, start, Arrays.asList(Aref)).make();
-        final VariantContext VCprevBase = new VariantContextBuilder("test", "20", start-1, start-1, Arrays.asList(Aref)).make();
+        final VariantContext VCbase = new VariantContextBuilder("test", "20", start, start, Collections.singletonList(Aref)).make();
+        final VariantContext VCbase2 = new VariantContextBuilder("test2", "20", start, start, Collections.singletonList(Aref)).make();
+        final VariantContext VCprevBase = new VariantContextBuilder("test", "20", start-1, start-1, Collections.singletonList(Aref)).make();
 
         final int[] standardPLs = new int[]{30, 20, 10, 71, 72, 73};
         final int[] reorderedSecondAllelePLs = new int[]{30, 71, 73, 20, 72, 10};
@@ -225,7 +225,7 @@ public class VariantContextMergerUnitTest  extends BaseTest {
         final List<Allele> A_C_del = Arrays.asList(Aref, C, del);
 
         // first test the case of a single record
-        tests.add(new Object[]{"test00",Arrays.asList(vcA_C_ALT),
+        tests.add(new Object[]{"test00", Collections.singletonList(vcA_C_ALT),
                 loc, false, false,
                 new VariantContextBuilder(VCbase).alleles(A_C).genotypes(gA_C).make()});
 
@@ -270,13 +270,13 @@ public class VariantContextMergerUnitTest  extends BaseTest {
                         new GenotypeBuilder("AA_A").PL(new int[]{30, 71, 73, 71, 73, 73, 71, 73, 73, 73, 20, 72, 72, 72, 10}).alleles(noCalls).make()).make()});
 
         // just spanning ref contexts, trying both instances where we want/do not want ref-only contexts
-        tests.add(new Object[]{"test08",Arrays.asList(vcAA_ALT),
+        tests.add(new Object[]{"test08", Collections.singletonList(vcAA_ALT),
 
                 loc, false, false,
                 null});
-        tests.add(new Object[]{"test09", Arrays.asList(vcAA_ALT),
+        tests.add(new Object[]{"test09", Collections.singletonList(vcAA_ALT),
                 loc, true, false,
-                new VariantContextBuilder(VCbase).alleles(Arrays.asList(Allele.create("A", true))).genotypes(new GenotypeBuilder("AA").PL(new int[]{0}).alleles(noCalls).make()).make()});
+                new VariantContextBuilder(VCbase).alleles(Collections.singletonList(Allele.create("A", true))).genotypes(new GenotypeBuilder("AA").PL(new int[]{0}).alleles(noCalls).make()).make()});
 
         // test uniquification of sample names
         tests.add(new Object[]{"test10",Arrays.asList(vcA_C, vcA_C_ALT), loc, false, true,

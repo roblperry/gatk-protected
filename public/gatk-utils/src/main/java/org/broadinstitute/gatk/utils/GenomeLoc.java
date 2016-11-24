@@ -236,7 +236,7 @@ public class GenomeLoc implements Comparable<GenomeLoc>, Serializable, HasGenome
         if(GenomeLoc.isUnmapped(this) || GenomeLoc.isUnmapped(that)) {
             if(! GenomeLoc.isUnmapped(this) || !GenomeLoc.isUnmapped(that))
                 throw new ReviewedGATKException("Tried to intersect a mapped and an unmapped genome loc");
-            return Arrays.asList(UNMAPPED);
+            return Collections.singletonList(UNMAPPED);
         }
 
         if (!(this.overlapsP(that))) {
@@ -300,7 +300,7 @@ public class GenomeLoc implements Comparable<GenomeLoc>, Serializable, HasGenome
             }
 
             // replace g with the new region
-            return Arrays.asList(n);
+            return Collections.singletonList(n);
         }
     }
 

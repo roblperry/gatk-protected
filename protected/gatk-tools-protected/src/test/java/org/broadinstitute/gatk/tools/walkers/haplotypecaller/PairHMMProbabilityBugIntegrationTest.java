@@ -56,6 +56,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Test for the Prob > 1 bug in PairHMM using callers.
@@ -77,7 +78,7 @@ public class PairHMMProbabilityBugIntegrationTest extends WalkerTest {
         final String commandLine = String.format("-T HaplotypeCaller -R %s -I %s -L %s",
                 REFERENCE,BAM,INTERVAL);
         final String name = getClass().getSimpleName() + ".testHaplotypeCaller";
-        final WalkerTestSpec spec = new WalkerTestSpec(commandLine + " -o %s", Arrays.asList(""));
+        final WalkerTestSpec spec = new WalkerTestSpec(commandLine + " -o %s", Collections.singletonList(""));
         executeTest(name, spec);
     }
 
@@ -86,7 +87,7 @@ public class PairHMMProbabilityBugIntegrationTest extends WalkerTest {
         final String commandLine = String.format("-T UnifiedGenotyper -R %s -I %s -L %s -dcov 200 -glm INDEL",
                 REFERENCE,UG_BAM,UG_INTERVAL);
         final String name = getClass().getSimpleName() + ".testUnifiedGenotyper";
-        final WalkerTestSpec spec = new WalkerTestSpec(commandLine + " -o %s", Arrays.asList(""));
+        final WalkerTestSpec spec = new WalkerTestSpec(commandLine + " -o %s", Collections.singletonList(""));
         executeTest(name, spec);
     }
 }

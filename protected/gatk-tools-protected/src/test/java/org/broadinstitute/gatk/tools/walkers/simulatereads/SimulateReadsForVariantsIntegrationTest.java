@@ -55,6 +55,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class SimulateReadsForVariantsIntegrationTest extends WalkerTest {
 
@@ -64,7 +65,7 @@ public class SimulateReadsForVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-T SimulateReadsForVariants --no_pg_tag -R " + b37KGReference + " -V " + publicTestDir + "forSimulation.vcf -o %s",
                  1,
-                 Arrays.asList("d929369b9095420a8aaff2595ec2f80a"));
+                Collections.singletonList("d929369b9095420a8aaff2595ec2f80a"));
         executeTest("testVariants", spec);
     }
 
@@ -74,7 +75,7 @@ public class SimulateReadsForVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-RL 70 -T SimulateReadsForVariants --no_pg_tag -R " + b37KGReference + " -V " + publicTestDir + "forSimulation.vcf -o %s",
                  1,
-                 Arrays.asList("bbc65e4f8bd3a1656616476a1e190ecf"));
+                Collections.singletonList("bbc65e4f8bd3a1656616476a1e190ecf"));
         executeTest("testReadLength", spec);
     }
 
@@ -84,7 +85,7 @@ public class SimulateReadsForVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-ER 40 -T SimulateReadsForVariants --no_pg_tag -R " + b37KGReference + " -V " + publicTestDir + "forSimulation.vcf -o %s",
                  1,
-                 Arrays.asList("cb0e4b11bbd1b5a154ad6c99541cd017"));
+                Collections.singletonList("cb0e4b11bbd1b5a154ad6c99541cd017"));
         executeTest("testErrorRate", spec);
     }
 
@@ -94,7 +95,7 @@ public class SimulateReadsForVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-RGPL SOLID -T SimulateReadsForVariants --no_pg_tag -R " + b37KGReference + " -V " + publicTestDir + "forSimulation.vcf -o %s",
                 1,
-                Arrays.asList("2b5c6cda9a434c9e25e5da5599eeae51"));
+                Collections.singletonList("2b5c6cda9a434c9e25e5da5599eeae51"));
         executeTest("testPlatformTag", spec);
     }
 
@@ -105,7 +106,7 @@ public class SimulateReadsForVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-T SimulateReadsForVariants --no_pg_tag --useAFAsAlleleFraction -DP 100 -R " + b37KGReference + " -V " + publicTestDir + "forAlleleFractionSimulation.vcf -o %s",
                 1,
-                Arrays.asList("1ae2c354718b470e30b44d5e59cb9944"));
+                Collections.singletonList("1ae2c354718b470e30b44d5e59cb9944"));
         executeTest("testAlleleFraction", spec);
 
     }
@@ -116,7 +117,7 @@ public class SimulateReadsForVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-T SimulateReadsForVariants --no_pg_tag -R " + b37KGReference + " -V " + publicTestDir + "forLongInsert.vcf -o %s",
                 1,
-                Arrays.asList("5c069bff8efb988660c7f6d28a3117fc"));
+                Collections.singletonList("5c069bff8efb988660c7f6d28a3117fc"));
         executeTest("testLongInsertFailure", spec);
     }
 
@@ -126,7 +127,7 @@ public class SimulateReadsForVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-RL 269 -T SimulateReadsForVariants --no_pg_tag -R " + b37KGReference + " -V " + publicTestDir + "forLongInsert.vcf -o %s",
                 1,
-                Arrays.asList("0657f6a692d22b5e2b7f5832710042e4"));
+                Collections.singletonList("0657f6a692d22b5e2b7f5832710042e4"));
         executeTest("testLongInsertSuccess", spec);
     }
 

@@ -50,6 +50,6 @@ public class Family extends VariantStratifier {
 
     @Override
     public Set<Class<? extends VariantEvaluator>> getIncompatibleEvaluators() {
-        return new HashSet<Class<? extends VariantEvaluator>>(Arrays.asList(VariantSummary.class));
+        return new HashSet<Class<? extends VariantEvaluator>>(Collections.singletonList(VariantSummary.class));
     }
 }

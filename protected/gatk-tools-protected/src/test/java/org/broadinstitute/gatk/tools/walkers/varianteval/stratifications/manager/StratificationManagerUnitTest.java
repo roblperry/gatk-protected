@@ -160,12 +160,12 @@ public class StratificationManagerUnitTest extends BaseTest {
 
     @DataProvider(name = "StratificationStatesTestProvider")
     public Object[][] makeStratificationStatesTestProvider() {
-        new StratificationStatesTestProvider(Arrays.asList(0));
+        new StratificationStatesTestProvider(Collections.singletonList(0));
         new StratificationStatesTestProvider(Arrays.asList(0, 1));
         new StratificationStatesTestProvider(Arrays.asList(0, 1), Arrays.asList(2, 3));
         new StratificationStatesTestProvider(Arrays.asList(0, 1), Arrays.asList(2, 3), Arrays.asList(4, 5));
         new StratificationStatesTestProvider(Arrays.asList(0, 1), Arrays.asList(2, 3, 4), Arrays.asList(5, 6));
-        new StratificationStatesTestProvider(Arrays.asList(0, 1), Arrays.asList(2, 3, 4, 5), Arrays.asList(6));
+        new StratificationStatesTestProvider(Arrays.asList(0, 1), Arrays.asList(2, 3, 4, 5), Collections.singletonList(6));
         new StratificationStatesTestProvider(Arrays.asList(0, 1), Arrays.asList(2, 3, 4, 5), Arrays.asList(6, 7));
         new StratificationStatesTestProvider(Arrays.asList(0, 1), Arrays.asList(2, 3), Arrays.asList(4, 5), Arrays.asList(6, 7));
         return StratificationStatesTestProvider.getTests(StratificationStatesTestProvider.class);

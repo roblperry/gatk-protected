@@ -55,11 +55,7 @@ import htsjdk.samtools.reference.ReferenceSequenceFile;
 import htsjdk.variant.variantcontext.*;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import org.broadinstitute.gatk.utils.GenomeLocParser;
 import org.broadinstitute.gatk.utils.BaseTest;
@@ -142,7 +138,7 @@ public class PhasingUtilsUnitTest extends BaseTest {
 
     @Test
     public void TestMergeIntoMNPvalidationFiltered() {
-        final List<String> filters = Arrays.asList("filter");
+        final List<String> filters = Collections.singletonList("filter");
         final Genotype genotype = new GenotypeBuilder().name("sample").attribute("HP", new String[]{"10-1", "10-2"}).alleles(alleleList1).filters(filters).make();
         final VariantContext vc = new VariantContextBuilder().chr(contig).id("id1").source("TC").start(start).stop(start).alleles(alleleList1).genotypes(genotype).make();
         Assert.assertFalse(PhasingUtils.mergeIntoMNPvalidationCheck(genomeLocParser, vc, vc2));
@@ -150,7 +146,7 @@ public class PhasingUtilsUnitTest extends BaseTest {
 
     @Test
     public void TestMergeIntoMNPvalidationFilterNoCall() {
-        final List<String> filters = Arrays.asList("filter");
+        final List<String> filters = Collections.singletonList("filter");
         final List<Allele> alleleList = Arrays.asList(Allele.create("T", true), Allele.create(".", false));
         final Genotype genotype = new GenotypeBuilder().name("sample").attribute("HP", new String[]{"10-1", "10-2"}).alleles(alleleList).filters(filters).make();
         final VariantContext vc = new VariantContextBuilder().chr(contig).id("id1").source("TC").start(start).stop(start).alleles(alleleList1).genotypes(genotype).make();

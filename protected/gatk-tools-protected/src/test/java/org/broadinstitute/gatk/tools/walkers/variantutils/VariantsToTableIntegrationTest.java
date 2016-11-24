@@ -77,7 +77,7 @@ public class VariantsToTableIntegrationTest extends WalkerTest {
     @Test(enabled = true)
     public void testComplexVariantsToTable() {
         WalkerTestSpec spec = new WalkerTestSpec(variantsToTableCmd(" -AMD"),
-                Arrays.asList("e8f771995127b727fb433da91dd4ee98"));
+                Collections.singletonList("e8f771995127b727fb433da91dd4ee98"));
         executeTest("testComplexVariantsToTable", spec);
     }
 
@@ -90,14 +90,14 @@ public class VariantsToTableIntegrationTest extends WalkerTest {
     @Test(enabled = true)
     public void testMultiAllelicOneRecord() {
         WalkerTestSpec spec = new WalkerTestSpec(variantsToTableMultiAllelicCmd(""),
-                Arrays.asList("b468589f4d2bf4c7d85a0584b77fc0fd"));
+                Collections.singletonList("b468589f4d2bf4c7d85a0584b77fc0fd"));
         executeTest("testMultiAllelicOneRecord", spec);
     }
 
     @Test(enabled = true)
     public void testMultiAllelicSplitRecords() {
         WalkerTestSpec spec = new WalkerTestSpec(variantsToTableMultiAllelicCmd(" -F TYPE -SMA"),
-                Arrays.asList("74b37874afff05d65cf7b0587b7168ec"));
+                Collections.singletonList("74b37874afff05d65cf7b0587b7168ec"));
         executeTest("testMultiAllelicSplitRecords", spec);
     }
 
@@ -110,7 +110,7 @@ public class VariantsToTableIntegrationTest extends WalkerTest {
                 " -GF RD" +
                 " -o %s",
                 1,
-                Arrays.asList("d43562e9b94f0e8e337d38a6829671ee"));
+                Collections.singletonList("d43562e9b94f0e8e337d38a6829671ee"));
         executeTest("testGenotypeFields", spec);
     }
 
@@ -125,7 +125,7 @@ public class VariantsToTableIntegrationTest extends WalkerTest {
                         " -SMA" +
                         " -o %s",
                 1,
-                Arrays.asList("7d38e7adb07eee94405188d145f22bb5"));
+                Collections.singletonList("7d38e7adb07eee94405188d145f22bb5"));
         executeTest("testMultiallelicGenotypeFields", spec);
     }
 
@@ -138,7 +138,7 @@ public class VariantsToTableIntegrationTest extends WalkerTest {
                         " -GF RD -GF GT -GF GQ" +
                         " -o %s",
                 1,
-                Arrays.asList("29744059742ae71fd6aabd29e5c391fb"));
+                Collections.singletonList("29744059742ae71fd6aabd29e5c391fb"));
         executeTest("testGenotypeFieldsWithInline", spec);
     }
 
@@ -151,7 +151,7 @@ public class VariantsToTableIntegrationTest extends WalkerTest {
                         " -GF PL" +
                         " -o %s",
                 1,
-                Arrays.asList("1cb2737ab0eaee0a9ae25ab2e7ac3e7e"));
+                Collections.singletonList("1cb2737ab0eaee0a9ae25ab2e7ac3e7e"));
         executeTest("testGenotypeFields", spec);
     }
 
@@ -165,7 +165,7 @@ public class VariantsToTableIntegrationTest extends WalkerTest {
                         " --moltenize" +
                         " -o %s",
                 1,
-                Arrays.asList("30047a5e78a7f523bd2872ac8baccc0e"));
+                Collections.singletonList("30047a5e78a7f523bd2872ac8baccc0e"));
         executeTest("testMoltenOutput", spec);
     }
 
@@ -179,7 +179,7 @@ public class VariantsToTableIntegrationTest extends WalkerTest {
                         " --moltenize" +
                         " -o %s",
                 1,
-                Arrays.asList("1d97fe63c249a995df4ce666382872d8"));
+                Collections.singletonList("1d97fe63c249a995df4ce666382872d8"));
         executeTest("testMoltenOutputWithGenotypeFields", spec);
     }
 
@@ -193,7 +193,7 @@ public class VariantsToTableIntegrationTest extends WalkerTest {
                         " --moltenize -SMA" +
                         " -o %s",
                 1,
-                Arrays.asList("84d103b54f6799424bf49c854831d059"));
+                Collections.singletonList("84d103b54f6799424bf49c854831d059"));
         executeTest("testMoltenOutputWithMultipleAlleles", spec);
     }
 }

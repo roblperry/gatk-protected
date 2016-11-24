@@ -119,7 +119,7 @@ public class EfficiencyMonitoringThreadFactoryUnitTest extends BaseTest {
 
     @DataProvider(name = "StateTest")
     public Object[][] createStateTest() {
-        for ( final int nThreads : Arrays.asList(3) ) {
+        for ( final int nThreads : Collections.singletonList(3)) {
             //final List<EfficiencyMonitoringThreadFactory.State> allStates = Arrays.asList(EfficiencyMonitoringThreadFactory.State.WAITING_FOR_IO);
             final List<EfficiencyMonitoringThreadFactory.State> allStates = Arrays.asList(EfficiencyMonitoringThreadFactory.State.USER_CPU, EfficiencyMonitoringThreadFactory.State.WAITING, EfficiencyMonitoringThreadFactory.State.BLOCKING);
             //final List<EfficiencyMonitoringThreadFactory.State> allStates = Arrays.asList(EfficiencyMonitoringThreadFactory.State.values());

@@ -59,6 +59,7 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class VariantUtilsUnitTest extends BaseTest {
@@ -69,6 +70,6 @@ public class VariantUtilsUnitTest extends BaseTest {
         String attributeName = "SAC";
         File vcfFile = new File(pathname);
         List<String> attributeValues = VariantUtils.getAttributeValues(vcfFile, attributeName);
-        Assert.assertEquals(attributeValues, Arrays.asList("33,43,25,23,0,0,0,0"));
+        Assert.assertEquals(attributeValues, Collections.singletonList("33,43,25,23,0,0,0,0"));
     }
 }

@@ -57,6 +57,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 // ********************************************************************************** //
@@ -91,7 +92,7 @@ public class NanoSchedulerIntegrationTest extends WalkerTest {
                         "-o %s"
                 ),
                 1,
-                Arrays.asList(md5)
+                Collections.singletonList(md5)
         );
         executeTest(String.format("testUG-glm:%s-nt%d-nct%d", glm, nt, nct), spec);
     }

@@ -35,6 +35,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -176,7 +177,7 @@ public class DepthOfCoverageIntegrationTest extends WalkerTest {
     public void testRefNHandling(boolean includeNs, final String md5) {
         String command = "-R " + b37KGReference + " -L 20:26,319,565-26,319,575 -I " + validationDataLocation + "NA12878.HiSeq.WGS.bwa.cleaned.recal.hg19.20.bam -T DepthOfCoverage -baseCounts --omitIntervalStatistics --omitLocusTable --omitPerSampleStats -o %s";
         if ( includeNs ) command += " --includeRefNSites";
-        WalkerTestSpec spec = new WalkerTestSpec(command, 1, Arrays.asList(md5));
+        WalkerTestSpec spec = new WalkerTestSpec(command, 1, Collections.singletonList(md5));
         executeTest("Testing DoC " + (includeNs ? "with" : "without") + " reference Ns", spec);
     }
 

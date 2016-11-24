@@ -633,7 +633,7 @@ public class SelectVariants extends RodWalker<Integer, Integer> implements TreeR
      */
     public void initialize() {
         // Get list of samples to include in the output
-        List<String> rodNames = Arrays.asList(variantCollection.variants.getName());
+        List<String> rodNames = Collections.singletonList(variantCollection.variants.getName());
 
         vcfRods = GATKVCFUtils.getVCFHeadersFromRods(getToolkit(), rodNames);
         TreeSet<String> vcfSamples = new TreeSet<>(SampleUtils.getSampleList(vcfRods, GATKVariantContextUtils.GenotypeMergeType.REQUIRE_UNIQUE));

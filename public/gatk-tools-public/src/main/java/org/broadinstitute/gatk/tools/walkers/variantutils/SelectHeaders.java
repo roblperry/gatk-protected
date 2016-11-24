@@ -156,7 +156,7 @@ public class SelectHeaders extends RodWalker<Integer, Integer> implements TreeRe
     @Override
     public void initialize() {
         // Get list of samples to include in the output
-        List<String> rodNames = Arrays.asList(variantCollection.variants.getName());
+        List<String> rodNames = Collections.singletonList(variantCollection.variants.getName());
 
         Map<String, VCFHeader> vcfRods = GATKVCFUtils.getVCFHeadersFromRods(getToolkit(), rodNames);
         Set<VCFHeaderLine> headerLines = VCFUtils.smartMergeHeaders(vcfRods.values(), true);

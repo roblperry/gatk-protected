@@ -104,7 +104,7 @@ public class AFCalculatorPerformanceTest {
         public void run(final AFCalculatorTestBuilder testBuilder, final List<Object> coreValues) {
             final SimpleTimer timer = new SimpleTimer();
 
-            for ( final int nonTypePL : Arrays.asList(100) ) {
+            for ( final int nonTypePL : Collections.singletonList(100)) {
                 final AFCalculator calc = testBuilder.makeModel();
                 final double[] priors = testBuilder.makePriors();
 
@@ -163,7 +163,7 @@ public class AFCalculatorPerformanceTest {
         public void run(final AFCalculatorTestBuilder testBuilder, final List<Object> coreValues) {
             final SimpleTimer timer = new SimpleTimer();
 
-            for ( final int nonTypePL : Arrays.asList(100) ) {
+            for ( final int nonTypePL : Collections.singletonList(100)) {
                 final AFCalculator calc = testBuilder.makeModel();
                 final double[] priors = testBuilder.makePriors();
 
@@ -197,7 +197,7 @@ public class AFCalculatorPerformanceTest {
         public void run(final AFCalculatorTestBuilder testBuilder, final List<Object> coreValues) {
             final SimpleTimer timer = new SimpleTimer();
 
-            for ( final int nonTypePL : Arrays.asList(100) ) {
+            for ( final int nonTypePL : Collections.singletonList(100)) {
                 final AFCalculator calc = testBuilder.makeModel();
                 final double[] priors = testBuilder.makePriors();
 
@@ -331,7 +331,7 @@ public class AFCalculatorPerformanceTest {
         final boolean ONLY_HUMAN_PRIORS = false;
         final List<AFCalculatorTestBuilder.PriorType> priorTypes = ONLY_HUMAN_PRIORS
                 ? Arrays.asList(AFCalculatorTestBuilder.PriorType.values())
-                : Arrays.asList(AFCalculatorTestBuilder.PriorType.human);
+                : Collections.singletonList(AFCalculatorTestBuilder.PriorType.human);
 
         final List<Analysis> analyzes = new ArrayList<Analysis>();
         analyzes.add(new AnalyzeByACAndPL(coreColumns));

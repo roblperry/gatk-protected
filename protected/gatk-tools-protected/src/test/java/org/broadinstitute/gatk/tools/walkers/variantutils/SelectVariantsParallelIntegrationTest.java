@@ -57,6 +57,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class SelectVariantsParallelIntegrationTest extends WalkerTest {
 
@@ -109,7 +110,7 @@ public class SelectVariantsParallelIntegrationTest extends WalkerTest {
 
     @Test(dataProvider = "ParallelSelectTest")
     public void testParallelSelectTestProvider(final ParallelSelectTestProvider cfg) {
-        final WalkerTestSpec spec = new WalkerTestSpec( cfg.getCmdLine(), 1, Arrays.asList(cfg.md5) );
+        final WalkerTestSpec spec = new WalkerTestSpec( cfg.getCmdLine(), 1, Collections.singletonList(cfg.md5));
         executeTest(cfg.toString(), spec);
     }
 }

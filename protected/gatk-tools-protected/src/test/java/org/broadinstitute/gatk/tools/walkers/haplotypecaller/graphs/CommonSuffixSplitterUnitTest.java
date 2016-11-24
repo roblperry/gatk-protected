@@ -58,6 +58,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class CommonSuffixSplitterUnitTest extends BaseTest {
     private final static boolean DEBUG = false;
@@ -137,7 +138,7 @@ public class CommonSuffixSplitterUnitTest extends BaseTest {
 
         //original.printGraph(new File("testSplitComplexCycle.dot"), 0);
 
-        for ( final SeqVertex v : Arrays.asList(cat2) ) { // original.vertexSet() ) {
+        for ( final SeqVertex v : Collections.singletonList(cat2)) { // original.vertexSet() ) {
             final SeqGraph graph = (SeqGraph)original.clone();
             final boolean success = new CommonSuffixSplitter().split(graph, v);
             if ( success ) graph.printGraph(new File("testSplitComplexCycle.fail.dot"), 0);

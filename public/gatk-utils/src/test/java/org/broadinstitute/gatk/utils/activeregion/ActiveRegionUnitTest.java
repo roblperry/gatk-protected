@@ -197,7 +197,7 @@ public class ActiveRegionUnitTest extends BaseTest {
             region.addAll(Arrays.asList(read, read2));
             final GATKSAMRecord readToDiscard = readToKeep == read ? read2 : read;
             region.removeAll(Collections.singleton(readToDiscard));
-            Assert.assertEquals(region.getReads(), Arrays.asList(readToKeep));
+            Assert.assertEquals(region.getReads(), Collections.singletonList(readToKeep));
             Assert.assertEquals(region.size(), 1);
             Assert.assertEquals(region.getExtendedLoc(), loc);
         }
@@ -252,29 +252,29 @@ public class ActiveRegionUnitTest extends BaseTest {
         final int regionStop = 100;
         final GenomeLoc region = genomeLocParser.createGenomeLoc("20", regionStart, regionStop);
 
-        for ( final GenomeLoc noEffect : Arrays.asList(whole_span) )
+        for ( final GenomeLoc noEffect : Collections.singletonList(whole_span))
             tests.add(new Object[]{
                     region,
-                    Arrays.asList(noEffect),
-                    Arrays.asList(region)});
+                    Collections.singletonList(noEffect),
+                    Collections.singletonList(region)});
 
         for ( final GenomeLoc noOverlap : Arrays.asList(gl_before, gl_after, gl_diff_contig) )
             tests.add(new Object[]{
                     region,
-                    Arrays.asList(noOverlap),
-                    Arrays.asList()});
+                    Collections.singletonList(noOverlap),
+                    Collections.emptyList()});
 
         tests.add(new Object[]{region,
-                Arrays.asList(genomeLocParser.createGenomeLoc("20", 5, 50)),
-                Arrays.asList(genomeLocParser.createGenomeLoc("20", regionStart, 50))});
+                Collections.singletonList(genomeLocParser.createGenomeLoc("20", 5, 50)),
+                Collections.singletonList(genomeLocParser.createGenomeLoc("20", regionStart, 50))});
 
         tests.add(new Object[]{region,
-                Arrays.asList(genomeLocParser.createGenomeLoc("20", 50, 200)),
-                Arrays.asList(genomeLocParser.createGenomeLoc("20", 50, regionStop))});
+                Collections.singletonList(genomeLocParser.createGenomeLoc("20", 50, 200)),
+                Collections.singletonList(genomeLocParser.createGenomeLoc("20", 50, regionStop))});
 
         tests.add(new Object[]{region,
-                Arrays.asList(genomeLocParser.createGenomeLoc("20", 40, 50)),
-                Arrays.asList(genomeLocParser.createGenomeLoc("20", 40, 50))});
+                Collections.singletonList(genomeLocParser.createGenomeLoc("20", 40, 50)),
+                Collections.singletonList(genomeLocParser.createGenomeLoc("20", 40, 50))});
 
         tests.add(new Object[]{region,
                 Arrays.asList(genomeLocParser.createGenomeLoc("20", 20, 30), genomeLocParser.createGenomeLoc("20", 40, 50)),

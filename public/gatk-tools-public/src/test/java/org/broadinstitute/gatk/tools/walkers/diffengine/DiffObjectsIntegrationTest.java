@@ -32,6 +32,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class DiffObjectsIntegrationTest extends WalkerTest {
     private class TestParams extends TestDataProvider {
@@ -69,7 +70,7 @@ public class DiffObjectsIntegrationTest extends WalkerTest {
                         + " -t " + params.test
                         + (params.doPairwise ? " -doPairwise " : "")
                         + " -o %s",
-                Arrays.asList(params.MD5));
+                Collections.singletonList(params.MD5));
         executeTest("testDiffObjects:"+params, spec).getFirst();
     }
 }

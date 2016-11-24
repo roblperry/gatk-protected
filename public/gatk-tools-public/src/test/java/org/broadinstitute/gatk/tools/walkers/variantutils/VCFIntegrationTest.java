@@ -48,6 +48,7 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class VCFIntegrationTest extends WalkerTest {
@@ -61,11 +62,11 @@ public class VCFIntegrationTest extends WalkerTest {
         String baseCommand = "-R " + b37KGReference + " --no_cmdline_in_header -o %s ";
 
         String test1 = baseCommand + "-T VariantAnnotator --variant " + testVCF + " -L " + testVCF;
-        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Arrays.asList(md5ofInputVCF));
+        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Collections.singletonList(md5ofInputVCF));
         List<File> result = executeTest("Test Variant Annotator with no changes", spec1).getFirst();
 
         String test2 = baseCommand + "-T VariantsToVCF --variant " + result.get(0).getAbsolutePath();
-        WalkerTestSpec spec2 = new WalkerTestSpec(test2, 1, Arrays.asList(md5ofInputVCF));
+        WalkerTestSpec spec2 = new WalkerTestSpec(test2, 1, Collections.singletonList(md5ofInputVCF));
         executeTest("Test Variants To VCF from new output", spec2);
     }
 
@@ -76,7 +77,7 @@ public class VCFIntegrationTest extends WalkerTest {
         String baseCommand = "-R " + b37KGReference + " --no_cmdline_in_header -o %s ";
 
         String test1 = baseCommand + "-T SelectVariants -V " + testVCF;
-        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Arrays.asList("b8b18a9a015cba1f3a44af532bf45338"));
+        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Collections.singletonList("b8b18a9a015cba1f3a44af532bf45338"));
         executeTest("Test reading and writing breakpoint VCF", spec1);
     }
 
@@ -87,7 +88,7 @@ public class VCFIntegrationTest extends WalkerTest {
         String baseCommand = "-R " + b37KGReference + " --no_cmdline_in_header -o %s ";
 
         String test1 = baseCommand + "-T SelectVariants -V " + testVCF;
-        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Arrays.asList("89daaa81f64e96cf4d9aa0abf9be0b76"));
+        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Collections.singletonList("89daaa81f64e96cf4d9aa0abf9be0b76"));
         executeTest("Test reading VCF with lower-case bases", spec1);
     }
 
@@ -98,7 +99,7 @@ public class VCFIntegrationTest extends WalkerTest {
         String baseCommand = "-R " + b37KGReference + " --no_cmdline_in_header -o %s ";
 
         String test1 = baseCommand + "-T SelectVariants -V " + testVCF;
-        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Arrays.asList("5d91e685c760f7e869cb06596d741116"));
+        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Collections.singletonList("5d91e685c760f7e869cb06596d741116"));
         executeTest("Test reading and writing 1000G Phase I SVs", spec1);
     }
 
@@ -109,7 +110,7 @@ public class VCFIntegrationTest extends WalkerTest {
         String baseCommand = "-R " + b37KGReference + " --no_cmdline_in_header -o %s ";
 
         String test1 = baseCommand + "-T SelectVariants -V " + testVCF;
-        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Arrays.asList("122340e3dc333d2b4b79c5c0c443a3fe"));
+        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Collections.singletonList("122340e3dc333d2b4b79c5c0c443a3fe"));
         executeTest("Test reading and writing samtools vcf", spec1);
     }
 
@@ -118,7 +119,7 @@ public class VCFIntegrationTest extends WalkerTest {
         String testVCF = privateTestDir + "ex2.vcf";
         String baseCommand = "-R " + b36KGReference + " --no_cmdline_in_header -o %s ";
         String test1 = baseCommand + "-T SelectVariants -V " + testVCF;
-        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Arrays.asList("db565efb14b2fe5f00a11762751d2476"));
+        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Collections.singletonList("db565efb14b2fe5f00a11762751d2476"));
         executeTest("Test writing samtools WEx BCF example", spec1);
     }
 
@@ -127,7 +128,7 @@ public class VCFIntegrationTest extends WalkerTest {
         String testVCF = privateTestDir + "ex2.bcf";
         String baseCommand = "-R " + b36KGReference + " --no_cmdline_in_header -o %s ";
         String test1 = baseCommand + "-T SelectVariants -V " + testVCF;
-        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Arrays.asList("0ca1a078d4801886ef4abac327df7104"));
+        WalkerTestSpec spec1 = new WalkerTestSpec(test1, 1, Collections.singletonList("0ca1a078d4801886ef4abac327df7104"));
         executeTest("Test reading samtools WEx BCF example", spec1);
     }
 
@@ -154,7 +155,7 @@ public class VCFIntegrationTest extends WalkerTest {
                 + "-T VariantsToVCF -V " + testVCF + " " + moreArgs;
         WalkerTestSpec spec1 = expectedException != null
                 ? new WalkerTestSpec(baseCommand, 1, expectedException)
-                : new WalkerTestSpec(baseCommand, 1, Arrays.asList(expectedMD5));
+                : new WalkerTestSpec(baseCommand, 1, Collections.singletonList(expectedMD5));
         if ( disableBCF )
             spec1.disableShadowBCF();
         executeTest("Test reading VCF without header lines with additional args " + moreArgs, spec1);
@@ -218,7 +219,7 @@ public class VCFIntegrationTest extends WalkerTest {
                 " --variant_index_parameter " + testSpec.parameter +
                 " -log " + logFileName +
                 " -o %s";
-        final WalkerTestSpec spec = new WalkerTestSpec(commandLine, 1, Arrays.asList(""));
+        final WalkerTestSpec spec = new WalkerTestSpec(commandLine, 1, Collections.singletonList(""));
         spec.disableShadowBCF();
         final String name = "testVCFIndexCreation: " + testSpec.toString();
 
@@ -242,7 +243,7 @@ public class VCFIntegrationTest extends WalkerTest {
                 " -o %s";
         final String name = "testVCFIndexCreationNoArgs";
         VCFIndexCreatorTest testSpec = new VCFIndexCreatorTest(GATKVCFUtils.DEFAULT_INDEX_TYPE, GATKVCFUtils.DEFAULT_INDEX_PARAMETER);
-        final WalkerTestSpec spec = new WalkerTestSpec(commandLine, 1, Arrays.asList(""));
+        final WalkerTestSpec spec = new WalkerTestSpec(commandLine, 1, Collections.singletonList(""));
         spec.disableShadowBCF();
 
         // execute that test and check if the actual and expected indices are the same
@@ -261,7 +262,7 @@ public class VCFIntegrationTest extends WalkerTest {
                 " -o %s";
         final String name = "testGVCFIndexCreation";
         VCFIndexCreatorTest testSpec = new VCFIndexCreatorTest(GATKVCFUtils.DEFAULT_GVCF_INDEX_TYPE, GATKVCFUtils.DEFAULT_GVCF_INDEX_PARAMETER);
-        final WalkerTestSpec spec = new WalkerTestSpec(commandLine, Arrays.asList(GATKVCFUtils.GVCF_EXT), Arrays.asList(""));
+        final WalkerTestSpec spec = new WalkerTestSpec(commandLine, Collections.singletonList(GATKVCFUtils.GVCF_EXT), Collections.singletonList(""));
         spec.disableShadowBCF();
 
         // execute that test and check if the actual and expected indices are the same
@@ -307,7 +308,7 @@ public class VCFIntegrationTest extends WalkerTest {
         final String name = "testBlockCompressedIndexCreation: " + testSpec.toString();
 
         File outVCF = createTempFile("testBlockCompressedIndexCreation", testSpec.extension);
-        final WalkerTestSpec spec = new WalkerTestSpec(commandLine, 1, Arrays.asList(""));
+        final WalkerTestSpec spec = new WalkerTestSpec(commandLine, 1, Collections.singletonList(""));
         spec.disableShadowBCF();
         spec.setOutputFileLocation(outVCF);
 
@@ -360,7 +361,7 @@ public class VCFIntegrationTest extends WalkerTest {
                 " -o %s ";
         final String name = "testBlockCompressedInput: " + testSpec.toString();
 
-        final WalkerTestSpec spec = new WalkerTestSpec(commandLine, 1, Arrays.asList("ce9c0bf31ee9452ac4a12a59d5814545"));
+        final WalkerTestSpec spec = new WalkerTestSpec(commandLine, 1, Collections.singletonList("ce9c0bf31ee9452ac4a12a59d5814545"));
 
         executeTest(name, spec);
     }

@@ -55,6 +55,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Tests VariantsToAllelicPrimitives
@@ -66,7 +67,7 @@ public class VariantsToAllelicPrimitivesIntegrationTest extends WalkerTest {
          WalkerTestSpec spec = new WalkerTestSpec(
                  "-T VariantsToAllelicPrimitives -o %s -R " + b37KGReference + " -V " + privateTestDir + "vcfWithMNPs.vcf --no_cmdline_in_header",
                  1,
-                 Arrays.asList("db9929eef707d7dff0aef576f49e4a0d"));
+                 Collections.singletonList("db9929eef707d7dff0aef576f49e4a0d"));
          executeTest("test MNPs To SNPs", spec);
     }
 }

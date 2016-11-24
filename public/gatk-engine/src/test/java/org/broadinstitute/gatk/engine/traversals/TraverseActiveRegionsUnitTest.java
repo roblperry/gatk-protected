@@ -520,7 +520,7 @@ public class TraverseActiveRegionsUnitTest extends BaseTest {
 
         final int maxTests = Integer.MAX_VALUE;
         int nTests = 0;
-        for ( final int readLength : Arrays.asList(100) ) {
+        for ( final int readLength : Collections.singletonList(100)) {
             for ( final int skips : Arrays.asList(0, 10) ) {
                 for ( final int start : starts ) {
                     for ( final int nReadsPerLocus : Arrays.asList(1, 2) ) {
@@ -585,7 +585,7 @@ public class TraverseActiveRegionsUnitTest extends BaseTest {
     @Test(enabled = true && ! DEBUG, dataProvider = "CombinatorialARTTilingProvider")
     public void testARTReadsInActiveRegions(final TraverseActiveRegions<Integer, Integer> traversal, final int id, final GenomeLocSortedSet activeRegions, final EnumSet<ActiveRegionReadState> readStates, final ArtificialBAMBuilder bamBuilder) {
         logger.warn("Running testARTReadsInActiveRegions id=" + id + " locs " + activeRegions + " against bam " + bamBuilder);
-        final List<GenomeLoc> intervals = Arrays.asList(
+        final List<GenomeLoc> intervals = Collections.singletonList(
                 genomeLocParser.createGenomeLoc("1", bamBuilder.getAlignmentStart(), bamBuilder.getAlignmentEnd())
         );
 
@@ -657,7 +657,7 @@ public class TraverseActiveRegionsUnitTest extends BaseTest {
 
         final GenomeLocSortedSet activeRegions = new GenomeLocSortedSet(bamBuilder.getGenomeLocParser());
         activeRegions.add(bamBuilder.getGenomeLocParser().createGenomeLoc("1", 10, 30));
-        final List<GenomeLoc> intervals = Arrays.asList(
+        final List<GenomeLoc> intervals = Collections.singletonList(
                 genomeLocParser.createGenomeLoc("1", bamBuilder.getAlignmentStart(), bamBuilder.getAlignmentEnd())
         );
 

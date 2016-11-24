@@ -72,7 +72,7 @@ public class ContEstIntegrationTest extends WalkerTest {
 
     @Test(enabled = true)
     public void testWithArray() {
-        List<String> md5sums = Arrays.asList("d41d8cd98f00b204e9800998ecf8427e");
+        List<String> md5sums = Collections.singletonList("d41d8cd98f00b204e9800998ecf8427e");
         WalkerTest.WalkerTestSpec spec = new WalkerTest.WalkerTestSpec(
                 "-T ContEst" +
                 " -I " + DREAMBamsDirectory + "synthetic.challenge.set4.tumor.bam" +
@@ -88,7 +88,7 @@ public class ContEstIntegrationTest extends WalkerTest {
 
     @Test(enabled = true)
     public void testArrayFree(){
-        List<String> md5sums = Arrays.asList("d41d8cd98f00b204e9800998ecf8427e");
+        List<String> md5sums = Collections.singletonList("d41d8cd98f00b204e9800998ecf8427e");
         WalkerTest.WalkerTestSpec spec = new WalkerTest.WalkerTestSpec(
                 "-T ContEst" +
                         " -I:eval " + ContaminatedBamsDirectory + "HCC1143_BL.small.0.05.contaminated.with.SM-612V3.small.0.95.bam" +

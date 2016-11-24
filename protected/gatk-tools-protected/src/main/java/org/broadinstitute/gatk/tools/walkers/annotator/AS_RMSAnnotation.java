@@ -84,9 +84,9 @@ public abstract class AS_RMSAnnotation extends RMSAnnotation {
 
     public List<VCFInfoHeaderLine> getDescriptions() {
         if (AnnotationUtils.walkerRequiresRawData(callingWalker))
-            return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getRawKeyName()));
+            return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getRawKeyName()));
         else
-            return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
+            return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
     }
 
     //For the raw data here, we're only keeping track of the sum of the squares of our values

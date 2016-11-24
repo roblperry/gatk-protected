@@ -230,8 +230,8 @@ public class PerReadAlleleLikelihoodMapUnitTest extends BaseTest {
         List<Object[]> tests = new ArrayList<Object[]>();
 
         // this functionality can be adapted to provide input data for whatever you might want in your data
-        tests.add(new Object[]{10, 0.1, false, Arrays.asList(0.0)});
-        tests.add(new Object[]{10, 0.1, true, Arrays.asList(-10.0)});
+        tests.add(new Object[]{10, 0.1, false, Collections.singletonList(0.0)});
+        tests.add(new Object[]{10, 0.1, true, Collections.singletonList(-10.0)});
         tests.add(new Object[]{10, 0.1, false, Arrays.asList(0.0, -10.0)});
         tests.add(new Object[]{10, 0.1, true, Arrays.asList(-5.0, -10.0)});
         tests.add(new Object[]{100, 0.1, false, Arrays.asList(-5.0, -10.0)});
@@ -310,11 +310,11 @@ public class PerReadAlleleLikelihoodMapUnitTest extends BaseTest {
         final Allele c = Allele.create("C");
         final Allele g = Allele.create("G");
 
-        tests.add(new Object[]{Arrays.asList(a), Arrays.asList(Arrays.asList(0.0)), a, a});
-        tests.add(new Object[]{Arrays.asList(a, c), Arrays.asList(Arrays.asList(0.0, -1.0)), a, a});
-        tests.add(new Object[]{Arrays.asList(a, c), Arrays.asList(Arrays.asList(-1.0, 0.0)), c, c});
-        tests.add(new Object[]{Arrays.asList(a, c, g), Arrays.asList(Arrays.asList(0.0, 0.0, -10.0)), a, a});
-        tests.add(new Object[]{Arrays.asList(a, c, g), Arrays.asList(Arrays.asList(0.0, 0.0, -10.0)), a, a});
+        tests.add(new Object[]{Collections.singletonList(a), Collections.singletonList(Collections.singletonList(0.0)), a, a});
+        tests.add(new Object[]{Arrays.asList(a, c), Collections.singletonList(Arrays.asList(0.0, -1.0)), a, a});
+        tests.add(new Object[]{Arrays.asList(a, c), Collections.singletonList(Arrays.asList(-1.0, 0.0)), c, c});
+        tests.add(new Object[]{Arrays.asList(a, c, g), Collections.singletonList(Arrays.asList(0.0, 0.0, -10.0)), a, a});
+        tests.add(new Object[]{Arrays.asList(a, c, g), Collections.singletonList(Arrays.asList(0.0, 0.0, -10.0)), a, a});
         tests.add(new Object[]{Arrays.asList(a, c, g),
                 Arrays.asList(
                         Arrays.asList(0.0, -10.0, -10.0),

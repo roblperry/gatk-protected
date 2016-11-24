@@ -32,10 +32,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public final class RecalUtilsUnitTest extends BaseTest {
     private class Row {
@@ -84,14 +81,14 @@ public final class RecalUtilsUnitTest extends BaseTest {
         // adding 1 row to 2
         for ( final List<Row> table1 : permutations ) {
             for ( final Row table2 : rows ) {
-                tests.add(new Object[]{table1, Arrays.asList(table2)});
+                tests.add(new Object[]{table1, Collections.singletonList(table2)});
             }
         }
 
         // adding 2 rows to 1
         for ( final List<Row> table1 : permutations ) {
             for ( final Row table2 : rows ) {
-                tests.add(new Object[]{Arrays.asList(table2), table1});
+                tests.add(new Object[]{Collections.singletonList(table2), table1});
             }
         }
 

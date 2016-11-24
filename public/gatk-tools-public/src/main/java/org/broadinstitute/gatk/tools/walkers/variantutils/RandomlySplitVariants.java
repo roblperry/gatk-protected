@@ -125,7 +125,7 @@ public class RandomlySplitVariants extends RodWalker<Integer, Integer> {
         }
 
         // setup the header info
-        final List<String> inputNames = Arrays.asList(variantCollection.variants.getName());
+        final List<String> inputNames = Collections.singletonList(variantCollection.variants.getName());
         final Set<String> samples = SampleUtils.getUniqueSamplesFromRods(getToolkit(), inputNames);
         final Set<VCFHeaderLine> hInfo = new HashSet<>();
         hInfo.addAll(GATKVCFUtils.getHeaderFields(getToolkit(), inputNames));

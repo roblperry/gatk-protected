@@ -55,6 +55,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class CalculateGenotypePosteriorsIntegrationTest extends WalkerTest {
 
@@ -74,7 +75,7 @@ public class CalculateGenotypePosteriorsIntegrationTest extends WalkerTest {
                         " -L 20:10,000,000-10,001,432" +
                         " -V " + validationDataLocation + "1000G.phase3.broad.withGenotypes.chr20.1MB.vcf",
                 1,
-                Arrays.asList("43fa27382e654081af69ea05bd26e281"));
+                Collections.singletonList("43fa27382e654081af69ea05bd26e281"));
         executeTest("testUsingDiscoveredAF", spec);
     }
 
@@ -89,7 +90,7 @@ public class CalculateGenotypePosteriorsIntegrationTest extends WalkerTest {
                         " -L 20:10,000,000-10,001,432" +
                         " -V " + validationDataLocation + "1000G.phase3.broad.withGenotypes.chr20.1MB.vcf",
                 1,
-                Arrays.asList("d63893f530fb749505ec685a5c57ff69"));
+                Collections.singletonList("d63893f530fb749505ec685a5c57ff69"));
         executeTest("testMissingPriors", spec);
     }
 
@@ -103,7 +104,7 @@ public class CalculateGenotypePosteriorsIntegrationTest extends WalkerTest {
                         " -V " + validationDataLocation + "NA12878.Jan2013.haplotypeCaller.subset.indels.vcf" +
                         " -supporting " + validationDataLocation + "1000G.phase3.broad.withGenotypes.chr20.1MB.vcf",
                 1,
-                Arrays.asList("a5d7bcad5a2a194441d00eb6574b8300"));
+                Collections.singletonList("a5d7bcad5a2a194441d00eb6574b8300"));
         executeTest("testInputINDELs", spec);
     }
 
@@ -117,7 +118,7 @@ public class CalculateGenotypePosteriorsIntegrationTest extends WalkerTest {
                         " -V " + CEUtrioTest +
                         " -supporting " + CEUtrioPopPriorsTest,
                 1,
-                Arrays.asList("98bf63fd2ae3fa1cc42e66fa6b4f50f5"));
+                Collections.singletonList("98bf63fd2ae3fa1cc42e66fa6b4f50f5"));
         executeTest("testFamilyPriors", spec);
     }
 
@@ -131,7 +132,7 @@ public class CalculateGenotypePosteriorsIntegrationTest extends WalkerTest {
                         " -V " + getThreeMemberNonTrioTest +
                         " -skipPop",
                 1,
-                Arrays.asList("e71420099fcfc824f1cf92ff2010b69e"));
+                Collections.singletonList("e71420099fcfc824f1cf92ff2010b69e"));
         executeTest("testFamilyPriors", spec);
     }
 

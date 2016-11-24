@@ -55,11 +55,12 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class WalkerTestIntegrationTest extends WalkerTest {
 
     public void testBadMD5(String md5) {
-        WalkerTestSpec spec = new WalkerTestSpec("FAIL", Arrays.asList(md5));
+        WalkerTestSpec spec = new WalkerTestSpec("FAIL", Collections.singletonList(md5));
         executeTest("", spec);
     }
 

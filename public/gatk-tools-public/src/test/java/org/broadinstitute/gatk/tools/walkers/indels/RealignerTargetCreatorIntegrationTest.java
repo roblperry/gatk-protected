@@ -69,7 +69,7 @@ public class RealignerTargetCreatorIntegrationTest extends WalkerTest {
     public void testIntervals1(String testName, String arguments) {
         String md5 = "3f0b63a393104d0c4158c7d1538153b8";
 
-        WalkerTest.WalkerTestSpec spec = new WalkerTest.WalkerTestSpec(arguments + " -o %s", 1, Arrays.asList(md5));
+        WalkerTest.WalkerTestSpec spec = new WalkerTest.WalkerTestSpec(arguments + " -o %s", 1, Collections.singletonList(md5));
         executeTest(testName, spec);
     }
 
@@ -77,7 +77,7 @@ public class RealignerTargetCreatorIntegrationTest extends WalkerTest {
     public void testIntervals2(String testName, String arguments) {
         String md5 = "d073237694175c75d37bd4f40b8c64db";
 
-        WalkerTest.WalkerTestSpec spec = new WalkerTest.WalkerTestSpec(arguments + " -o %s", 1, Arrays.asList(md5));
+        WalkerTest.WalkerTestSpec spec = new WalkerTest.WalkerTestSpec(arguments + " -o %s", 1, Collections.singletonList(md5));
         executeTest(testName, spec);
     }
 
@@ -86,7 +86,7 @@ public class RealignerTargetCreatorIntegrationTest extends WalkerTest {
         WalkerTest.WalkerTestSpec spec3 = new WalkerTest.WalkerTestSpec(
                 "-T RealignerTargetCreator -R " + b36KGReference + " --known " + privateTestDir + "NA12878.chr1_10mb_11mb.slx.indels.vcf4 -L " + privateTestDir + "NA12878.chr1_10mb_11mb.slx.indels.vcf4 -o %s",
                  1,
-                 Arrays.asList("5206cee6c01b299417bf2feeb8b3dc96"));
+                Collections.singletonList("5206cee6c01b299417bf2feeb8b3dc96"));
         executeTest("test rods only", spec3);
     }
 
@@ -96,7 +96,7 @@ public class RealignerTargetCreatorIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-T RealignerTargetCreator -R " + b37KGReference + " -I " + privateTestDir + "Realigner.error.bam -L 19:5787200-5787300 -o %s",
                 1,
-                Arrays.asList(""));
+                Collections.singletonList(""));
         executeTest("test bad cigar string string does not fail", spec);
     }
 

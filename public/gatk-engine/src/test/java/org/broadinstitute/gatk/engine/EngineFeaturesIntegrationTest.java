@@ -181,7 +181,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     public void testUserReadFilterAppliedBeforeWalker() {
         WalkerTestSpec spec = new WalkerTestSpec("-R " + b37KGReference + " -I " + privateTestDir + "allMAPQ255.bam"
                 + " -T DummyReadWalkerWithFilters -o %s -L MT -rf ReassignMappingQuality",
-                1, Arrays.asList("ecf27a776cdfc771defab1c5d19de9ab"));
+                1, Collections.singletonList("ecf27a776cdfc771defab1c5d19de9ab"));
         executeTest("testUserReadFilterAppliedBeforeWalker", spec);
     }
 
@@ -189,7 +189,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     public void testUserReadFilterDisabledAppliedBeforeWalker() {
         WalkerTestSpec spec = new WalkerTestSpec("-R " + b37KGReference + " -I " + privateTestDir + "allMAPQ255.bam"
                 + " -T DummyReadWalkerWithFilters -o %s -L MT -drf DuplicateRead",
-                1, Arrays.asList("897316929176464ebc9ad085f31e7284"));
+                1, Collections.singletonList("897316929176464ebc9ad085f31e7284"));
         executeTest("testUserReadFilterDisabledAppliedBeforeWalker", spec);
     }
 
@@ -197,7 +197,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     public void testUserReadFilterDisabledAppliedBeforeWalkerException() {
         WalkerTestSpec spec = new WalkerTestSpec("-R " + b37KGReference + " -I " + privateTestDir + "allMAPQ255.bam"
                 + " -T DummyReadWalkerWithFilters -o %s -L MT -drf ReassignMappingQuality",
-                1, Arrays.asList(""));
+                1, Collections.singletonList(""));
         executeTest("testUserReadFilterDisabledAppliedBeforeWalkerException", spec);
     }
 
@@ -227,7 +227,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec("-T TestPrintVariantsWalker -R " + b37KGReference +
                 " -V " + privateTestDir + "NA12878.WGS.b37.chr20.firstMB.vcf"
                 + " -o %s -L 20:61098",
-                1, Arrays.asList(""));
+                1, Collections.singletonList(""));
         spec.disableShadowBCF();
         final File vcf = executeTest("testGATKVersionInVCF", spec).first.get(0);
         final VCFCodec codec = new VCFCodec();
@@ -250,7 +250,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec("-T TestPrintVariantsWalker -R " + b37KGReference +
                 " -V " + privateTestDir + "gatkCommandLineInHeader.vcf"
                 + " -o %s",
-                1, Arrays.asList(""));
+                1, Collections.singletonList(""));
         spec.disableShadowBCF();
         final File vcf = executeTest("testMultipleGATKVersionsInVCF", spec).first.get(0);
         final VCFCodec codec = new VCFCodec();
@@ -280,7 +280,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec("-T TestPrintVariantsWalker -R " + b37KGReference +
                 " -V " + privateTestDir + "gatkCommandLineExistsInHeader.vcf"
                 + " -o %s",
-                1, Arrays.asList(""));
+                1, Collections.singletonList(""));
         spec.disableShadowBCF();
         final File vcf = executeTest("testMultipleGATKVersionsSameWalkerInVCF", spec).first.get(0);
         final VCFCodec codec = new VCFCodec();
@@ -319,7 +319,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     public WalkerTestSpec testDefaultBaseQualities(final Integer value, final String md5) {
         return new WalkerTestSpec("-T TestPrintReadsWalker -R " + b37KGReference + " -I " + privateTestDir + "/baseQualitiesToFix.bam -o %s"
                 + (value != null ? " --defaultBaseQualities " + value : ""),
-                1, Arrays.asList(md5));
+                1, Collections.singletonList(md5));
     }
 
     @Test()
@@ -349,7 +349,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
                                                        " -R " + b37KGReference +
                                                        " -I " + privateTestDir + "zero_length_cigar_elements.bam" +
                                                        " -o %s",
-                                                       1, Arrays.asList(""));  // No MD5s; we only want to check the cigar
+                                                       1, Collections.singletonList(""));  // No MD5s; we only want to check the cigar
 
         final File outputBam = executeTest("testGATKEngineConsolidatesCigars", spec).first.get(0);
         final SAMFileReader reader = new SAMFileReader(outputBam);
@@ -372,14 +372,14 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     @Test
     public void testOnTheFlySampleRenamingWithSingleBamFile() throws IOException {
         final File sampleRenameMapFile = createTestSampleRenameMapFile(
-                Arrays.asList(privateTestDir + "CEUTrio.HiSeq.WGS.b37.NA12878.HEADERONLY.bam  myNewSampleName"));
+                Collections.singletonList(privateTestDir + "CEUTrio.HiSeq.WGS.b37.NA12878.HEADERONLY.bam  myNewSampleName"));
 
         final WalkerTestSpec spec = new WalkerTestSpec(" -T TestPrintReadsWalker" +
                                                        " -R " + b37KGReference +
                                                        " -I " + privateTestDir + "CEUTrio.HiSeq.WGS.b37.NA12878.HEADERONLY.bam" +
                                                        " --sample_rename_mapping_file " + sampleRenameMapFile.getAbsolutePath() +
                                                        " -o %s",
-                                                       1, Arrays.asList(""));  // No MD5s; we only want to check the read groups
+                                                       1, Collections.singletonList(""));  // No MD5s; we only want to check the read groups
 
         final File outputBam = executeTest("testOnTheFlySampleRenamingWithSingleBamFile", spec).first.get(0);
         final SAMFileReader reader = new SAMFileReader(outputBam);
@@ -417,7 +417,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
                                                        " -I " + privateTestDir + "CEUTrio.HiSeq.WGS.b37.NA12892.HEADERONLY.bam" +
                                                        " --sample_rename_mapping_file " + sampleRenameMapFile.getAbsolutePath() +
                                                        " -o %s",
-                                                       1, Arrays.asList(""));  // No MD5s; we only want to check the read groups
+                                                       1, Collections.singletonList(""));  // No MD5s; we only want to check the read groups
 
         final File outputBam = executeTest("testOnTheFlySampleRenamingWithMultipleBamFiles", spec).first.get(0);
         final SAMFileReader outputBamReader = new SAMFileReader(outputBam);
@@ -464,7 +464,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
                                                        " -I " + privateTestDir + "CEUTrio.HiSeq.WGS.b37.NA12892.HEADERONLY.bam" +
                                                        " --sample_rename_mapping_file " + sampleRenameMapFile.getAbsolutePath() +
                                                        " -o %s",
-                                                       1, Arrays.asList(""));  // No MD5s; we only want to check the read groups
+                                                       1, Collections.singletonList(""));  // No MD5s; we only want to check the read groups
 
         final File outputBam = executeTest("testOnTheFlySampleRenamingWithMultipleBamFilesPartialRename", spec).first.get(0);
         final SAMFileReader outputBamReader = new SAMFileReader(outputBam);
@@ -501,7 +501,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
                                                        " -I " + privateTestDir + "CEUTrio.HiSeq.WGS.b37.READ_GROUP_COLLISIONS_WITH_NA12878.HEADERONLY.bam" +
                                                        " --sample_rename_mapping_file " + sampleRenameMapFile.getAbsolutePath() +
                                                        " -o %s",
-                                                       1, Arrays.asList(""));  // No MD5s; we only want to check the read groups
+                                                       1, Collections.singletonList(""));  // No MD5s; we only want to check the read groups
 
         final File outputBam = executeTest("testOnTheFlySampleRenamingWithReadGroupCollisions", spec).first.get(0);
         final SAMFileReader outputBamReader = new SAMFileReader(outputBam);
@@ -530,7 +530,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     @Test
     public void testOnTheFlySampleRenamingWithMultiSampleBam() throws IOException {
         final File sampleRenameMapFile = createTestSampleRenameMapFile(
-                Arrays.asList(privateTestDir + "CEUTrio.HiSeq.WGS.b37.MERGED.HEADERONLY.bam  myNewSampleName"));
+                Collections.singletonList(privateTestDir + "CEUTrio.HiSeq.WGS.b37.MERGED.HEADERONLY.bam  myNewSampleName"));
 
         final WalkerTestSpec spec = new WalkerTestSpec(" -T TestPrintReadsWalker" +
                                                        " -R " + b37KGReference +
@@ -547,7 +547,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     @Test
     public void testOnTheFlySampleRenamingVerifyWalkerSeesNewSamplesInReads() throws IOException {
         final File sampleRenameMapFile = createTestSampleRenameMapFile(
-                Arrays.asList(privateTestDir + "NA12878.HiSeq.b37.chr20.10_11mb.bam  myNewSampleName"));
+                Collections.singletonList(privateTestDir + "NA12878.HiSeq.b37.chr20.10_11mb.bam  myNewSampleName"));
 
         final WalkerTestSpec spec = new WalkerTestSpec(" -T OnTheFlySampleRenamingVerifyingTestWalker" +
                                                        " -R " + b37KGReference +
@@ -555,7 +555,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
                                                        " --sample_rename_mapping_file " + sampleRenameMapFile.getAbsolutePath() +
                                                        " --newSampleName myNewSampleName" +
                                                        " -L 20:10000000-10001000",
-                                                       1, Arrays.asList(""));
+                                                       1, Collections.singletonList(""));
 
         // Test is a success if our custom walker doesn't throw an exception
         executeTest("testOnTheFlySampleRenamingVerifyWalkerSeesNewSamplesInReads", spec);
@@ -564,7 +564,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     @Test
     public void testOnTheFlySampleRenamingSingleSampleVCF() throws IOException {
         final File sampleRenameMapFile = createTestSampleRenameMapFile(
-                Arrays.asList(privateTestDir + "NA12878.WGS.b37.chr20.firstMB.vcf  newSampleForNA12878"));
+                Collections.singletonList(privateTestDir + "NA12878.WGS.b37.chr20.firstMB.vcf  newSampleForNA12878"));
 
         final WalkerTestSpec spec = new WalkerTestSpec(" -T TestPrintVariantsWalker" +
                 " -R " + b37KGReference +
@@ -572,7 +572,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
                 " --sample_rename_mapping_file " + sampleRenameMapFile.getAbsolutePath() +
                 " -o %s",
                 1,
-                Arrays.asList("")); // No MD5s -- we will inspect the output file manually
+                Collections.singletonList("")); // No MD5s -- we will inspect the output file manually
 
         final File outputVCF = executeTest("testOnTheFlySampleRenamingSingleSampleVCF", spec).first.get(0);
         verifySampleRenaming(outputVCF, "newSampleForNA12878");
@@ -600,7 +600,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     @Test
     public void testOnTheFlySampleRenamingVerifyWalkerSeesNewSamplesInVCFRecords() throws Exception {
         final File sampleRenameMapFile = createTestSampleRenameMapFile(
-                Arrays.asList(privateTestDir + "samplerenametest_single_sample_gvcf.vcf    FOOSAMPLE"));
+                Collections.singletonList(privateTestDir + "samplerenametest_single_sample_gvcf.vcf    FOOSAMPLE"));
 
         final WalkerTestSpec spec = new WalkerTestSpec(" -T OnTheFlySampleRenamingVerifyingRodWalker" +
                 " -R " + hg19Reference +
@@ -609,7 +609,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
                 " --expectedSampleName FOOSAMPLE" +
                 " -o %s",
                 1,
-                Arrays.asList("")); // No MD5s -- custom walker will throw an exception if there's a problem
+                Collections.singletonList("")); // No MD5s -- custom walker will throw an exception if there's a problem
 
         executeTest("testOnTheFlySampleRenamingVerifyWalkerSeesNewSamplesInVCFRecords", spec);
     }
@@ -617,7 +617,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     @Test
     public void testOnTheFlySampleRenamingMultiSampleVCF() throws Exception {
         final File sampleRenameMapFile = createTestSampleRenameMapFile(
-                Arrays.asList(privateTestDir + "vcf/vcfWithGenotypes.vcf  badSample"));
+                Collections.singletonList(privateTestDir + "vcf/vcfWithGenotypes.vcf  badSample"));
 
         final WalkerTestSpec spec = new WalkerTestSpec(" -T TestPrintVariantsWalker" +
                 " -R " + b37KGReference +
@@ -633,7 +633,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
     @Test
     public void testOnTheFlySampleRenamingSitesOnlyVCF() throws Exception {
         final File sampleRenameMapFile = createTestSampleRenameMapFile(
-                Arrays.asList(privateTestDir + "vcf/vcfWithoutGenotypes.vcf  badSample"));
+                Collections.singletonList(privateTestDir + "vcf/vcfWithoutGenotypes.vcf  badSample"));
 
         final WalkerTestSpec spec = new WalkerTestSpec(" -T TestPrintVariantsWalker" +
                 " -R " + b37KGReference +
@@ -725,7 +725,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec("-T TestPrintReadsWalker -R " + b37KGReference +
                 " -I " + privateTestDir + "NA20313.highCoverageRegion.bam"
                 + " --no_pg_tag -o %s " + args,
-                1, Arrays.asList(".bam"), Arrays.asList(md5));
+                1, Collections.singletonList(".bam"), Collections.singletonList(md5));
         return executeTest("testBAMFeatures: "+args, spec).first.get(0);
     }
 
@@ -768,7 +768,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec("-T TestPrintVariantsWalker -R " + b37KGReference +
                 " -V " + privateTestDir + "CEUtrioTest.vcf"
                 + " --no_cmdline_in_header -o %s " + args,
-                1, Arrays.asList(md5));
+                1, Collections.singletonList(md5));
         executeTest("testVCFFeatures: "+args, spec);
     }
 
@@ -787,7 +787,7 @@ public class EngineFeaturesIntegrationTest extends WalkerTest {
                 + " --no_cmdline_in_header -o %s "
                 + " --fullyDecode " //Without this parameter, the FORMAT fields will be emitted unchanged.  Oops
                 + (writeFullFormat ? "-writeFullFormat" : "") ,
-                1, Arrays.asList(md5));
+                1, Collections.singletonList(md5));
         executeTest("testVCFFormatHandling: "+(writeFullFormat ? "Untrimmed" : "Trimmed"), spec);
     }
 }

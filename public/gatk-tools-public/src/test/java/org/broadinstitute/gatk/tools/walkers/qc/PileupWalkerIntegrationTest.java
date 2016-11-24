@@ -31,6 +31,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class PileupWalkerIntegrationTest extends WalkerTest {
@@ -41,7 +42,7 @@ public class PileupWalkerIntegrationTest extends WalkerTest {
                  + "-R " + hg18Reference
                  +  " -L chr15:46,347,148 -o %s";
         String expected_md5 = "22211a5da34a45b3b6045dbcbce8fede";
-        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Arrays.asList(expected_md5));
+        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Collections.singletonList(expected_md5));
         executeTest("Testing the standard (no-indel) pileup on three merged FHS pools with 27 deletions in 969 bases", spec);
     }
 
@@ -54,7 +55,7 @@ public class PileupWalkerIntegrationTest extends WalkerTest {
                 + " -I " + privateTestDir + "readOffb37contig1.bam"
                 + " -R " + b37KGReference
                 + " -o %s";
-        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Arrays.asList(SingleReadAligningOffChromosome1MD5));
+        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Collections.singletonList(SingleReadAligningOffChromosome1MD5));
         executeTest("Testing single read spanning off chromosome 1", spec);
     }
 
@@ -65,7 +66,7 @@ public class PileupWalkerIntegrationTest extends WalkerTest {
                 + " -R " + b37KGReference
                 + " -U ALLOW_UNINDEXED_BAM"
                 + " -o %s";
-        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Arrays.asList(SingleReadAligningOffChromosome1MD5));
+        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Collections.singletonList(SingleReadAligningOffChromosome1MD5));
         executeTest("Testing single read spanning off chromosome 1 unindexed", spec);
     }
 
@@ -89,7 +90,7 @@ public class PileupWalkerIntegrationTest extends WalkerTest {
         final String gatkArgs="-T Pileup -I " + validationDataLocation + "NA12878.HiSeq.WGS.bwa.cleaned.recal.hg19.20.bam "
                 + "-R " + hg19Reference + " -o %s ";
 
-        WalkerTestSpec spec = new WalkerTestSpec(gatkArgs + intervals, 1, Arrays.asList(md5));
+        WalkerTestSpec spec = new WalkerTestSpec(gatkArgs + intervals, 1, Collections.singletonList(md5));
         executeTest("Testing with intervals="+intervals, spec);
     }
 
@@ -105,7 +106,7 @@ public class PileupWalkerIntegrationTest extends WalkerTest {
                 + " -R " + b37KGReference
                 + " -outputInsertLength"
                 + " -o %s";
-        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Arrays.asList(SingleReadAligningOffChromosome1withInsertLengthMD5));
+        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Collections.singletonList(SingleReadAligningOffChromosome1withInsertLengthMD5));
         executeTest("Testing single read spanning off chromosome 1 (with insert length)", spec);
     }
 
@@ -116,7 +117,7 @@ public class PileupWalkerIntegrationTest extends WalkerTest {
                 + " -outputInsertLength"
                 +  " -L chr15:46,347,148 -o %s";
         String expected_md5 = "cae23b79598b23feec665704f5578897";
-        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Arrays.asList(expected_md5));
+        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Collections.singletonList(expected_md5));
         executeTest("Testing the standard (no-indel) pileup on three merged FHS pools with 27 deletions in 969 bases (with insert length)", spec);
     }
 

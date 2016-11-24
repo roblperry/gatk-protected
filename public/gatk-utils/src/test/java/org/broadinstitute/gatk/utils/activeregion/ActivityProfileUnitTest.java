@@ -118,7 +118,7 @@ public class ActivityProfileUnitTest extends BaseTest {
     @DataProvider(name = "BasicActivityProfileTestProvider")
     public Object[][] makeQualIntervalTestProvider() {
         for ( final ProfileType type : ProfileType.values() ) {
-            new BasicActivityProfileTestProvider(type, Arrays.asList(1.0), true, 0, 1);
+            new BasicActivityProfileTestProvider(type, Collections.singletonList(1.0), true, 0, 1);
             new BasicActivityProfileTestProvider(type, Arrays.asList(1.0, 0.0), true, 0, 1, 2);
             new BasicActivityProfileTestProvider(type, Arrays.asList(0.0, 1.0), false, 0, 1, 2);
             new BasicActivityProfileTestProvider(type, Arrays.asList(1.0, 0.0, 1.0), true, 0, 1, 2, 3);

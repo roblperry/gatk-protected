@@ -31,6 +31,7 @@ import org.broadinstitute.gatk.utils.refdata.RefMetaDataTracker;
 import htsjdk.variant.variantcontext.VariantContext;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -47,6 +48,6 @@ public class EvalRod extends VariantStratifier implements RequiredStratification
     }
 
     public List<Object> getRelevantStates(ReferenceContext ref, RefMetaDataTracker tracker, VariantContext comp, String compName, VariantContext eval, String evalName, String sampleName, String FamilyName) {
-        return Arrays.asList((Object)evalName);
+        return Collections.singletonList((Object) evalName);
     }
 }

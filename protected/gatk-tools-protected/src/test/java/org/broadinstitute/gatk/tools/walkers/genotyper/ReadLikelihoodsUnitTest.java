@@ -416,7 +416,7 @@ public class ReadLikelihoodsUnitTest
         final Allele newThree;
 
         // We add a single missing.
-        result.addMissingAlleles(Arrays.asList(newOne = Allele.create("ACCCCCAAAATTTAAAGGG".getBytes(),false)),-12345.6);
+        result.addMissingAlleles(Collections.singletonList(newOne = Allele.create("ACCCCCAAAATTTAAAGGG".getBytes(), false)),-12345.6);
         Assert.assertEquals(result.alleleCount(), original.alleleCount() + 1);
 
         // We add too more amongst exisisting alleles:

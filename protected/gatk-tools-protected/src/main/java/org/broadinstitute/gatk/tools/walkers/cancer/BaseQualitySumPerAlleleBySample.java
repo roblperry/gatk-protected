@@ -74,10 +74,7 @@ import org.broadinstitute.gatk.utils.sam.GATKSAMRecord;
 import org.broadinstitute.gatk.utils.sam.ReadUtils;
 import org.broadinstitute.gatk.utils.variant.GATKVCFConstants;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -101,7 +98,7 @@ public class BaseQualitySumPerAlleleBySample extends GenotypeAnnotation implemen
     private final static Logger logger = Logger.getLogger(BaseQualitySumPerAlleleBySample.class);
     private boolean walkerIdentityCheckWarningLogged = false;
 
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.QUALITY_SCORE_SUM_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.QUALITY_SCORE_SUM_KEY); }
 
 
     public void annotate(final RefMetaDataTracker tracker,
@@ -149,7 +146,7 @@ public class BaseQualitySumPerAlleleBySample extends GenotypeAnnotation implemen
     }
 
     public List<VCFFormatHeaderLine> getDescriptions() {
-        return Arrays.asList(new VCFFormatHeaderLine(getKeyNames().get(0), VCFHeaderLineCount.A, VCFHeaderLineType.Integer, "Sum of base quality scores for each allele"));
+        return Collections.singletonList(new VCFFormatHeaderLine(getKeyNames().get(0), VCFHeaderLineCount.A, VCFHeaderLineType.Integer, "Sum of base quality scores for each allele"));
     }
 
     // from rank sum test */

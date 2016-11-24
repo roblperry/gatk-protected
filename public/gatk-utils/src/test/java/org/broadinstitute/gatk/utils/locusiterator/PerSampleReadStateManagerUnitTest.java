@@ -155,9 +155,9 @@ public class PerSampleReadStateManagerUnitTest extends LocusIteratorByStateBaseT
 
     @DataProvider(name = "PerSampleReadStateManagerTestDataProvider")
     public Object[][] createPerSampleReadStateManagerTests() {
-        for ( List<Integer> thisTestReadStateCounts : Arrays.asList( Arrays.asList(1),
-                Arrays.asList(2),
-                Arrays.asList(10),
+        for ( List<Integer> thisTestReadStateCounts : Arrays.asList(Collections.singletonList(1),
+                Collections.singletonList(2),
+                Collections.singletonList(10),
                 Arrays.asList(1, 1),
                 Arrays.asList(2, 2),
                 Arrays.asList(10, 10),

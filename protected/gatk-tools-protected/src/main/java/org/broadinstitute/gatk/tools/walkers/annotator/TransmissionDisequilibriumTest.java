@@ -144,10 +144,10 @@ public class TransmissionDisequilibriumTest extends InfoFieldAnnotation implemen
 
     // return the descriptions used for the VCF INFO meta field
     @Override
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.TRANSMISSION_DISEQUILIBRIUM_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.TRANSMISSION_DISEQUILIBRIUM_KEY); }
 
     @Override
-    public List<VCFInfoHeaderLine> getDescriptions() { return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0))); }
+    public List<VCFInfoHeaderLine> getDescriptions() { return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0))); }
 
     // Following derivation in http://en.wikipedia.org/wiki/Transmission_disequilibrium_test#A_modified_version_of_the_TDT
     private List<Double> calculateTDT( final VariantContext vc, final Set<Sample> triosToTest ) {

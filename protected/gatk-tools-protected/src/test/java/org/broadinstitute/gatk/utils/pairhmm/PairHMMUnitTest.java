@@ -64,10 +64,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class PairHMMUnitTest extends BaseTest {
     private final static boolean ALLOW_READS_LONGER_THAN_HAPLOTYPE = true;
@@ -200,10 +197,10 @@ public class PairHMMUnitTest extends BaseTest {
     public Object[][] makeBasicLikelihoodTests() {
         // context on either side is ACGTTGCA REF ACGTTGCA
         // test all combinations
-        final List<Integer> baseQuals = EXTENSIVE_TESTING ? Arrays.asList(10, 20, 30, 40, 50) : Arrays.asList(30);
-        final List<Integer> indelQuals = EXTENSIVE_TESTING ? Arrays.asList(20, 30, 40, 50) : Arrays.asList(40);
-        final List<Integer> gcps = EXTENSIVE_TESTING ? Arrays.asList(8, 10, 20) : Arrays.asList(10);
-        final List<Integer> sizes = EXTENSIVE_TESTING ? Arrays.asList(2,3,4,5,7,8,9,10,20,30,35) : Arrays.asList(2);
+        final List<Integer> baseQuals = EXTENSIVE_TESTING ? Arrays.asList(10, 20, 30, 40, 50) : Collections.singletonList(30);
+        final List<Integer> indelQuals = EXTENSIVE_TESTING ? Arrays.asList(20, 30, 40, 50) : Collections.singletonList(40);
+        final List<Integer> gcps = EXTENSIVE_TESTING ? Arrays.asList(8, 10, 20) : Collections.singletonList(10);
+        final List<Integer> sizes = EXTENSIVE_TESTING ? Arrays.asList(2,3,4,5,7,8,9,10,20,30,35) : Collections.singletonList(2);
 
         final List<Object[]> tests = new ArrayList<Object[]>();
 
@@ -253,10 +250,10 @@ public class PairHMMUnitTest extends BaseTest {
     public Object[][] makeOptimizedLikelihoodTests() {
         Utils.resetRandomGenerator();
         final Random random = Utils.getRandomGenerator();
-        final List<Integer> baseQuals = EXTENSIVE_TESTING ? Arrays.asList(10, 30, 40, 60) : Arrays.asList(30);
-        final List<Integer> indelQuals = EXTENSIVE_TESTING ? Arrays.asList(20, 40, 60) : Arrays.asList(40);
-        final List<Integer> gcps = EXTENSIVE_TESTING ? Arrays.asList(10, 20, 30) : Arrays.asList(10);
-        final List<Integer> sizes = EXTENSIVE_TESTING ? Arrays.asList(3, 20, 50, 90, 160) : Arrays.asList(2);
+        final List<Integer> baseQuals = EXTENSIVE_TESTING ? Arrays.asList(10, 30, 40, 60) : Collections.singletonList(30);
+        final List<Integer> indelQuals = EXTENSIVE_TESTING ? Arrays.asList(20, 40, 60) : Collections.singletonList(40);
+        final List<Integer> gcps = EXTENSIVE_TESTING ? Arrays.asList(10, 20, 30) : Collections.singletonList(10);
+        final List<Integer> sizes = EXTENSIVE_TESTING ? Arrays.asList(3, 20, 50, 90, 160) : Collections.singletonList(2);
 
         final List<Object[]> tests = new ArrayList<Object[]>();
 

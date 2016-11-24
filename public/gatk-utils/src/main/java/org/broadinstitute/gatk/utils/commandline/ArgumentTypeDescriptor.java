@@ -458,7 +458,7 @@ public abstract class ArgumentTypeDescriptor {
         final RodBinding binding = (RodBinding)parseBinding(value, parameterType, RodBinding.class, name, tags, source.field.getName());
         parsingEngine.addTags(binding, tags);
         parsingEngine.addRodBinding(binding);
-        return RodBindingCollection.createRodBindingCollectionOfType(parameterType, Arrays.asList(binding));
+        return RodBindingCollection.createRodBindingCollectionOfType(parameterType, Collections.singletonList(binding));
     }
 
     /**

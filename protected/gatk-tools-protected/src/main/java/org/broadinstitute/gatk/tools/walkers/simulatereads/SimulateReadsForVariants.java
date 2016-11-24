@@ -208,7 +208,7 @@ public class SimulateReadsForVariants extends RodWalker<Integer, Integer> {
 
         // initialize sample -> read group map
         final List<SAMReadGroupRecord> sampleRGs = new ArrayList<SAMReadGroupRecord>();
-        for ( final String sample : SampleUtils.getUniqueSamplesFromRods(getToolkit(), Arrays.asList(variantCollection.variants.getName())) ) {
+        for ( final String sample : SampleUtils.getUniqueSamplesFromRods(getToolkit(), Collections.singletonList(variantCollection.variants.getName())) ) {
             final SAMReadGroupRecord rg = createRG(sample);
             sampleRGs.add(rg);
             sample2RG.put(sample, rg);
@@ -225,7 +225,7 @@ public class SimulateReadsForVariants extends RodWalker<Integer, Integer> {
             programRecord.setProgramVersion(CommandLineProgram.getVersionNumber());
             programRecord.setCommandLine(getToolkit().createApproximateCommandLineArgumentString(getToolkit(), this));
         }
-        header.setProgramRecords(Arrays.asList(programRecord));
+        header.setProgramRecords(Collections.singletonList(programRecord));
 
         readWriter.setPresorted(false);
         readWriter.writeHeader(header);

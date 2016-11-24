@@ -209,11 +209,11 @@ public class QualByDepth extends InfoFieldAnnotation implements StandardAnnotati
     protected final static double JITTER_SIGMA = 3;
 
     @Override
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.QUAL_BY_DEPTH_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.QUAL_BY_DEPTH_KEY); }
 
     @Override
     public List<VCFInfoHeaderLine> getDescriptions() {
-        return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
+        return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
     }
 
 

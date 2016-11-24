@@ -60,6 +60,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -134,7 +135,7 @@ public class BQSRIntegrationTest extends WalkerTest {
     public void testBQSR(BQSRTest params) {
         WalkerTestSpec spec = new WalkerTestSpec(
                 params.getCommandLine(),
-                Arrays.asList(params.md5));
+                Collections.singletonList(params.md5));
         executeTest("testBQSR-"+params.args, spec).getFirst();
     }
 
@@ -221,7 +222,7 @@ public class BQSRIntegrationTest extends WalkerTest {
                         " -BQSR " + privateTestDir + "HiSeq.20mb.1RG.table" +
                         params.args +
                         " -o %s",
-                Arrays.asList(params.md5));
+                Collections.singletonList(params.md5));
         executeTest("testPrintReads-"+params.args, spec).getFirst();
     }
 
@@ -236,7 +237,7 @@ public class BQSRIntegrationTest extends WalkerTest {
                         " -BQSR " + privateTestDir + "HiSeq.1mb.1RG.highMaxCycle.table" +
                         " -o /dev/null",
                 0,
-                Arrays.<String>asList());
+                Collections.<String>emptyList());
         executeTest("testPRNoFailWithHighMaxCycle", spec);
     }
 

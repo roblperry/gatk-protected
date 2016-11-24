@@ -102,7 +102,7 @@ public class RMSMappingQuality extends RMSAnnotation implements StandardAnnotati
         return headerLines;
     }
 
-    public List<String> getKeyNames() { return Arrays.asList(
+    public List<String> getKeyNames() { return Collections.singletonList(
             VCFConstants.RMS_MAPPING_QUALITY_KEY);
     }
 

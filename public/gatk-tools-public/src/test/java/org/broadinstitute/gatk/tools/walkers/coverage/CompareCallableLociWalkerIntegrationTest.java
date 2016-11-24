@@ -29,6 +29,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class CompareCallableLociWalkerIntegrationTest extends WalkerTest {
     final static String commonArgs = "-R " + hg18Reference + " -T CompareCallableLoci --comp1:Bed " + validationDataLocation + "1kg_slx.chr1_10mb.callable.bed --comp2:Bed " + validationDataLocation + "ga2_slx.chr1_10mb.callable.bed -o %s";
@@ -36,7 +37,7 @@ public class CompareCallableLociWalkerIntegrationTest extends WalkerTest {
     @Test
     public void testCompareCallableLociWalker1() {
         String gatk_args = commonArgs + " -L chr1:1-10,000,000";
-        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Arrays.asList("70efebac55ff210bb022e9e22ed80a95"));
+        WalkerTestSpec spec = new WalkerTestSpec(gatk_args, 1, Collections.singletonList("70efebac55ff210bb022e9e22ed80a95"));
         executeTest("CompareCallableLoci Walker", spec);
     }
 }

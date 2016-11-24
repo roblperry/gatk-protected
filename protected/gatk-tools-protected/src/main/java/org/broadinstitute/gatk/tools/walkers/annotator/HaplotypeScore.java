@@ -413,12 +413,12 @@ public class HaplotypeScore extends InfoFieldAnnotation implements StandardAnnot
 
     @Override
     public List<String> getKeyNames() {
-        return Arrays.asList(GATKVCFConstants.HAPLOTYPE_SCORE_KEY);
+        return Collections.singletonList(GATKVCFConstants.HAPLOTYPE_SCORE_KEY);
     }
 
     @Override
     public List<VCFInfoHeaderLine> getDescriptions() {
-        return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
+        return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
     }
 
     private static class Haplotype  {

@@ -271,7 +271,7 @@ public class CalculateGenotypePosteriors extends RodWalker<Integer,Integer> {
 
     public void initialize() {
         // Get list of samples to include in the output
-        final List<String> rodNames = Arrays.asList(variantCollection.variants.getName());
+        final List<String> rodNames = Collections.singletonList(variantCollection.variants.getName());
 
         final Map<String,VCFHeader> vcfRods = GATKVCFUtils.getVCFHeadersFromRods(getToolkit(), rodNames);
 

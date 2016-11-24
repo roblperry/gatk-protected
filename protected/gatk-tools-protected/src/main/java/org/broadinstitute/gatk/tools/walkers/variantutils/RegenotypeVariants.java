@@ -78,10 +78,7 @@ import htsjdk.variant.variantcontext.writer.VariantContextWriter;
 import htsjdk.variant.vcf.VCFHeader;
 import htsjdk.variant.vcf.VCFHeaderLine;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Regenotypes the variants from a VCF containing PLs or GLs.
@@ -134,14 +131,14 @@ public class RegenotypeVariants extends RodWalker<Integer, Integer> implements T
 
         final GenomeAnalysisEngine toolkit = getToolkit();
         final SampleList samples =
-                new IndexedSampleList(SampleUtils.getSampleListWithVCFHeader(getToolkit(), Arrays.asList(trackName)));
+                new IndexedSampleList(SampleUtils.getSampleListWithVCFHeader(getToolkit(), Collections.singletonList(trackName)));
         final Set<String> sampleNameSet = SampleListUtils.asSet(samples);
         UG_engine = new UnifiedGenotypingEngine(UAC, samples,toolkit.getGenomeLocParser(),
                 FixedAFCalculatorProvider.createThreadSafeProvider(toolkit,UAC,logger),
                 toolkit.getArguments().BAQMode);
 
         final Set<VCFHeaderLine> hInfo = new HashSet<VCFHeaderLine>();
-        hInfo.addAll(GATKVCFUtils.getHeaderFields(getToolkit(), Arrays.asList(trackName)));
+        hInfo.addAll(GATKVCFUtils.getHeaderFields(getToolkit(), Collections.singletonList(trackName)));
         hInfo.addAll(UnifiedGenotyper.getHeaderInfo(UAC, null, null));
 
         vcfWriter.writeHeader(new VCFHeader(hInfo, sampleNameSet));

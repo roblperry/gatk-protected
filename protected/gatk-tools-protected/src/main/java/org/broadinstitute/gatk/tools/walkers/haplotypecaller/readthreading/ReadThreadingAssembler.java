@@ -61,6 +61,7 @@ import org.broadinstitute.gatk.utils.sam.GATKSAMRecord;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -83,7 +84,7 @@ public class ReadThreadingAssembler extends LocalAssemblyEngine {
 
     /** for testing only */
     public ReadThreadingAssembler() {
-        this(DEFAULT_NUM_PATHS_PER_GRAPH, Arrays.asList(25));
+        this(DEFAULT_NUM_PATHS_PER_GRAPH, Collections.singletonList(25));
     }
 
     public ReadThreadingAssembler(final int maxAllowedPathsForReadThreadingAssembler, final List<Integer> kmerSizes, final boolean dontIncreaseKmerSizesForCycles, final boolean allowNonUniqueKmersInRef, final int numPruningSamples) {

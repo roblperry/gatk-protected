@@ -279,8 +279,8 @@ public class AFCalculationUnitTest extends BaseTest {
         List<Object[]> tests = new ArrayList<Object[]>();
 
         final List<NonInformativeData> nonInformativeTests = new LinkedList<NonInformativeData>();
-        nonInformativeTests.add(new NonInformativeData(Arrays.asList(AB1), NON_INFORMATIVE1, 1));
-        nonInformativeTests.add(new NonInformativeData(Arrays.asList(AB2), NON_INFORMATIVE2, 2));
+        nonInformativeTests.add(new NonInformativeData(Collections.singletonList(AB1), NON_INFORMATIVE1, 1));
+        nonInformativeTests.add(new NonInformativeData(Collections.singletonList(AB2), NON_INFORMATIVE2, 2));
         nonInformativeTests.add(new NonInformativeData(Arrays.asList(AB2, BC2), NON_INFORMATIVE2, 2));
 
         for ( final int nNonInformative : Arrays.asList(1, 10, 100) ) {
@@ -471,7 +471,7 @@ public class AFCalculationUnitTest extends BaseTest {
                     for ( int plScale = 1; plScale <= 100000; plScale *= 10 ) {
                         if ( ! rootData.badModels.contains(modelType) && (plScale == 1 || rootData.canScale) ) {
                             final PNonRefData data = rootData.scale(plScale);
-                            tests.add(new Object[]{data.vc, modelType, priorType, Arrays.asList(data.g), data.pNonRef, data.tolerance, nNonInformative});
+                            tests.add(new Object[]{data.vc, modelType, priorType, Collections.singletonList(data.g), data.pNonRef, data.tolerance, nNonInformative});
                         }
                     }
                 }
@@ -511,7 +511,7 @@ public class AFCalculationUnitTest extends BaseTest {
         for ( AFCalculatorImplementation modelType : AFCalculatorImplementation.values() ) {
 
             if ( false ) { // for testing only
-                tests.add(new Object[]{modelType, toGenotypes(Arrays.asList(Arrays.asList(0,100,0)))});
+                tests.add(new Object[]{modelType, toGenotypes(Collections.singletonList(Arrays.asList(0, 100, 0)))});
             } else {
                 if ( modelType == AFCalculatorImplementation.EXACT_GENERAL_PLOIDY ) continue; // TODO -- GENERAL_PLOIDY DOESN'T WORK
 
@@ -622,8 +622,8 @@ public class AFCalculationUnitTest extends BaseTest {
             final AFPriorProvider log10priorProvider = UnifiedGenotypingEngine.composeAlleleFrequencyPriorProvider(2, 0.0, inputPrior);
             final double[] noPriors = log10priorProvider.forTotalPloidy(2);
 
-            GetGLsTest cfgFlatPrior = new GetGLsTest(model, 1, Arrays.asList(AB), flatPriors, "flatPrior");
-            GetGLsTest cfgNoPrior = new GetGLsTest(model, 1, Arrays.asList(AB), noPriors, "noPrior");
+            GetGLsTest cfgFlatPrior = new GetGLsTest(model, 1, Collections.singletonList(AB), flatPriors, "flatPrior");
+            GetGLsTest cfgNoPrior = new GetGLsTest(model, 1, Collections.singletonList(AB), noPriors, "noPrior");
             final AFCalculationResult resultTrackerFlat = cfgFlatPrior.execute();
             final AFCalculationResult resultTrackerNoPrior = cfgNoPrior.execute();
 
@@ -651,7 +651,7 @@ public class AFCalculationUnitTest extends BaseTest {
                 final double nonRefPrior = (1-refPrior) / 2;
                 final double[] priors = MathUtils.normalizeFromLog10(MathUtils.toLog10(new double[]{refPrior, nonRefPrior, nonRefPrior}), true);
                 if ( ! Double.isInfinite(priors[1]) ) {
-                    GetGLsTest cfg = new GetGLsTest(model, 1, Arrays.asList(AB), priors, "pNonRef" + log10NonRefPrior);
+                    GetGLsTest cfg = new GetGLsTest(model, 1, Collections.singletonList(AB), priors, "pNonRef" + log10NonRefPrior);
                     final AFCalculationResult resultTracker = cfg.execute();
                     final int actualAC = resultTracker.getAlleleCountsOfMLE()[0];
 
@@ -712,8 +712,8 @@ public class AFCalculationUnitTest extends BaseTest {
                         {
                             final AFCalculatorTestBuilder testBuilder
                                     = new AFCalculatorTestBuilder(nSamples, 1, model, AFCalculatorTestBuilder.PriorType.human);
-                            final List<Integer> ACs = Arrays.asList(allele1AC);
-                            tests.add(new Object[]{testBuilder, ACs, nonTypePLs, Arrays.asList(poly1)});
+                            final List<Integer> ACs = Collections.singletonList(allele1AC);
+                            tests.add(new Object[]{testBuilder, ACs, nonTypePLs, Collections.singletonList(poly1)});
                         }
 
                         // multi-allelic tests
@@ -745,7 +745,7 @@ public class AFCalculationUnitTest extends BaseTest {
         List<Object[]> tests = new ArrayList<Object[]>();
 
         // list of all high-quality models in the system
-        final List<AFCalculatorImplementation> models = Arrays.asList(AFCalculatorImplementation.EXACT_INDEPENDENT);
+        final List<AFCalculatorImplementation> models = Collections.singletonList(AFCalculatorImplementation.EXACT_INDEPENDENT);
 
         final List<Integer> alleleCounts = Arrays.asList(0, 1, 2, 3, 4, 5, 10, 20);
 

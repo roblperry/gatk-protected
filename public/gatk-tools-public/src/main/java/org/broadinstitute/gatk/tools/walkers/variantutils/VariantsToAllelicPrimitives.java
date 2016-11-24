@@ -93,9 +93,9 @@ public class VariantsToAllelicPrimitives extends RodWalker<Integer, Integer> {
 
     public void initialize() {
         final String trackName = variantCollection.variants.getName();
-        final Set<String> samples = SampleUtils.getSampleListWithVCFHeader(getToolkit(), Arrays.asList(trackName));
+        final Set<String> samples = SampleUtils.getSampleListWithVCFHeader(getToolkit(), Collections.singletonList(trackName));
 
-        final Map<String, VCFHeader> vcfHeaders = GATKVCFUtils.getVCFHeadersFromRods(getToolkit(), Arrays.asList(trackName));
+        final Map<String, VCFHeader> vcfHeaders = GATKVCFUtils.getVCFHeadersFromRods(getToolkit(), Collections.singletonList(trackName));
         final Set<VCFHeaderLine> headerLines = vcfHeaders.get(trackName).getMetaDataInSortedOrder();
 
         baseWriter.writeHeader(new VCFHeader(headerLines, samples));

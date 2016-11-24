@@ -34,10 +34,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * UnitTests for the NanoScheduler
@@ -169,7 +166,7 @@ public class NanoSchedulerUnitTest extends BaseTest {
 
         for ( final int bufferSize : Arrays.asList(-1, 1, 10, 100) ) {
             for ( final int nt : Arrays.asList(1, 2, 4) ) {
-                for ( final int start : Arrays.asList(0) ) {
+                for ( final int start : Collections.singletonList(0)) {
                     for ( final int end : Arrays.asList(0, 1, 2, 11, 100, 10000, 100000) ) {
                         for ( final boolean addDelays : Arrays.asList(true, false) ) {
                             if ( end < 1000 )
@@ -254,8 +251,8 @@ public class NanoSchedulerUnitTest extends BaseTest {
         List<Object[]> tests = new ArrayList<Object[]>();
 
 
-        for ( final int bufSize : Arrays.asList(100) ) {
-            for ( final int nThreads : Arrays.asList(8) ) {
+        for ( final int bufSize : Collections.singletonList(100)) {
+            for ( final int nThreads : Collections.singletonList(8)) {
                 for ( final boolean addDelays : Arrays.asList(true, false) ) {
                     final NanoSchedulerBasicTest test = new NanoSchedulerBasicTest(bufSize, nThreads, 1, 1000000, false);
                     final int maxN = addDelays ? 1000 : 10000;

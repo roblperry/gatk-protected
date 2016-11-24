@@ -87,7 +87,7 @@ public class HaplotypeCallerModesIntegrationTest extends WalkerTest {
         WalkerTest.WalkerTestSpec spec = new WalkerTest.WalkerTestSpec(
                 "-T HaplotypeCaller -pairHMMSub " + HMM_SUB_IMPLEMENTATION + " " + ALWAYS_LOAD_VECTOR_HMM + " -R " + b37KGReference + " --no_cmdline_in_header -I " + privateTestDir + "PCRFree.2x250.Illumina.20_10_11.bam -o /dev/null " +
                         "-bamout %s -L 20:10,000,000-10,010,000 -bamWriterType " + type, 1,
-                Arrays.asList(md5));
+                Collections.singletonList(md5));
         executeTest("HC writing bams with mode " + type, spec);
     }
 }

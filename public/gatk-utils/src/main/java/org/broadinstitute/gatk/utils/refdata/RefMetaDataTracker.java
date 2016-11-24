@@ -447,7 +447,7 @@ public class RefMetaDataTracker {
                 T objT = (T)obj;
                 if ( takeFirstOnly ) {
                     if ( values == null )
-                        values = Arrays.asList(objT);
+                        values = Collections.singletonList(objT);
                     else
                         values.add(objT);
 

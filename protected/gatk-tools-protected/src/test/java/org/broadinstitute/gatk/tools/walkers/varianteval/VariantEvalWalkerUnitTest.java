@@ -211,18 +211,18 @@ public class VariantEvalWalkerUnitTest extends BaseTest {
 
         // test a single stratification
         new StratifiedEvalTestProvider(6,
-                Arrays.asList(3),
-                Arrays.asList(2));
+                Collections.singletonList(3),
+                Collections.singletonList(2));
 
         // test a meaningless state
         new StratifiedEvalTestProvider(4, // test 1, 2, 3, 4
                 Arrays.asList(4, 2), //  4 divisible by 1, 2 by 2
-                Arrays.asList(1, 2), Arrays.asList(1));
+                Arrays.asList(1, 2), Collections.singletonList(1));
 
         // test a adding a state that divides space in half
         new StratifiedEvalTestProvider(4,
                 Arrays.asList(2, 2),
-                Arrays.asList(1, 2), Arrays.asList(2));
+                Arrays.asList(1, 2), Collections.singletonList(2));
 
         // test pairs of strats
         new StratifiedEvalTestProvider(12,

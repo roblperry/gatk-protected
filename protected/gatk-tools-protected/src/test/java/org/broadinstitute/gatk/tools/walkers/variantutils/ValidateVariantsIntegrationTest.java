@@ -96,7 +96,7 @@ public class ValidateVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 baseTestString("validationExampleGood.vcf", "ALL"),
                 0,
-                Arrays.asList(EMPTY_MD5)
+                Collections.singletonList(EMPTY_MD5)
         );
 
         executeTest("test good file", spec);
@@ -183,7 +183,7 @@ public class ValidateVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 baseTestString("validationExampleBad.vcf", "-ALL"),
                 0,
-                Arrays.asList(EMPTY_MD5)
+                Collections.singletonList(EMPTY_MD5)
         );
 
         executeTest("test no validation", spec);
@@ -194,7 +194,7 @@ public class ValidateVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 baseTestString("complexEvents.vcf", "ALL", DEFAULT_REGION, b37KGReference),
                 0,
-                Arrays.asList(EMPTY_MD5)
+                Collections.singletonList(EMPTY_MD5)
         );
 
         executeTest("test validating complex events", spec);
@@ -205,14 +205,14 @@ public class ValidateVariantsIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 baseTestString("complexEvents-outOfOrder.vcf", "ALL", DEFAULT_REGION, b37KGReference),
                 0,
-                Arrays.asList(EMPTY_MD5));
+                Collections.singletonList(EMPTY_MD5));
         executeTest("test out of order header contigs", spec);
     }
 
     @Test(description = "Fixes '''bug''' reported in story https://www.pivotaltracker.com/story/show/68725164")
     public void testUnusedAlleleFix() {
         WalkerTestSpec spec = new WalkerTestSpec(
-                baseTestString("validationUnusedAllelesBugFix.vcf","-ALLELES","1:1-739000",b37KGReference),0,Arrays.asList(EMPTY_MD5));
+                baseTestString("validationUnusedAllelesBugFix.vcf","-ALLELES","1:1-739000",b37KGReference),0, Collections.singletonList(EMPTY_MD5));
         executeTest("test unused allele bug fix", spec);
     }
 
@@ -234,7 +234,7 @@ public class ValidateVariantsIntegrationTest extends WalkerTest {
 
         WalkerTestSpec spec = new WalkerTestSpec(
                 baseTestString("longAlleles.vcf", "ALL", "1", b37KGReference) + " -log " + logFileName,
-                0, Arrays.asList(EMPTY_MD5));
+                0, Collections.singletonList(EMPTY_MD5));
         executeTest("test long reference allele bug error", spec);
 
         // Make sure the "reference allele too long" message is in the log
@@ -256,7 +256,7 @@ public class ValidateVariantsIntegrationTest extends WalkerTest {
         // expand window for the large reference allele
         WalkerTestSpec spec = new WalkerTestSpec(
                 baseTestString("longAlleles.vcf","ALL","1",b37KGReference) + " --reference_window_stop 208 -log " + logFileName,
-                0, Arrays.asList(EMPTY_MD5));
+                0, Collections.singletonList(EMPTY_MD5));
         executeTest("test long reference allele bug fix", spec);
 
         // Make sure the "reference allele too long" message is not in the log

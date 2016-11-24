@@ -46,12 +46,7 @@ import org.broadinstitute.gatk.utils.sam.GATKSAMRecord;
 import org.broadinstitute.gatk.utils.variant.GATKVCFConstants;
 import org.broadinstitute.gatk.utils.variant.GATKVCFHeaderLines;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -175,7 +170,7 @@ public class AlleleBalanceBySample extends GenotypeAnnotation implements Experim
 
     }
 
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.ALLELE_BALANCE_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.ALLELE_BALANCE_KEY); }
 
-    public List<VCFFormatHeaderLine> getDescriptions() { return Arrays.asList(GATKVCFHeaderLines.getFormatLine(getKeyNames().get(0))); }
+    public List<VCFFormatHeaderLine> getDescriptions() { return Collections.singletonList(GATKVCFHeaderLines.getFormatLine(getKeyNames().get(0))); }
 }

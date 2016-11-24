@@ -56,6 +56,7 @@ import org.testng.annotations.Test;
 
 import java.io.File;
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Tests CombineVariants
@@ -96,7 +97,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
          WalkerTestSpec spec = new WalkerTestSpec(
                  baseTestString(" -priority v1 -V:v1 " + validationDataLocation + file + args),
                  1,
-                 Arrays.asList(md5));
+                 Collections.singletonList(md5));
          cvExecuteTest("testInOut1--" + file, spec, true);
     }
 
@@ -108,7 +109,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
          WalkerTestSpec spec = new WalkerTestSpec(
                  baseTestString(" -priority v1,v2 -V:v1 " + validationDataLocation + file1 + " -V:v2 "+ validationDataLocation + file2 + args),
                  1,
-                 Arrays.asList(md5));
+                 Collections.singletonList(md5));
          cvExecuteTest("combine2 1:" + new File(file1).getName() + " 2:" + new File(file2).getName(), spec, parallel);
     }
 
@@ -120,7 +121,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
                         + " -L 1:1-10,000,000 -V:omni " + validationDataLocation + file1
                         + " -V:hm3 " + validationDataLocation + file2 + args,
                 1,
-                Arrays.asList(md5));
+                Collections.singletonList(md5));
         cvExecuteTest("combineSites 1:" + new File(file1).getName() + " 2:" + new File(file2).getName() + " args = " + args, spec, true);
     }
 
@@ -128,7 +129,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
          WalkerTestSpec spec = new WalkerTestSpec(
                  "-T CombineVariants --no_cmdline_in_header -o %s -R " + b36KGReference + " -priority v1,v2 -V:v1 " + privateTestDir + file1 + " -V:v2 " + privateTestDir + file2,
                  1,
-                 Arrays.asList(md5));
+                 Collections.singletonList(md5));
          cvExecuteTest("combine PLs 1:" + new File(file1).getName() + " 2:" + new File(file2).getName(), spec, true);
     }
 
@@ -169,7 +170,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
                         " -priority NA19240_BGI,NA19240_ILLUMINA,NA19240_WUGSC,denovoInfo" +
                         " -genotypeMergeOptions UNIQUIFY -L 1"),
                 1,
-                Arrays.asList("8b75e835ed19c06c358a2185cd0e14db"));
+                Collections.singletonList("8b75e835ed19c06c358a2185cd0e14db"));
         cvExecuteTest("threeWayWithRefs", spec, true);
     }
 
@@ -182,7 +183,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
                         + " -V:one " + privateTestDir + file1
                         + " -V:two " + privateTestDir + file2 + args,
                 1,
-                Arrays.asList(md5));
+                Collections.singletonList(md5));
         cvExecuteTest("combineComplexSites 1:" + new File(file1).getName() + " 2:" + new File(file2).getName() + " args = " + args, spec, true);
     }
 
@@ -196,7 +197,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
          WalkerTestSpec spec = new WalkerTestSpec(
                  "-T CombineVariants --no_cmdline_in_header -L 1:902000-903000 -o %s -R " + b37KGReference + " -V:v1 " + b37dbSNP132,
                  1,
-                 Arrays.asList("b0d4b86702b44fc4faa527c34adf6239"));
+                 Collections.singletonList("b0d4b86702b44fc4faa527c34adf6239"));
          cvExecuteTest("combineDBSNPDuplicateSites:", spec, true);
     }
 
@@ -207,7 +208,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
                         + " -R " + b37KGReference
                         + " -V " + privateTestDir + "combineVariantsLeavesRecordsUnfiltered.vcf",
                 1,
-                Arrays.asList("0f221847e76521250de1abcba535e49c"));
+                Collections.singletonList("0f221847e76521250de1abcba535e49c"));
         cvExecuteTest("combineLeavesUnfilteredRecordsUnfiltered: ", spec, false);
     }
 
@@ -219,7 +220,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
                             + " -R " + b37KGReference
                             + " -V " + privateTestDir + "gvcfExample1.vcf",
                     1,
-                    Arrays.asList("FAILFAILFAILFAILFAILFAILFAILFAIL"));
+                    Collections.singletonList("FAILFAILFAILFAILFAILFAILFAILFAIL"));
             executeTest("combiningGVCFsFails", spec);
         } catch (Exception e) { } // do nothing
     }
@@ -234,7 +235,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
                         + " -V " + privateTestDir + "WGS-chr1.DEL.vcf"
                         + " -genotypeMergeOptions UNIQUIFY",
                 0,
-                Arrays.asList(""));
+                Collections.singletonList(""));
         executeTest("combineSymbolicVariants: ", spec);
     }
 
@@ -248,7 +249,7 @@ public class CombineVariantsIntegrationTest extends WalkerTest {
                         + " -V " + privateTestDir + "test.spanningdel.combine.2.vcf "
                         + " -genotypeMergeOptions UNIQUIFY",
                 0,
-                Arrays.asList(""));
+                Collections.singletonList(""));
         executeTest("combineSpanningDels: ", spec);
     }
 }

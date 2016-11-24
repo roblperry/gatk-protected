@@ -380,7 +380,7 @@ public class GVCFWriterUnitTest extends BaseTest {
 
         tests.add(new Object[]{null, false});
         tests.add(new Object[]{Collections.emptyList(), false});
-        tests.add(new Object[]{Arrays.asList(1), true});
+        tests.add(new Object[]{Collections.singletonList(1), true});
         tests.add(new Object[]{Arrays.asList(1, 10), true});
         tests.add(new Object[]{Arrays.asList(1, 10, 30), true});
         tests.add(new Object[]{Arrays.asList(10, 1, 30), false});

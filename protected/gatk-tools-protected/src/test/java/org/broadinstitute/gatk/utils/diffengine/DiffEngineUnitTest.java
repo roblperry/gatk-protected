@@ -92,7 +92,7 @@ public class DiffEngineUnitTest extends BaseTest {
         }
 
         private DifferenceTest(String tree1, String tree2, String difference) {
-            this(tree1, tree2, Arrays.asList(difference));
+            this(tree1, tree2, Collections.singletonList(difference));
         }
 
         private DifferenceTest(String tree1, String tree2, List<String> differences) {

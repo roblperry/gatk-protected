@@ -91,7 +91,7 @@ public class AS_RMSMappingQuality extends AS_RMSAnnotation implements AS_Standar
 
     protected final String printFormat = "%.2f";
 
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.AS_RMS_MAPPING_QUALITY_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.AS_RMS_MAPPING_QUALITY_KEY); }
 
     public String getRawKeyName() { return GATKVCFConstants.AS_RAW_RMS_MAPPING_QUALITY_KEY; }
 

@@ -29,6 +29,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class BAQIntegrationTest extends WalkerTest {
     private final static String baseCommand = "-T PrintReads -R " + b36KGReference +
@@ -44,13 +45,13 @@ public class BAQIntegrationTest extends WalkerTest {
     // --------------------------------------------------------------------------------------------------------------
     @Test
     public void testPrintReadsNoBAQ() {
-        WalkerTestSpec spec = new WalkerTestSpec( baseCommand +" -baq OFF",  1, Arrays.asList("e33187ca383c7f5c75c5d547ec79e1cb"));
+        WalkerTestSpec spec = new WalkerTestSpec( baseCommand +" -baq OFF",  1, Collections.singletonList("e33187ca383c7f5c75c5d547ec79e1cb"));
         executeTest(String.format("testPrintReadsNoBAQ"), spec);
     }
 
     @Test
     public void testPrintReadsRecalBAQ() {
-        WalkerTestSpec spec = new WalkerTestSpec( baseCommand +" -baq RECALCULATE",  1, Arrays.asList("a25043edfbfa4f21a13cc21064b460df"));
+        WalkerTestSpec spec = new WalkerTestSpec( baseCommand +" -baq RECALCULATE",  1, Collections.singletonList("a25043edfbfa4f21a13cc21064b460df"));
         executeTest(String.format("testPrintReadsRecalBAQ"), spec);
     }
 }

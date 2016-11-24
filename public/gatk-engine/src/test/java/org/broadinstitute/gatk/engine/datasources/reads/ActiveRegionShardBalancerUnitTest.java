@@ -61,7 +61,7 @@ public class ActiveRegionShardBalancerUnitTest extends BaseTest {
 
     @Test
     public void testMergingAllPointersOnSingleContig() {
-        executeTest(Arrays.asList(genomeLocParser.getContigs().getSequences().get(1)));
+        executeTest(Collections.singletonList(genomeLocParser.getContigs().getSequences().get(1)));
     }
 
     @Test

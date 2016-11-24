@@ -74,7 +74,7 @@ public class ReadThreadingAssemblerUnitTest extends BaseTest {
         final List<GATKSAMRecord> reads = new LinkedList<>();
 
         private TestAssembler(final int kmerSize) {
-            this.assembler = new ReadThreadingAssembler(100000, Arrays.asList(kmerSize));
+            this.assembler = new ReadThreadingAssembler(100000, Collections.singletonList(kmerSize));
             assembler.setJustReturnRawGraph(true);
             assembler.setPruneFactor(0);
         }

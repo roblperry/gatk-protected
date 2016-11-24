@@ -206,7 +206,7 @@ public class AssemblyResultSetUnitTest extends BaseTest
                 haplotypes[j] = new Haplotype(((String)haplotypeStrings[j]).getBytes(),j == 0);
                 haplotypes[j].setGenomeLocation(genomeLocParser.createGenomeLoc("chr1",1,haplotypes[j].length() + 1));
             }
-            result[i] = new Object[] { Collections.singletonList(ar),Arrays.asList(Arrays.asList(haplotypes))};
+            result[i] = new Object[] { Collections.singletonList(ar), Collections.singletonList(Arrays.asList(haplotypes))};
             for (int j = 0; j < TEN_KS_GRAPH_AND_HAPLOTYPES.length; j++) {
                 final ReadThreadingGraph rtg10 = new ReadThreadingGraph((String) TEN_KS_GRAPH_AND_HAPLOTYPES[j][0]);
                 final AssemblyResult ar10 = new AssemblyResult(AssemblyResult.Status.ASSEMBLED_SOME_VARIATION,rtg10.convertToSequenceGraph());

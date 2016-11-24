@@ -84,10 +84,10 @@ import java.util.*;
  */
 public class MappingQualityRankSumTest extends RankSumTest implements StandardAnnotation {
     @Override
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.MAP_QUAL_RANK_SUM_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.MAP_QUAL_RANK_SUM_KEY); }
 
     @Override
-    public List<VCFInfoHeaderLine> getDescriptions() { return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0))); }
+    public List<VCFInfoHeaderLine> getDescriptions() { return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0))); }
 
     @Override
     protected Double getElementForRead(final GATKSAMRecord read, final int refLoc) {

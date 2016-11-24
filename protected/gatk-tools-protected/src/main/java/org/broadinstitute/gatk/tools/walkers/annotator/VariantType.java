@@ -106,8 +106,8 @@ public class VariantType extends InfoFieldAnnotation {
         return map;
     }
 
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.VARIANT_TYPE_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.VARIANT_TYPE_KEY); }
 
-    public List<VCFInfoHeaderLine> getDescriptions() { return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0))); }
+    public List<VCFInfoHeaderLine> getDescriptions() { return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0))); }
 
 }

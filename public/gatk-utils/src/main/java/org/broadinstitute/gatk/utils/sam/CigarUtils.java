@@ -36,6 +36,7 @@ import org.broadinstitute.gatk.utils.smithwaterman.SWPairwiseAlignment;
 import org.broadinstitute.gatk.utils.smithwaterman.SmithWaterman;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Stack;
 
 /**
@@ -184,7 +185,7 @@ public class CigarUtils {
     public static Cigar calculateCigar(final byte[] refSeq, final byte[] altSeq) {
         if ( altSeq.length == 0 ) {
             // horrible edge case from the unit tests, where this path has no bases
-            return new Cigar(Arrays.asList(new CigarElement(refSeq.length, CigarOperator.D)));
+            return new Cigar(Collections.singletonList(new CigarElement(refSeq.length, CigarOperator.D)));
         }
 
         final Cigar nonStandard;

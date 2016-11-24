@@ -218,7 +218,7 @@ public class VariantsToVCF extends RodWalker<Integer, Integer> {
 
             // setup the header fields
             Set<VCFHeaderLine> hInfo = new HashSet<VCFHeaderLine>();
-            hInfo.addAll(GATKVCFUtils.getHeaderFields(getToolkit(), Arrays.asList(variants.getName())));
+            hInfo.addAll(GATKVCFUtils.getHeaderFields(getToolkit(), Collections.singletonList(variants.getName())));
             hInfo.add(VCFStandardHeaderLines.getFormatLine(VCFConstants.GENOTYPE_KEY));
 
             allowedGenotypeFormatStrings.add(VCFConstants.GENOTYPE_KEY);
@@ -233,7 +233,7 @@ public class VariantsToVCF extends RodWalker<Integer, Integer> {
                 samples.add(sampleName);
             } else {
                 // try VCF first
-                samples = SampleUtils.getSampleListWithVCFHeader(getToolkit(), Arrays.asList(variants.getName()));
+                samples = SampleUtils.getSampleListWithVCFHeader(getToolkit(), Collections.singletonList(variants.getName()));
 
                 if ( samples.isEmpty() ) {
                     List<Feature> features = tracker.getValues(variants, loc);

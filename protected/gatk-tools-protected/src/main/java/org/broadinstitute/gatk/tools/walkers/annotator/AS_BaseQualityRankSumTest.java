@@ -60,6 +60,7 @@ import org.broadinstitute.gatk.utils.variant.GATKVCFConstants;
 import org.broadinstitute.gatk.utils.variant.GATKVCFHeaderLines;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -88,7 +89,7 @@ import java.util.List;
 public class AS_BaseQualityRankSumTest extends AS_RankSumTest implements AS_StandardAnnotation {
     @Override
     public List<String> getKeyNames() {
-        return Arrays.asList(GATKVCFConstants.AS_BASE_QUAL_RANK_SUM_KEY);
+        return Collections.singletonList(GATKVCFConstants.AS_BASE_QUAL_RANK_SUM_KEY);
     }
 
     @Override

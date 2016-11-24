@@ -64,10 +64,7 @@ import htsjdk.variant.vcf.VCFInfoHeaderLine;
 import htsjdk.variant.vcf.VCFStandardHeaderLines;
 import htsjdk.variant.variantcontext.VariantContext;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Total depth of coverage per sample and over all samples.
@@ -120,9 +117,9 @@ public class Coverage extends InfoFieldAnnotation implements StandardAnnotation,
         return map;
     }
 
-    public List<String> getKeyNames() { return Arrays.asList(VCFConstants.DEPTH_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(VCFConstants.DEPTH_KEY); }
 
     public List<VCFInfoHeaderLine> getDescriptions() {
-        return Arrays.asList(VCFStandardHeaderLines.getInfoLine(getKeyNames().get(0)));
+        return Collections.singletonList(VCFStandardHeaderLines.getInfoLine(getKeyNames().get(0)));
     }
 }

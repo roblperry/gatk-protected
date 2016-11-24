@@ -583,7 +583,7 @@ public class DepthOfCoverage extends LocusWalker<Map<DoCOutputType.Partition,Map
     private List<String> getGeneNames(GenomeLoc target, LocationAwareSeekableRODIterator refseqIterator) {
         logger.debug("Examining "+target.toString());
         
-        List<String> unknown = Arrays.asList("UNKNOWN");
+        List<String> unknown = Collections.singletonList("UNKNOWN");
         
         if (refseqIterator == null) { return unknown; }
 

@@ -290,7 +290,7 @@ public class ReferenceConfidenceModelUnitTest extends BaseTest {
     @Test(dataProvider = "RefConfidenceData")
     public void testRefConfidenceBasic(final int nReads, final int extension) {
         final RefConfData data = new RefConfData("ACGTAACCGGTT", extension);
-        final List<Haplotype> haplotypes = Arrays.asList(data.getRefHap());
+        final List<Haplotype> haplotypes = Collections.singletonList(data.getRefHap());
         final List<VariantContext> calls = Collections.emptyList();
 
         for ( int i = 0; i < nReads; i++ ) {
@@ -315,7 +315,7 @@ public class ReferenceConfidenceModelUnitTest extends BaseTest {
         for ( int readLen = 3; readLen < ref.length(); readLen++ ) {
             for ( int start = 0; start < ref.length() - readLen; start++ ) {
                 final RefConfData data = new RefConfData(ref, 0);
-                final List<Haplotype> haplotypes = Arrays.asList(data.getRefHap());
+                final List<Haplotype> haplotypes = Collections.singletonList(data.getRefHap());
                 final List<VariantContext> calls = Collections.emptyList();
 
                 data.getActiveRegion().add(data.makeRead(start, readLen));
@@ -352,7 +352,7 @@ public class ReferenceConfidenceModelUnitTest extends BaseTest {
                 for ( final List<VariantContext> calls : Utils.makePermutations(allCalls, n, false) ) {
 //                    logger.warn("Executing " + n + " " + calls.size());
                     final RefConfData data = new RefConfData("ACGTAACCGGTT", 0);
-                    final List<Haplotype> haplotypes = Arrays.asList(data.getRefHap());
+                    final List<Haplotype> haplotypes = Collections.singletonList(data.getRefHap());
                     for ( int i = 0; i < nReads; i++ ) {
                         data.getActiveRegion().add(data.makeRead(0, data.getRefLength()));
                     }

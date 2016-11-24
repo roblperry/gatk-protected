@@ -58,6 +58,7 @@ import org.broadinstitute.gatk.utils.sam.GATKSAMRecord;
 import org.broadinstitute.gatk.utils.variant.GATKVCFConstants;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -75,7 +76,7 @@ import java.util.List;
 
 public class AS_InsertSizeRankSum extends AS_RankSumTest implements ExperimentalAnnotation, BetaTestingAnnotation {
     @Override
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.AS_INSERT_SIZE_RANK_SUM_KEY);}
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.AS_INSERT_SIZE_RANK_SUM_KEY);}
 
     @Override
     public String getRawKeyName() { return GATKVCFConstants.AS_RAW_INSERT_SIZE_RANK_SUM_KEY; }

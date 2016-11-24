@@ -91,9 +91,9 @@ public abstract class AS_RankSumTest extends RankSumTest implements ReducibleAnn
 
     public List<VCFInfoHeaderLine> getDescriptions() {
         if (AnnotationUtils.walkerRequiresRawData(callingWalker))
-            return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getRawKeyName()));
+            return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getRawKeyName()));
         else
-            return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
+            return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
     }
 
     public Map<String, Object> annotateRawData(final RefMetaDataTracker tracker,

@@ -64,6 +64,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class AFCalculatorPerformanceUnitTest extends BaseTest {
@@ -76,14 +77,14 @@ public class AFCalculatorPerformanceUnitTest extends BaseTest {
                 AFCalculatorImplementation.EXACT_INDEPENDENT,
                 AFCalculatorImplementation.EXACT_REFERENCE);
 
-        final List<AFCalculatorImplementation> multiAllelicModels = Arrays.asList(
+        final List<AFCalculatorImplementation> multiAllelicModels = Collections.singletonList(
                 AFCalculatorImplementation.EXACT_INDEPENDENT);
 
 //        for ( final int nonTypePLs : Arrays.asList(100) ) {
 //            for ( final int nSamples : Arrays.asList(10000) ) {
 //                final List<Integer> alleleCounts = Arrays.asList(50);
 //                for ( final int nAltAlleles : Arrays.asList(1) ) {
-        for ( final int nonTypePLs : Arrays.asList(100) ) {
+        for ( final int nonTypePLs : Collections.singletonList(100)) {
             for ( final int nSamples : Arrays.asList(100, 1000) ) {
                 final List<Integer> alleleCounts = Arrays.asList(0, 1, 2, 3, 4, 5, 10, 50, 500);
                     for ( final int nAltAlleles : Arrays.asList(1, 2, 3) ) {

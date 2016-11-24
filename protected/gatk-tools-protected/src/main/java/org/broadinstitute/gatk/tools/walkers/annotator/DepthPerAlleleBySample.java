@@ -160,9 +160,9 @@ public class DepthPerAlleleBySample extends GenotypeAnnotation implements Standa
         gb.AD(counts);
     }
 
-    public List<String> getKeyNames() { return Arrays.asList(VCFConstants.GENOTYPE_ALLELE_DEPTHS); }
+    public List<String> getKeyNames() { return Collections.singletonList(VCFConstants.GENOTYPE_ALLELE_DEPTHS); }
 
     public List<VCFFormatHeaderLine> getDescriptions() {
-        return Arrays.asList(VCFStandardHeaderLines.getFormatLine(getKeyNames().get(0)));
+        return Collections.singletonList(VCFStandardHeaderLines.getFormatLine(getKeyNames().get(0)));
     }
 }

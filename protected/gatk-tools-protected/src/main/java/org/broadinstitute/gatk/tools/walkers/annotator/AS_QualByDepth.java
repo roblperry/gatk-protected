@@ -99,14 +99,14 @@ import java.util.*;
 public class AS_QualByDepth extends InfoFieldAnnotation implements ReducibleAnnotation, AS_StandardAnnotation {
 
     @Override
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.AS_QUAL_BY_DEPTH_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.AS_QUAL_BY_DEPTH_KEY); }
 
     @Override
     public String getRawKeyName() { return GATKVCFConstants.AS_QUAL_KEY; }
 
     public List<VCFInfoHeaderLine> getDescriptions() {
         //We only have the finalized key name here because the raw key is internal to GenotypeGVCFs and won't get output in any VCF
-        return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
+        return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0)));
     }
 
     public Map<String, Object> annotate(final RefMetaDataTracker tracker,

@@ -29,6 +29,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class SymbolicAllelesIntegrationTest extends WalkerTest {
 
@@ -48,7 +49,7 @@ public class SymbolicAllelesIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 baseTestString(b36KGReference, "symbolic_alleles_1.vcf"),
                 1,
-                Arrays.asList("a1de53ac340f4ca02367c40680628251"));
+                Collections.singletonList("a1de53ac340f4ca02367c40680628251"));
         executeTest("Test symbolic alleles", spec);
     }
 
@@ -57,7 +58,7 @@ public class SymbolicAllelesIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 baseTestString(b36KGReference, "symbolic_alleles_2.vcf"),
                 1,
-                Arrays.asList("c8b294089832bb1a2c450b550318a471"));
+                Collections.singletonList("c8b294089832bb1a2c450b550318a471"));
         executeTest("Test symbolic alleles mixed in with non-symbolic alleles", spec);
     }
 }

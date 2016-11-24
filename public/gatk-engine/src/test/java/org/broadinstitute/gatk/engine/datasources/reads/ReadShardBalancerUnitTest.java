@@ -44,6 +44,7 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 public class ReadShardBalancerUnitTest extends BaseTest {
 
@@ -85,7 +86,7 @@ public class ReadShardBalancerUnitTest extends BaseTest {
             createTestBAM();
 
             SAMDataSource dataSource = new SAMDataSource(null, // Reference not used in this test.
-                                                         Arrays.asList(testBAM),
+                    Collections.singletonList(testBAM),
                                                          new ThreadAllocation(),
                                                          null,
                                                          new GenomeLocParser(header.getSequenceDictionary()),

@@ -348,7 +348,7 @@ public class ReadUtilsUnitTest extends BaseTest {
     public void testGetSAMFileMissingReadGroupsSamples() {
         final SAMFileHeader header = ArtificialSAMUtils.createArtificialSamHeader();
         final SAMReadGroupRecord samGroup = new SAMReadGroupRecord("id");
-        final List<SAMReadGroupRecord> list = new ArrayList<>(Arrays.asList(samGroup));
+        final List<SAMReadGroupRecord> list = new ArrayList<>(Collections.singletonList(samGroup));
         header.setReadGroups(list);
         ReadUtils.getSAMFileSamples(header);
     }

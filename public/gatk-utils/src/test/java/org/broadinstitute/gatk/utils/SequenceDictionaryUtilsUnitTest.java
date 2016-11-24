@@ -38,6 +38,7 @@ import static org.broadinstitute.gatk.utils.SequenceDictionaryUtils.SequenceDict
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class SequenceDictionaryUtilsUnitTest extends BaseTest {
@@ -70,13 +71,13 @@ public class SequenceDictionaryUtilsUnitTest extends BaseTest {
 
         return new Object[][]  {
             // Identical dictionaries:
-            { Arrays.asList(CHR1_HG19),                        Arrays.asList(CHR1_HG19),                        null, IDENTICAL, null, false, null },
+            {Collections.singletonList(CHR1_HG19), Collections.singletonList(CHR1_HG19),                        null, IDENTICAL, null, false, null },
             { Arrays.asList(CHR1_HG19, CHR2_HG19, CHR10_HG19), Arrays.asList(CHR1_HG19, CHR2_HG19, CHR10_HG19), null, IDENTICAL, null, false, null },
-            { Arrays.asList(CHR1_B37),                         Arrays.asList(CHR1_B37),                         null, IDENTICAL, null, false, null },
+            {Collections.singletonList(CHR1_B37), Collections.singletonList(CHR1_B37),                         null, IDENTICAL, null, false, null },
             { Arrays.asList(CHR1_B37, CHR2_B37, CHR10_B37),    Arrays.asList(CHR1_B37, CHR2_B37, CHR10_B37),    null, IDENTICAL, null, false, null },
 
             // Dictionaries with a common subset:
-            { Arrays.asList(CHR1_HG19),                                          Arrays.asList(CHR1_HG19, CHR_NONSTANDARD1),                                   null, COMMON_SUBSET, null, false, null },
+            {Collections.singletonList(CHR1_HG19),                                          Arrays.asList(CHR1_HG19, CHR_NONSTANDARD1),                                   null, COMMON_SUBSET, null, false, null },
             { Arrays.asList(CHR1_HG19, CHR_NONSTANDARD1),                        Arrays.asList(CHR1_HG19, CHR_NONSTANDARD2),                                   null, COMMON_SUBSET, null, false, null },
             { Arrays.asList(CHR_NONSTANDARD1, CHR1_HG19),                        Arrays.asList(CHR_NONSTANDARD2, CHR1_HG19),                                   null, COMMON_SUBSET, null, false, null },
             { Arrays.asList(CHR_NONSTANDARD1, CHR1_HG19),                        Arrays.asList(CHR_NONSTANDARD2, CHR1_HG19, CHRM_HG19),                        null, COMMON_SUBSET, null, false, null },
@@ -89,14 +90,14 @@ public class SequenceDictionaryUtilsUnitTest extends BaseTest {
             { Arrays.asList(CHR1_HG19, CHR2_HG19),                               Arrays.asList(CHR1_HG19, CHR2_HG19, CHR10_HG19),                              null, COMMON_SUBSET, null, false, null },
 
             // Dictionaries with no common contigs:
-            { Arrays.asList(CHR1_HG19),                        Arrays.asList(CHR2_HG19),                     null, NO_COMMON_CONTIGS, NO_COMMON_CONTIGS_EXCEPTION, false, null },
-            { Arrays.asList(CHR1_HG19),                        Arrays.asList(CHR1_B37),                      null, NO_COMMON_CONTIGS, NO_COMMON_CONTIGS_EXCEPTION, false, null },
+            {Collections.singletonList(CHR1_HG19), Collections.singletonList(CHR2_HG19),                     null, NO_COMMON_CONTIGS, NO_COMMON_CONTIGS_EXCEPTION, false, null },
+            {Collections.singletonList(CHR1_HG19), Collections.singletonList(CHR1_B37),                      null, NO_COMMON_CONTIGS, NO_COMMON_CONTIGS_EXCEPTION, false, null },
             { Arrays.asList(CHR1_HG19, CHR2_HG19, CHR10_HG19), Arrays.asList(CHR1_B37, CHR2_B37, CHR10_B37), null, NO_COMMON_CONTIGS, NO_COMMON_CONTIGS_EXCEPTION, false, null },
             { Arrays.asList(CHR1_HG19, CHR2_HG19),             Arrays.asList(CHR1_B37, CHR2_B37, CHR10_B37), null, NO_COMMON_CONTIGS, NO_COMMON_CONTIGS_EXCEPTION, false, null },
 
             // Dictionaries with unequal common contigs:
-            { Arrays.asList(CHR1_HG19),                                          Arrays.asList(CHR1_HG18),                                          null, UNEQUAL_COMMON_CONTIGS, UNEQUAL_COMMON_CONTIGS_EXCEPTION, false, null },
-            { Arrays.asList(CHR1_B36),                                           Arrays.asList(CHR1_B37),                                           null, UNEQUAL_COMMON_CONTIGS, UNEQUAL_COMMON_CONTIGS_EXCEPTION, false, null },
+            {Collections.singletonList(CHR1_HG19), Collections.singletonList(CHR1_HG18),                                          null, UNEQUAL_COMMON_CONTIGS, UNEQUAL_COMMON_CONTIGS_EXCEPTION, false, null },
+            {Collections.singletonList(CHR1_B36), Collections.singletonList(CHR1_B37),                                           null, UNEQUAL_COMMON_CONTIGS, UNEQUAL_COMMON_CONTIGS_EXCEPTION, false, null },
             { Arrays.asList(CHR1_HG19, CHR2_HG19, CHR10_HG19),                   Arrays.asList(CHR1_HG18, CHR2_HG18, CHR10_HG18),                   null, UNEQUAL_COMMON_CONTIGS, UNEQUAL_COMMON_CONTIGS_EXCEPTION, false, null },
             { Arrays.asList(CHR1_B37, CHR2_B37, CHR10_B37),                      Arrays.asList(CHR1_B36, CHR2_B36, CHR10_B36),                      null, UNEQUAL_COMMON_CONTIGS, UNEQUAL_COMMON_CONTIGS_EXCEPTION, false, null },
             { Arrays.asList(CHR1_HG19, CHR2_HG19, CHR10_HG19, CHR_NONSTANDARD1), Arrays.asList(CHR1_HG18, CHR2_HG18, CHR10_HG18, CHR_NONSTANDARD2), null, UNEQUAL_COMMON_CONTIGS, UNEQUAL_COMMON_CONTIGS_EXCEPTION, false, null },
@@ -124,7 +125,7 @@ public class SequenceDictionaryUtilsUnitTest extends BaseTest {
             // and there are intervals overlapping the misindexed contigs:
 
             // These have isReadsToReferenceComparison == true and overlapping intervals, so we expect an exception:
-            { Arrays.asList(CHRM_HG19, CHR1_HG19),                                                 Arrays.asList(CHR1_HG19),                                          null, DIFFERENT_INDICES, DIFFERENT_INDICES_EXCEPTION, true, hg19AllContigsIntervalSet },
+            { Arrays.asList(CHRM_HG19, CHR1_HG19), Collections.singletonList(CHR1_HG19),                                          null, DIFFERENT_INDICES, DIFFERENT_INDICES_EXCEPTION, true, hg19AllContigsIntervalSet },
             { Arrays.asList(CHR1_HG19, CHR2_HG19),                                                 Arrays.asList(CHRM_HG19, CHR1_HG19, CHR2_HG19),                    null, DIFFERENT_INDICES, DIFFERENT_INDICES_EXCEPTION, true, hg19AllContigsIntervalSet },
             { Arrays.asList(CHR1_HG19, CHR2_HG19),                                                 Arrays.asList(CHRM_HG19, CHR1_HG19, CHR2_HG19, CHR_NONSTANDARD1),  null, DIFFERENT_INDICES, DIFFERENT_INDICES_EXCEPTION, true, hg19AllContigsIntervalSet },
             { Arrays.asList(CHR1_HG19, CHR2_HG19),                                                 Arrays.asList(CHRM_HG19, CHR_NONSTANDARD1, CHR1_HG19, CHR2_HG19),  null, DIFFERENT_INDICES, DIFFERENT_INDICES_EXCEPTION, true, hg19AllContigsIntervalSet },
@@ -133,26 +134,26 @@ public class SequenceDictionaryUtilsUnitTest extends BaseTest {
             { Arrays.asList(CHR1_HG19, CHR_NONSTANDARD1, CHR2_HG19, CHRM_HG19, CHR_NONSTANDARD2 ), Arrays.asList(CHR1_HG19, CHR2_HG19, CHRM_HG19, CHR_NONSTANDARD2 ), null, DIFFERENT_INDICES, DIFFERENT_INDICES_EXCEPTION, true, hg19AllContigsIntervalSet },
 
             // These have isReadsToReferenceComparison == true but no overlapping intervals, so we don't expect an exception:
-            { Arrays.asList(CHR2_HG19, CHR10_HG19),                              Arrays.asList(CHR10_HG19),                       null, DIFFERENT_INDICES, null, true, hg19PartialContigsIntervalSet },
+            { Arrays.asList(CHR2_HG19, CHR10_HG19), Collections.singletonList(CHR10_HG19),                       null, DIFFERENT_INDICES, null, true, hg19PartialContigsIntervalSet },
             { Arrays.asList(CHR1_HG19, CHR_NONSTANDARD1, CHR2_HG19),             Arrays.asList(CHR1_HG19, CHR2_HG19),             null, DIFFERENT_INDICES, null, true, hg19PartialContigsIntervalSet },
             { Arrays.asList(CHR1_HG19, CHR_NONSTANDARD1, CHR2_HG19, CHR10_HG19), Arrays.asList(CHR1_HG19, CHR2_HG19, CHR10_HG19), null, DIFFERENT_INDICES, null, true, hg19PartialContigsIntervalSet },
 
             // These have isReadsToReferenceComparison == false, so we don't expect an exception:
-            { Arrays.asList(CHRM_HG19, CHR1_HG19),                              Arrays.asList(CHR1_HG19),                       null, DIFFERENT_INDICES, null, false, hg19AllContigsIntervalSet },
+            { Arrays.asList(CHRM_HG19, CHR1_HG19), Collections.singletonList(CHR1_HG19),                       null, DIFFERENT_INDICES, null, false, hg19AllContigsIntervalSet },
             { Arrays.asList(CHR1_HG19, CHR_NONSTANDARD1, CHR2_HG19, CHRM_HG19), Arrays.asList(CHR1_HG19, CHR2_HG19, CHRM_HG19), null, DIFFERENT_INDICES, null, false, hg19AllContigsIntervalSet },
 
 
             // Tests for validation exclusions. Note that errors resulting from NO_COMMON_CONTIGs cannot be suppressed
-            { Arrays.asList(CHR1_HG19),                        Arrays.asList(CHR2_HG19),                        ValidationExclusion.TYPE.ALLOW_SEQ_DICT_INCOMPATIBILITY, NO_COMMON_CONTIGS,         NO_COMMON_CONTIGS_EXCEPTION, false, null },
-            { Arrays.asList(CHR1_HG19),                        Arrays.asList(CHR2_HG19),                        ValidationExclusion.TYPE.ALL,                            NO_COMMON_CONTIGS,         NO_COMMON_CONTIGS_EXCEPTION, false, null },
-            { Arrays.asList(CHR1_HG19),                        Arrays.asList(CHR1_HG18),                        ValidationExclusion.TYPE.ALLOW_SEQ_DICT_INCOMPATIBILITY, UNEQUAL_COMMON_CONTIGS,    null, false, null },
-            { Arrays.asList(CHR1_HG19),                        Arrays.asList(CHR1_HG18),                        ValidationExclusion.TYPE.ALL,                            UNEQUAL_COMMON_CONTIGS,    null, false, null },
+            {Collections.singletonList(CHR1_HG19), Collections.singletonList(CHR2_HG19),                        ValidationExclusion.TYPE.ALLOW_SEQ_DICT_INCOMPATIBILITY, NO_COMMON_CONTIGS,         NO_COMMON_CONTIGS_EXCEPTION, false, null },
+            {Collections.singletonList(CHR1_HG19), Collections.singletonList(CHR2_HG19),                        ValidationExclusion.TYPE.ALL,                            NO_COMMON_CONTIGS,         NO_COMMON_CONTIGS_EXCEPTION, false, null },
+            {Collections.singletonList(CHR1_HG19), Collections.singletonList(CHR1_HG18),                        ValidationExclusion.TYPE.ALLOW_SEQ_DICT_INCOMPATIBILITY, UNEQUAL_COMMON_CONTIGS,    null, false, null },
+            {Collections.singletonList(CHR1_HG19), Collections.singletonList(CHR1_HG18),                        ValidationExclusion.TYPE.ALL,                            UNEQUAL_COMMON_CONTIGS,    null, false, null },
             { Arrays.asList(CHR1_HG19, CHR10_HG19, CHR2_HG19), Arrays.asList(CHR1_HG19, CHR10_HG19, CHR2_HG19), ValidationExclusion.TYPE.ALLOW_SEQ_DICT_INCOMPATIBILITY, NON_CANONICAL_HUMAN_ORDER, null, false, null },
             { Arrays.asList(CHR1_HG19, CHR10_HG19, CHR2_HG19), Arrays.asList(CHR1_HG19, CHR10_HG19, CHR2_HG19), ValidationExclusion.TYPE.ALL,                            NON_CANONICAL_HUMAN_ORDER, null, false, null },
             { Arrays.asList(CHR1_HG19, CHR2_HG19),             Arrays.asList(CHR2_HG19, CHR1_HG19),             ValidationExclusion.TYPE.ALLOW_SEQ_DICT_INCOMPATIBILITY, OUT_OF_ORDER,              null, false, null },
             { Arrays.asList(CHR1_HG19, CHR2_HG19),             Arrays.asList(CHR2_HG19, CHR1_HG19),             ValidationExclusion.TYPE.ALL,                            OUT_OF_ORDER,              null, false, null },
-            { Arrays.asList(CHRM_HG19, CHR1_HG19),             Arrays.asList(CHR1_HG19),                        ValidationExclusion.TYPE.ALLOW_SEQ_DICT_INCOMPATIBILITY, DIFFERENT_INDICES,         null, true, hg19AllContigsIntervalSet },
-            { Arrays.asList(CHRM_HG19, CHR1_HG19),             Arrays.asList(CHR1_HG19),                        ValidationExclusion.TYPE.ALL,                            DIFFERENT_INDICES,         null, true, hg19AllContigsIntervalSet }
+            { Arrays.asList(CHRM_HG19, CHR1_HG19), Collections.singletonList(CHR1_HG19),                        ValidationExclusion.TYPE.ALLOW_SEQ_DICT_INCOMPATIBILITY, DIFFERENT_INDICES,         null, true, hg19AllContigsIntervalSet },
+            { Arrays.asList(CHRM_HG19, CHR1_HG19), Collections.singletonList(CHR1_HG19),                        ValidationExclusion.TYPE.ALL,                            DIFFERENT_INDICES,         null, true, hg19AllContigsIntervalSet }
         };
     }
 

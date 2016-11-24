@@ -117,30 +117,30 @@ public class VariantOverlapAnnotatorUnitTest extends BaseTest {
         final VariantContext dbSNP_AC_AT = makeVC("DBSNP", "rsID1;rsID2", Arrays.asList("A", "C", "T"));
         final VariantContext dbSNP_AC_AG = makeVC("DBSNP", "rsID1;rsID3", Arrays.asList("A", "C", "G"));
 
-        tests.add(new Object[]{callNoIDAC, Arrays.asList(dbSNP_AC), dbSNP_AC.getID(), true});
-        tests.add(new Object[]{callNoIDAC, Arrays.asList(dbSNP_AT), VCFConstants.EMPTY_ID_FIELD, false});
-        tests.add(new Object[]{callIDAC, Arrays.asList(dbSNP_AC), "foo" + ";" + dbSNP_AC.getID(), true});
-        tests.add(new Object[]{callIDAC, Arrays.asList(dbSNP_AT), "foo", false});
-        tests.add(new Object[]{callExistingIDAC, Arrays.asList(dbSNP_AC), "rsID1", true});
-        tests.add(new Object[]{callExistingIDAC, Arrays.asList(dbSNP_AT), "rsID1", false});
+        tests.add(new Object[]{callNoIDAC, Collections.singletonList(dbSNP_AC), dbSNP_AC.getID(), true});
+        tests.add(new Object[]{callNoIDAC, Collections.singletonList(dbSNP_AT), VCFConstants.EMPTY_ID_FIELD, false});
+        tests.add(new Object[]{callIDAC, Collections.singletonList(dbSNP_AC), "foo" + ";" + dbSNP_AC.getID(), true});
+        tests.add(new Object[]{callIDAC, Collections.singletonList(dbSNP_AT), "foo", false});
+        tests.add(new Object[]{callExistingIDAC, Collections.singletonList(dbSNP_AC), "rsID1", true});
+        tests.add(new Object[]{callExistingIDAC, Collections.singletonList(dbSNP_AT), "rsID1", false});
 
         final VariantContext callNoIDACT = makeVC("call", VCFConstants.EMPTY_ID_FIELD, Arrays.asList("A", "C", "T"));
-        tests.add(new Object[]{callNoIDACT, Arrays.asList(dbSNP_AC), dbSNP_AC.getID(), true});
-        tests.add(new Object[]{callNoIDACT, Arrays.asList(dbSNP_AT), dbSNP_AT.getID(), true});
-        tests.add(new Object[]{callNoIDACT, Arrays.asList(dbSNP_AG), VCFConstants.EMPTY_ID_FIELD, false});
-        tests.add(new Object[]{callNoIDACT, Arrays.asList(dbSNP_AC_AT), dbSNP_AC_AT.getID(), true});
-        tests.add(new Object[]{callNoIDACT, Arrays.asList(dbSNP_AC_AG), dbSNP_AC_AG.getID(), true});
+        tests.add(new Object[]{callNoIDACT, Collections.singletonList(dbSNP_AC), dbSNP_AC.getID(), true});
+        tests.add(new Object[]{callNoIDACT, Collections.singletonList(dbSNP_AT), dbSNP_AT.getID(), true});
+        tests.add(new Object[]{callNoIDACT, Collections.singletonList(dbSNP_AG), VCFConstants.EMPTY_ID_FIELD, false});
+        tests.add(new Object[]{callNoIDACT, Collections.singletonList(dbSNP_AC_AT), dbSNP_AC_AT.getID(), true});
+        tests.add(new Object[]{callNoIDACT, Collections.singletonList(dbSNP_AC_AG), dbSNP_AC_AG.getID(), true});
 
         // multiple options
         tests.add(new Object[]{callNoIDAC, Arrays.asList(dbSNP_AC, dbSNP_AT), "rsID1", true});
         tests.add(new Object[]{callNoIDAC, Arrays.asList(dbSNP_AT, dbSNP_AC), "rsID1", true});
-        tests.add(new Object[]{callNoIDAC, Arrays.asList(dbSNP_AC_AT), "rsID1;rsID2", true});
-        tests.add(new Object[]{callNoIDAT, Arrays.asList(dbSNP_AC_AT), "rsID1;rsID2", true});
-        tests.add(new Object[]{callNoIDAC, Arrays.asList(dbSNP_AC_AG), "rsID1;rsID3", true});
-        tests.add(new Object[]{callNoIDAT, Arrays.asList(dbSNP_AC_AG), VCFConstants.EMPTY_ID_FIELD, false});
+        tests.add(new Object[]{callNoIDAC, Collections.singletonList(dbSNP_AC_AT), "rsID1;rsID2", true});
+        tests.add(new Object[]{callNoIDAT, Collections.singletonList(dbSNP_AC_AT), "rsID1;rsID2", true});
+        tests.add(new Object[]{callNoIDAC, Collections.singletonList(dbSNP_AC_AG), "rsID1;rsID3", true});
+        tests.add(new Object[]{callNoIDAT, Collections.singletonList(dbSNP_AC_AG), VCFConstants.EMPTY_ID_FIELD, false});
 
         final VariantContext dbSNP_AC_FAIL = new VariantContextBuilder(makeVC("DBSNP", "rsID1", Arrays.asList("A", "C"))).filter("FAIL").make();
-        tests.add(new Object[]{callNoIDAC, Arrays.asList(dbSNP_AC_FAIL), VCFConstants.EMPTY_ID_FIELD, false});
+        tests.add(new Object[]{callNoIDAC, Collections.singletonList(dbSNP_AC_FAIL), VCFConstants.EMPTY_ID_FIELD, false});
 
 
         return tests.toArray(new Object[][]{});

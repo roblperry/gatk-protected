@@ -128,8 +128,8 @@ public class SpanningDeletions extends InfoFieldAnnotation implements StandardUG
     }
 
     @Override
-    public List<String> getKeyNames() { return Arrays.asList(GATKVCFConstants.SPANNING_DELETIONS_KEY); }
+    public List<String> getKeyNames() { return Collections.singletonList(GATKVCFConstants.SPANNING_DELETIONS_KEY); }
 
     @Override
-    public List<VCFInfoHeaderLine> getDescriptions() { return Arrays.asList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0))); }
+    public List<VCFInfoHeaderLine> getDescriptions() { return Collections.singletonList(GATKVCFHeaderLines.getInfoLine(getKeyNames().get(0))); }
 }

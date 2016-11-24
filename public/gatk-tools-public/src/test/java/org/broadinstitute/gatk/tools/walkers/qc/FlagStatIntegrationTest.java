@@ -29,6 +29,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class FlagStatIntegrationTest extends WalkerTest {
 
@@ -39,7 +40,7 @@ public class FlagStatIntegrationTest extends WalkerTest {
         WalkerTestSpec spec = new WalkerTestSpec(
                 "-T FlagStat -R " + b36KGReference + " -I " + validationDataLocation + "NA12878.1kg.p2.chr1_10mb_11_mb.SLX.bam -L 1:10,000,000-10,050,000 -o %s",
                  1,
-                 Arrays.asList(md5));
+                Collections.singletonList(md5));
         executeTest("test flag stat", spec);
     }
 }

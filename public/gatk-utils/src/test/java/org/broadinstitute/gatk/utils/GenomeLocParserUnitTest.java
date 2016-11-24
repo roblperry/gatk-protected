@@ -504,7 +504,7 @@ public class GenomeLocParserUnitTest extends BaseTest {
 
     @Test
     public void testCreationFromVariantContext() {
-        final VariantContext feature = new VariantContextBuilder("x", "chr1", 1, 5, Arrays.asList(Allele.create("AAAAA", true))).make();
+        final VariantContext feature = new VariantContextBuilder("x", "chr1", 1, 5, Collections.singletonList(Allele.create("AAAAA", true))).make();
         final GenomeLoc loc = genomeLocParser.createGenomeLoc(feature);
         Assert.assertEquals(loc.getContig(), feature.getChr());
         Assert.assertEquals(loc.getStart(), feature.getStart());

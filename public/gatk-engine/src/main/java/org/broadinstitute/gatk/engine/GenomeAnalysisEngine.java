@@ -934,7 +934,7 @@ public class GenomeAnalysisEngine {
                 argCollection.strictnessLevel,
                 argCollection.readBufferSize,
                 downsamplingMethod,
-                new ValidationExclusion(Arrays.asList(argCollection.unsafe)),
+                new ValidationExclusion(Collections.singletonList(argCollection.unsafe)),
                 filters,
                 readTransformers,
                 includeReadsWithDeletionAtLoci(),

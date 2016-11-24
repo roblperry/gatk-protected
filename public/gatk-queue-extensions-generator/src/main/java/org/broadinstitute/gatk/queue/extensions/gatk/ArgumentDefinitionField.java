@@ -168,7 +168,7 @@ public abstract class ArgumentDefinitionField extends ArgumentField {
                     new IntervalStringArgumentField(argumentDefinition));
 
         } else if (NumThreadsArgumentField.NUM_THREADS_FIELD.equals(argumentDefinition.fullName)) {
-            return Arrays.asList(new NumThreadsArgumentField(argumentDefinition));
+            return Collections.singletonList(new NumThreadsArgumentField(argumentDefinition));
 
         } else if (inputFileArgument.equals(argumentDefinition.fullName) && argumentDefinition.ioType == ArgumentIOType.INPUT) {
             return Arrays.asList(new InputTaggedFileDefinitionField(argumentDefinition), new InputIndexesArgumentField(argumentDefinition, BAMIndex.BAMIndexSuffix, ".bam"));

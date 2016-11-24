@@ -57,10 +57,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class QualByDepthUnitTest extends WalkerTest {
 
@@ -82,8 +79,8 @@ public class QualByDepthUnitTest extends WalkerTest {
         final Genotype gACerror = new GenotypeBuilder("3", AC).DP(10).AD(new int[]{9,1}).make();
         final Genotype gGG = new GenotypeBuilder("4", GG).DP(10).AD(new int[]{1,9}).make();
 
-        tests.add(new Object[]{new VariantContextBuilder("test", "20", 10, 10, AC).log10PError(-5).genotypes(Arrays.asList(gAC)).make(), 5.0});
-        tests.add(new Object[]{new VariantContextBuilder("test", "20", 10, 10, AC).log10PError(-5).genotypes(Arrays.asList(gACerror)).make(), 5.0});
+        tests.add(new Object[]{new VariantContextBuilder("test", "20", 10, 10, AC).log10PError(-5).genotypes(Collections.singletonList(gAC)).make(), 5.0});
+        tests.add(new Object[]{new VariantContextBuilder("test", "20", 10, 10, AC).log10PError(-5).genotypes(Collections.singletonList(gACerror)).make(), 5.0});
         tests.add(new Object[]{new VariantContextBuilder("test", "20", 10, 10, AC).log10PError(-5).genotypes(Arrays.asList(gAA, gAC)).make(), 5.0});
         tests.add(new Object[]{new VariantContextBuilder("test", "20", 10, 10, AC).log10PError(-5).genotypes(Arrays.asList(gAC, gACerror)).make(), 5.0});
         tests.add(new Object[]{new VariantContextBuilder("test", "20", 10, 10, ACG).log10PError(-5).genotypes(Arrays.asList(gAA, gAC, gACerror, gGG)).make(), 2.5});

@@ -152,16 +152,16 @@ public class RefMetaDataTrackerUnitTest {
     @DataProvider(name = "tests")
     public Object[][] createTests() {
         new MyTest(null, null);
-        new MyTest(Arrays.asList(AC_SNP), null);
+        new MyTest(Collections.singletonList(AC_SNP), null);
         new MyTest(Arrays.asList(AC_SNP, AT_SNP), null);
-        new MyTest(Arrays.asList(AC_SNP), Arrays.asList(AG_SNP));
-        new MyTest(Arrays.asList(AC_SNP, AT_SNP), Arrays.asList(AG_SNP));
-        new MyTest(Arrays.asList(AC_SNP, AT_SNP), Arrays.asList(span10_10));
+        new MyTest(Collections.singletonList(AC_SNP), Collections.singletonList(AG_SNP));
+        new MyTest(Arrays.asList(AC_SNP, AT_SNP), Collections.singletonList(AG_SNP));
+        new MyTest(Arrays.asList(AC_SNP, AT_SNP), Collections.singletonList(span10_10));
         new MyTest(Arrays.asList(AC_SNP, AT_SNP), Arrays.asList(span10_10, span10_20));
         new MyTest(Arrays.asList(AC_SNP, AT_SNP), Arrays.asList(span10_10, span10_20, span1_20));
 
         // for requires starts
-        new MyTest(Arrays.asList(span1_20), null);
+        new MyTest(Collections.singletonList(span1_20), null);
         new MyTest(Arrays.asList(span10_10, span10_20), null);
         new MyTest(Arrays.asList(span10_10, span10_20, span1_20), null);
 
@@ -208,10 +208,10 @@ public class RefMetaDataTrackerUnitTest {
             testGetter(name, v2, startingHere(test.expected(name)), true, tracker);
 
             Feature v3 = name.equals("A+B") ? tracker.getFirstValue(Feature.class) : tracker.getFirstValue(Feature.class, name);
-            testGetter(name, Arrays.asList(v3), test.expected(name), false, tracker);
+            testGetter(name, Collections.singletonList(v3), test.expected(name), false, tracker);
 
             Feature v4 = name.equals("A+B") ? tracker.getFirstValue(Feature.class, locus) : tracker.getFirstValue(Feature.class, name, locus);
-            testGetter(name, Arrays.asList(v4), startingHere(test.expected(name)), false, tracker);
+            testGetter(name, Collections.singletonList(v4), startingHere(test.expected(name)), false, tracker);
         }
     }
 
@@ -229,10 +229,10 @@ public class RefMetaDataTrackerUnitTest {
             testGetter(nameAsString, v2, startingHere(test.expected(nameAsString)), true, tracker);
 
             Feature v3 = tracker.getFirstValue(binding);
-            testGetter(nameAsString, Arrays.asList(v3), test.expected(nameAsString), false, tracker);
+            testGetter(nameAsString, Collections.singletonList(v3), test.expected(nameAsString), false, tracker);
 
             Feature v4 = tracker.getFirstValue(binding, locus);
-            testGetter(nameAsString, Arrays.asList(v4), startingHere(test.expected(nameAsString)), false, tracker);
+            testGetter(nameAsString, Collections.singletonList(v4), startingHere(test.expected(nameAsString)), false, tracker);
         }
     }
 
@@ -253,10 +253,10 @@ public class RefMetaDataTrackerUnitTest {
         testGetter(nameAsString, v2, startingHere(test.expected(nameAsString)), true, tracker);
 
         Feature v3 = tracker.getFirstValue(binding);
-        testGetter(nameAsString, Arrays.asList(v3), test.expected(nameAsString), false, tracker);
+        testGetter(nameAsString, Collections.singletonList(v3), test.expected(nameAsString), false, tracker);
 
         Feature v4 = tracker.getFirstValue(binding, locus);
-        testGetter(nameAsString, Arrays.asList(v4), startingHere(test.expected(nameAsString)), false, tracker);
+        testGetter(nameAsString, Collections.singletonList(v4), startingHere(test.expected(nameAsString)), false, tracker);
     }
 
     private List<GATKFeature> startingHere(List<GATKFeature> l) {

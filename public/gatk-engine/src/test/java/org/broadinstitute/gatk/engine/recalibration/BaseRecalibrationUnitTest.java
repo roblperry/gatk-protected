@@ -34,6 +34,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class BaseRecalibrationUnitTest {
@@ -73,7 +74,7 @@ public class BaseRecalibrationUnitTest {
     public void onlyOneFixedQualUsed() {
         // Set all qualities to singleQual value (except for those below MIN_USABLE_Q_SCORE)
         int singleQual = 10;
-        List<Integer> fixedQuantizedQuals = Arrays.asList(singleQual);
+        List<Integer> fixedQuantizedQuals = Collections.singletonList(singleQual);
 
         byte[] qmapping = BaseRecalibration.constructStaticQuantizedMapping(fixedQuantizedQuals, true);
 

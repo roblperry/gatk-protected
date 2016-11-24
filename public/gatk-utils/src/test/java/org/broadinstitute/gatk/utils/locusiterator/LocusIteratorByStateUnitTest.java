@@ -168,7 +168,7 @@ public class LocusIteratorByStateUnitTest extends LocusIteratorByStateBaseTest {
         indelOnlyRead.setBaseQualities(Utils.dupBytes((byte) '@', 76));
         indelOnlyRead.setCigarString("76I");
 
-        List<GATKSAMRecord> reads = Arrays.asList(indelOnlyRead);
+        List<GATKSAMRecord> reads = Collections.singletonList(indelOnlyRead);
 
         // create the iterator by state with the fake reads and fake records
         li = makeLTBS(reads);
@@ -247,7 +247,7 @@ public class LocusIteratorByStateUnitTest extends LocusIteratorByStateBaseTest {
         read1.setBaseQualities(Utils.dupBytes((byte) '@', 1));
         read1.setCigarString("1I");
 
-        List<GATKSAMRecord> reads = Arrays.asList(read1);
+        List<GATKSAMRecord> reads = Collections.singletonList(read1);
 
         // create the iterator by state with the fake reads and fake records
         li = makeLTBS(reads, null, false);
@@ -268,7 +268,7 @@ public class LocusIteratorByStateUnitTest extends LocusIteratorByStateBaseTest {
         read2.setBaseQualities(Utils.dupBytes((byte) '@', 10));
         read2.setCigarString("10I");
 
-        reads = Arrays.asList(read2);
+        reads = Collections.singletonList(read2);
 
         // create the iterator by state with the fake reads and fake records
         li = makeLTBS(reads, null, false);
@@ -319,7 +319,7 @@ public class LocusIteratorByStateUnitTest extends LocusIteratorByStateBaseTest {
     @Test(enabled = true && ! DEBUG, dataProvider = "IndelLengthAndBasesTest")
     public void testIndelLengthAndBasesTest(GATKSAMRecord read, final CigarOperator op, final int eventSize, final String eventBases) {
         // create the iterator by state with the fake reads and fake records
-        li = makeLTBS(Arrays.asList((GATKSAMRecord)read), null, false);
+        li = makeLTBS(Collections.singletonList((GATKSAMRecord) read), null, false);
 
         Assert.assertTrue(li.hasNext());
 
@@ -371,7 +371,7 @@ public class LocusIteratorByStateUnitTest extends LocusIteratorByStateBaseTest {
     public void testLIBS(LIBSTest params) {
         // create the iterator by state with the fake reads and fake records
         final GATKSAMRecord read = params.makeRead();
-        li = makeLTBS(Arrays.asList((GATKSAMRecord)read), null, false);
+        li = makeLTBS(Collections.singletonList((GATKSAMRecord) read), null, false);
         final LIBS_position tester = new LIBS_position(read);
 
         int bpVisited = 0;

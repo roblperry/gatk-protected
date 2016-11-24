@@ -34,6 +34,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 
 public class ReadFormattingIteratorUnitTest extends BaseTest {
@@ -43,7 +44,7 @@ public class ReadFormattingIteratorUnitTest extends BaseTest {
         final Cigar unconsolidatedCigar = TextCigarCodec.decode("3M0M5M0M");
         final SAMRecord unconsolidatedRead = ArtificialSAMUtils.createArtificialRead(unconsolidatedCigar);
 
-        final GATKSAMIterator readIterator = GATKSAMIteratorAdapter.adapt(Arrays.asList(unconsolidatedRead).iterator());
+        final GATKSAMIterator readIterator = GATKSAMIteratorAdapter.adapt(Collections.singletonList(unconsolidatedRead).iterator());
         final ReadFormattingIterator formattingIterator = new ReadFormattingIterator(readIterator, false, (byte)-1);
         final SAMRecord postIterationRead = formattingIterator.next();
 

@@ -54,6 +54,7 @@ package org.broadinstitute.gatk.tools.walkers.genotyper;
 import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class UnifiedGenotyperGeneralPloidyTestExecutor extends WalkerTest {
     final static String REF = b37KGReference;
@@ -71,28 +72,28 @@ public class UnifiedGenotyperGeneralPloidyTestExecutor extends WalkerTest {
     public void PC_MT_Test(String bam, String args, String name, String md5) {
         final String base = String.format("-T UnifiedGenotyper -dcov 200 -R %s -I %s -L %s --reference_sample_calls %s -refsample %s -ignoreLane ",
                 REF, bam, MTINTERVALS, REFSAMPLE_MT_CALLS, REFSAMPLE_NAME) + " --no_cmdline_in_header -o %s";
-        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Arrays.asList(md5));
+        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Collections.singletonList(md5));
         executeTest("testPoolCaller:"+name+" args=" + args, spec);
     }
 
     public void PC_LSV_Test(String args, String name, String model, String md5) {
         final String base = String.format("-T UnifiedGenotyper -dcov 200 -R %s -I %s -L %s --reference_sample_calls %s -refsample %s -glm %s -ignoreLane ",
                 REF, LSV_BAM, LSVINTERVALS, NA12878_WG_CALLS, REFSAMPLE_NAME, model) + " --no_cmdline_in_header -o %s";
-        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Arrays.asList(md5));
+        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Collections.singletonList(md5));
         executeTest("testPoolCaller:"+name+" args=" + args, spec);
     }
 
     public void PC_LSV_Test_short(String args, String name, String model, String md5) {
         final String base = String.format("-T UnifiedGenotyper -dcov 200 -R %s -I %s -L %s --reference_sample_calls %s -refsample %s -glm %s -ignoreLane ",
                 REF, LSV_BAM, LSVINTERVALS_SHORT, NA12878_WG_CALLS, REFSAMPLE_NAME, model) + " --no_cmdline_in_header -o %s";
-        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Arrays.asList(md5));
+        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Collections.singletonList(md5));
         executeTest("testPoolCaller:"+name+" args=" + args, spec);
     }
 
     public void PC_LSV_Test_NoRef(String args, String name, String model, String md5) {
         final String base = String.format("-T UnifiedGenotyper -dcov 200 -R %s -I %s -L %s -glm %s -ignoreLane",
                 REF, LSV_BAM, LSVINTERVALS, model) + " --no_cmdline_in_header -o %s";
-        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Arrays.asList(md5));
+        final WalkerTestSpec spec = new WalkerTestSpec(base + " " + args, Collections.singletonList(md5));
         executeTest("testPoolCaller:"+name+" args=" + args, spec);
     }
 }

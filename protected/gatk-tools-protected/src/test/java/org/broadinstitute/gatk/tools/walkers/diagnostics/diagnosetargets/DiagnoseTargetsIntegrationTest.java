@@ -56,6 +56,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class DiagnoseTargetsIntegrationTest extends WalkerTest {
     final static String REF = BaseTest.b37KGReference;
@@ -65,7 +66,7 @@ public class DiagnoseTargetsIntegrationTest extends WalkerTest {
 
     private void DTTest(String testName, String args, String md5) {
         String base = String.format("-T DiagnoseTargets  --no_cmdline_in_header -R %s -L %s", REF, L) + " -o %s ";
-        WalkerTestSpec spec = new WalkerTestSpec(base + args, Arrays.asList(md5));
+        WalkerTestSpec spec = new WalkerTestSpec(base + args, Collections.singletonList(md5));
         executeTest(testName, spec);
     }
 

@@ -55,6 +55,7 @@ import org.broadinstitute.gatk.engine.walkers.WalkerTest;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class ReadBackedPhasingIntegrationTest extends WalkerTest {
 
@@ -76,7 +77,7 @@ public class ReadBackedPhasingIntegrationTest extends WalkerTest {
                 baseTestString(hg18Reference, "phasing_test_chr20_332341_1332503.bam", "phasing_test_chr20_332341_1332503.vcf", 20000, 10, 10)
                         + " -L chr20:332341-382503",
                 1,
-                Arrays.asList("fd9810d1984fce38a78683124b6be933"));
+                Collections.singletonList("fd9810d1984fce38a78683124b6be933"));
         executeTest("MAX 10 het sites [TEST ONE]; require PQ >= 10", spec);
     }
 
@@ -86,7 +87,7 @@ public class ReadBackedPhasingIntegrationTest extends WalkerTest {
                 baseTestString(hg18Reference, "phasing_test_chr20_332341_1332503.bam", "phasing_test_chr20_332341_1332503.vcf", 20000, 10, 10)
                         + " -L chr20:1232503-1332503",
                 1,
-                Arrays.asList("39d4f9b5650667491091ccee7c245b06"));
+                Collections.singletonList("39d4f9b5650667491091ccee7c245b06"));
         executeTest("MAX 10 het sites [TEST TWO]; require PQ >= 10", spec);
     }
 
@@ -96,7 +97,7 @@ public class ReadBackedPhasingIntegrationTest extends WalkerTest {
                 baseTestString(hg18Reference, "phasing_test_chr20_332341_1332503.bam", "phasing_test_chr20_332341_1332503.vcf", 20000, 2, 30)
                         + " -L chr20:332341-382503",
                 1,
-                Arrays.asList("ca2556135efef75f04a0692afbce85bd"));
+                Collections.singletonList("ca2556135efef75f04a0692afbce85bd"));
         executeTest("MAX 2 het sites [TEST THREE]; require PQ >= 30", spec);
     }
 
@@ -106,7 +107,7 @@ public class ReadBackedPhasingIntegrationTest extends WalkerTest {
                 baseTestString(hg18Reference, "phasing_test_chr20_332341_1332503.bam", "phasing_test_chr20_332341_1332503.vcf", 20000, 5, 100)
                         + " -L chr20:332341-382503",
                 1,
-                Arrays.asList("46507837790c71b4f8cba4f1551987a7"));
+                Collections.singletonList("46507837790c71b4f8cba4f1551987a7"));
         executeTest("MAX 5 het sites [TEST FOUR]; require PQ >= 100", spec);
     }
 
@@ -116,7 +117,7 @@ public class ReadBackedPhasingIntegrationTest extends WalkerTest {
                 baseTestString(hg18Reference, "phasing_test_chr20_332341_1332503.bam", "phasing_test_chr20_332341_1332503.vcf", 1000, 7, 10)
                         + " -L chr20:332341-482503",
                 1,
-                Arrays.asList("30a61a4853b1df1b6afb0a42fb01ca00"));
+                Collections.singletonList("30a61a4853b1df1b6afb0a42fb01ca00"));
         executeTest("MAX 7 het sites [TEST FIVE]; require PQ >= 10; cacheWindow = 1000", spec);
     }
 
@@ -126,7 +127,7 @@ public class ReadBackedPhasingIntegrationTest extends WalkerTest {
                 baseTestString(hg18Reference, "phasing_test_chr20_332341_1332503.bam", "phasing_test_chr20_332341_1332503.vcf", 20000, 10, 10)
                         + " -L chr20:652810-681757",
                 1,
-                Arrays.asList("f06edaabb82af64f1465dd27b9c9948e"));
+                Collections.singletonList("f06edaabb82af64f1465dd27b9c9948e"));
         executeTest("MAX 10 het sites [TEST SIX]; require PQ >= 10; cacheWindow = 20000; has inconsistent sites", spec);
     }
 
@@ -136,7 +137,7 @@ public class ReadBackedPhasingIntegrationTest extends WalkerTest {
                 baseTestString(hg18Reference, "phasing_test_chr20_332341_1332503.bam", "CEU.trio.2010_03.genotypes.hg18.vcf", 20000, 10, 10)
                         + " -L chr20:332341-802503",
                 1,
-                Arrays.asList("16ac184f0f8c81c9b4a6cbc235a58872"));
+                Collections.singletonList("16ac184f0f8c81c9b4a6cbc235a58872"));
         executeTest("Use trio-phased VCF, adding read-backed phasing information in HP tag (as is now standard for RBP) [TEST SEVEN]", spec);
     }
 
@@ -151,7 +152,7 @@ public class ReadBackedPhasingIntegrationTest extends WalkerTest {
                 " -o %s" +
                 " --no_cmdline_in_header",
                 1,
-                Arrays.asList("0b47205ebdf2cf752ad91ff49e82c401"));
+                Collections.singletonList("0b47205ebdf2cf752ad91ff49e82c401"));
         executeTest("Do not merge unphased SNPs", spec);
     }
 
@@ -166,7 +167,7 @@ public class ReadBackedPhasingIntegrationTest extends WalkerTest {
                         " -o %s" +
                         " --no_cmdline_in_header",
                 1,
-                Arrays.asList("1419d9292d6e5db6282204826cb53bf7"));
+                Collections.singletonList("1419d9292d6e5db6282204826cb53bf7"));
         executeTest("Merge SNPs if on the same read", spec);
     }
 
@@ -184,7 +185,7 @@ public class ReadBackedPhasingIntegrationTest extends WalkerTest {
                         " -o %s" +
                         " --no_cmdline_in_header",
                 1,
-                Arrays.asList("8a3cd58dd6b1d04ab8c699f4e328dff4"));
+                Collections.singletonList("8a3cd58dd6b1d04ab8c699f4e328dff4"));
         executeTest("Don't merge symbolic SPAN_DEL (*) alleles (into the nonexistent ** MNP).", spec);
     }
 }

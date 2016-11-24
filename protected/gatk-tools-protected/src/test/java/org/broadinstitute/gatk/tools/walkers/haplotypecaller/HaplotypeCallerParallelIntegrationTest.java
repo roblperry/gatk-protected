@@ -57,6 +57,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class HaplotypeCallerParallelIntegrationTest extends WalkerTest {
@@ -81,7 +82,7 @@ public class HaplotypeCallerParallelIntegrationTest extends WalkerTest {
                 "-T HaplotypeCaller --pcr_indel_model NONE -pairHMMSub " + HMM_SUB_IMPLEMENTATION + " " + ALWAYS_LOAD_VECTOR_HMM + " -R " + b37KGReference + " --no_cmdline_in_header -I "
                         + privateTestDir + "PCRFree.2x250.Illumina.20_10_11.bam -o %s " +
                         " -L 20:10,000,000-10,100,000 -G none -A none -contamination 0.0 -nct " + nct, 1,
-                Arrays.asList(md5));
+                Collections.singletonList(md5));
         executeTest("HC test parallel HC with NCT with nct " + nct, spec);
     }
 }
