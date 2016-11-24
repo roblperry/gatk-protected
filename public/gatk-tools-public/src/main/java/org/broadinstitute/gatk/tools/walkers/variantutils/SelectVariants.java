@@ -692,8 +692,7 @@ public class SelectVariants extends RodWalker<Integer, Integer> implements TreeR
 
         // if user specified types to include, add these, otherwise, add all possible variant context types to list of vc types to include
         if (typesToInclude.isEmpty()) {
-            for (VariantContext.Type t : VariantContext.Type.values())
-                selectedTypes.add(t);
+            Collections.addAll(selectedTypes, VariantContext.Type.values());
         }
         else {
             for (VariantContext.Type t : typesToInclude)

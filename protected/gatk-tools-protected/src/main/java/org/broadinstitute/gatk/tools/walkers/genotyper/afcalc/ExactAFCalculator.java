@@ -231,8 +231,7 @@ abstract class ExactAFCalculator extends AFCalculator {
         // This heap will keep track of that index order.
         final PriorityQueue<LikelihoodSum> mostLikelyAllelesHeapByIndex = new PriorityQueue<>(numOriginalAltAlleles, LIKELIHOOD_INDEX_COMPARATOR);
 
-        for ( int i = 0; i < numAllelesToChoose; i++ )
-            mostLikelyAllelesHeapByIndex.add(likelihoodSums[i]);
+        mostLikelyAllelesHeapByIndex.addAll(Arrays.asList(likelihoodSums).subList(0, numAllelesToChoose));
 
         // guaranteed no to have been added at this point thanks for checking on whether reduction was
         // needed in the first place.

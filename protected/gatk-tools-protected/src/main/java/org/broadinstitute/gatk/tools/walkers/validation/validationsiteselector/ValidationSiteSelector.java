@@ -265,8 +265,7 @@ public class ValidationSiteSelector extends RodWalker<Integer, Integer> {
         // if user specified types to include, add these, otherwise, add all possible variant context types to list of vc types to include
         if (TYPES_TO_INCLUDE.isEmpty()) {
 
-            for (VariantContext.Type t : VariantContext.Type.values())
-                selectedTypes.add(t);
+            Collections.addAll(selectedTypes, VariantContext.Type.values());
 
         }
         else {

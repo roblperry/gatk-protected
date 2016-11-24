@@ -328,8 +328,7 @@ public abstract class GenotypingEngine<Config extends StandardCallerArgumentColl
         private List<Allele> outputAlleles(final Allele referenceAllele) {
             final ArrayList<Allele> result = new ArrayList<>(count + 1);
             result.add(referenceAllele);
-            for (int i = 0; i < count; i++)
-                result.add(alleles[i]);
+            result.addAll(Arrays.asList(alleles).subList(0, count));
             return result;
         }
 
