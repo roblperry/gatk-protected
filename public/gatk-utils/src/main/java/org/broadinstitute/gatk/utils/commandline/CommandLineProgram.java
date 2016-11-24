@@ -373,7 +373,7 @@ public abstract class CommandLineProgram {
      * Print help and exit.
      */
     private static void printVersionAndExit() {
-        System.out.println(getVersionNumber().toString());
+        System.out.println(getVersionNumber());
         System.exit(0);
     }
 

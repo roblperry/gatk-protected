@@ -347,11 +347,11 @@ public class AnalyzeCovariatesIntegrationTest extends WalkerTest {
         }
         if (beforeFile != null) {
             args.add("-" + AnalyzeCovariates.BEFORE_ARG_SHORT_NAME);
-            args.add("'" + beforeFile.getAbsolutePath().toString() + "'");
+            args.add("'" + beforeFile.getAbsolutePath() + "'");
         }
         if (afterFile != null) {
             args.add("-" + AnalyzeCovariates.AFTER_ARG_SHORT_NAME);
-            args.add("'" + afterFile.getAbsolutePath().toString() + "'");
+            args.add("'" + afterFile.getAbsolutePath() + "'");
         }
         return Utils.join(" ", args);
 
