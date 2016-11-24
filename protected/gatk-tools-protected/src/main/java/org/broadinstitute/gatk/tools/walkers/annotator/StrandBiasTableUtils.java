@@ -182,9 +182,7 @@ public class StrandBiasTableUtils {
 
         for ( int i = 0; i < ARRAY_DIM; i++ ) {
             //System.arraycopy(t,0,c,0,ARRAY_DIM);
-            for (int j = 0; j < ARRAY_DIM; j++) {
-                c[i][j] = t[i][j];
-            }
+            System.arraycopy(t[i], 0, c[i], 0, ARRAY_DIM);
         }
 
         return c;

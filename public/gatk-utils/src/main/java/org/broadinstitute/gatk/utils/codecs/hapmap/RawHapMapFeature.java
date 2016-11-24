@@ -197,8 +197,7 @@ public class RawHapMapFeature implements Feature {
     public String[] getSampleIDs() {
 		String[] header = headerLine.split("\\s+");
 		String[] sample_ids = new String[header.length-11];
-		for (int i = 11; i < header.length; i++)
-			sample_ids[i-11] = header[i];
+        System.arraycopy(header, 11, sample_ids, 0, header.length - 11);
 		return sample_ids;
 	}
 }

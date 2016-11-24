@@ -213,8 +213,7 @@ public class NestedIntegerArray<T> {
 
     private int[] appendToPath(final int[] path, final int newKey) {
         final int[] newPath = new int[path.length + 1];
-        for ( int i = 0; i < path.length; i++ )
-            newPath[i] = path[i];
+        System.arraycopy(path, 0, newPath, 0, path.length);
         newPath[path.length] = newKey;
         return newPath;
     }

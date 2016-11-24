@@ -84,8 +84,7 @@ class CardinalityCounter implements Iterator<int[]>, Iterable<int[]> {
 
         // Copy the assignment to be returned:
         int[] nextList = new int[valList.length];
-        for (int i = 0; i < valList.length; i++)
-            nextList[i] = valList[i];
+        System.arraycopy(valList, 0, nextList, 0, valList.length);
 
         // Find the assignment after this one:
         hasNext = false;

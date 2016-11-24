@@ -239,8 +239,7 @@ public class DebugJNILoglessPairHMM extends LoglessPairHMM {
                 int readIdx = 0;
                 for(final GATKSAMRecord read : processedReads)
                 {
-                    for(int j=0;j<numHaplotypes;++j)
-                        tmpArray[j] = likelihoodArray[readIdx+j];
+                    System.arraycopy(likelihoodArray, readIdx + 0, tmpArray, 0, numHaplotypes);
                     for (final Haplotype haplotype : likelihoods.alleles())//order is important - access in same order always
                     {
                         idxInsideHaplotypeList = haplotypeToHaplotypeListIdxMap.get(haplotype);
